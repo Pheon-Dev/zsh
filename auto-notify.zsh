@@ -6,7 +6,7 @@ export AUTO_NOTIFY_EXPIRE_TIME=8000
 export AUTO_NOTIFY_THRESHOLD=10
 # List of commands/programs to ignore sending notifications for
 export AUTO_NOTIFY_IGNORE=(
-    "vim" "nvim" "less" "more" "man" "tig" "watch" "git commit" "top" "htop" "ssh" "nano" "zsh" "tmux"
+    "vim" "node" "npi" "cat" "nvim" "less" "more" "man" "tig" "watch" "git commit" "top" "htop" "ssh" "nano" "zsh" "tmux" "play" "mpv" "*fig"
 )
 
 function _auto_notify_format() {
