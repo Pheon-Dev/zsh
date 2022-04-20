@@ -8,12 +8,11 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
+export EDITOR='nvim'
 # plugins
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-
-export EDITOR='nvim'
 
 source "$HOME/.config/zsh/auto-suggestions.zsh"
 # source "$HOME/.config/zsh/auto-notify.zsh"
@@ -44,13 +43,7 @@ export NVM_DIR="$HOME/.nvm"
 # eval "$(/bin/brew shellenv)"
 #
 source "$HOME/.config/zsh/alias.zsh"
-# source "$HOME/Dotfiles/Pheon-Dev-Dotfiles/version_control.sh"
-# source "$HOME/Dotfiles/Pheon-Dev-Dotfiles/zsh.sh"
-
-# Documents Directory Navigation
-source ~/.config/zsh/dca.zsh
-source ~/.config/zsh/dcg.zsh
-source ~/.config/zsh/dcv.zsh
+#
 source ~/.config/zsh/functions.zsh
 
 source ~/.config/zsh/git.zsh
