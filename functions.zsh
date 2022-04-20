@@ -50,3 +50,39 @@ dcv () {
     cd ~/Documents/"$doc"/Videos && la
   fi
 }
+
+yta () {
+  youtube-dl --extract-audio --audio-format mp3 "$1" --playlist-start "$2"
+}
+
+psou () {
+  source ~/.p10k.zsh
+}
+
+tsou () {
+  tmux source ~/.tmux.conf
+}
+
+zsou () {
+  source ~/.zshrc
+}
+
+bsou () {
+  source ~/.bashrc
+}
+
+mntd () {
+  sudo fdisk -l && sudo mkdir /run/media/"$1"
+}
+
+wfe () {
+  nmcli dev wifi connect wifi"$1"
+}
+
+mntm () {
+  sudo mount /dev/sd"$1""$2" /run/media/"$3"
+}
+
+mntu () {
+  sudo umount /run/media/"$1"
+}
