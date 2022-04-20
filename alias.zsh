@@ -63,6 +63,7 @@ alias snapi="snap install"
 alias dish="xrandr --output eDP-1 --off --output HDMI-1 --auto"
 alias dise="xrandr --output HDMI-1 --off --output eDP-1 --auto"
 alias sus="systemctl suspend"
+alias rfig='cd ~/.config/ranger && vim'
 alias efig="cd ~/.config/doom && vim"
 alias qfig="cd ~/.config/qtile && vim"
 alias vfig="cd ~/.config/nvim && vim"
@@ -113,71 +114,6 @@ alias alis="alias | grep"
 alias luamake=/home/pheon/.config/nvim/lua-language-server/3rd/luamake/luamake
 alias icat="kitty +kitten icat --align=left"
 alias lis="live-server"
-
-# alias nvo="npx node@($1); node ($1); node --version"
-# alias nvu="nvm install $1& nvm use $1& node --version"
-# alias nvi="nvm install --lts"
-
-# Check list of USB Devices
-# $sudo fdisk -l
-#
-# Make a mount location
-# $sudo mkdir /run/media/directory_name
-#
-# Mount Drive to directory
-# $sudo mount /dev/sdb# /run/media/directory_name
-#
-# Unmount Drive
-# $sudo umount /run/media/directory_name
-#
-# List Mounted Locations
-# $cat /proc/mounts
-
-###################### NETWORK MANAGER CLI CONNECTIONS ####################
-# Check Wifi status
-# $nmcli dev status
-#
-# Turn Wifi Driver on/off 
-# $nmcli radio wifi 
-# $nmcli radio wifi on/off 
-#
-# List WiFi Connections Available
-# $nmcli dev wifi list
-#
-# Connect to WiFi 
-# $nmcli dev wifi connect network-ssid
-#
-# First Time Connection with password 
-# $nmcli dev wifi connect network-ssid password network-password
-#
-# Or to make the network visible/invisible
-# $nmcli --ask dev wifi connect network-ssid
-#
-# Check Connection info 
-# $nmcli --show-secrets connection show network-ssid
-#
-### Hotspot Conectivity
-# First time connection 
-# $nmcli dev wifi con network-ssid password network-password name network-hotspot-connection-name 
-# 
-# Second Time Onwards connections
-# $nmcli con up id network-hotspot-connection-name 
-#
-# Create Hotspot connection and connect it
-# $nmcli -s dev wifi hotspot con-name network-hotspot-connection-name
-#
-### Ethernet Connectivity
-# $nmcli connection add type ethernet autoconnect no ifname eth0
-#
-### OpenVPN 
-# $nmcli con import type openvpn file ~/Downloads/frootvpn.ovpn 
-#
-# bluetoothctl pair CC:98:8B:A7:BB:38
-# mdp <file>.md		## Markdown Presentation
-#  g++ -Wall -W -o name prog.cpp
-# alias postman='/home/pheon/Downloads/Postman/postman'
 alias winfo='xprop'
-# alias insomnia='cd /home/pheon/Downloads/Insomnia; ./insomnia &'
 alias c='clear'
 alias rn='ranger'
-alias rfig='cd ~/.config/ranger && vim'
