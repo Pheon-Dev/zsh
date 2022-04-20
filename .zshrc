@@ -13,7 +13,7 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-source "$HOME/.config/zsh/autosuggestions.zsh"
+source "$HOME/.config/zsh/auto-suggestions.zsh"
 # source "$HOME/.config/zsh/auto-notify.zsh"
 source "$HOME/.config/zsh/use.zsh"
 source "$HOME/.config/zsh/web_search.zsh"
