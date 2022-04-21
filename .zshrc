@@ -105,5 +105,5 @@ _fzf_comprun() {
     *)            fzf "$@" ;;
   esac
 }
-
+bindkey '^I' fzf_completion
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
