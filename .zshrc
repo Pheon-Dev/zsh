@@ -16,17 +16,12 @@ source $ZSH/oh-my-zsh.sh
 
 if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     . /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-    # change suggestion color
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#00f0e0'
 fi
 
-# source "$HOME/.config/zsh/auto-notify.zsh"
+source "$HOME/.config/zsh/auto-notify.zsh"
 source "$HOME/.config/zsh/use.zsh"
 source "$HOME/.config/zsh/web_search.zsh"
-source "$HOME/.config/zsh/copydir.zsh"
-source "$HOME/.config/zsh/copybuffer.zsh"
-source "$HOME/.config/zsh/archive.zsh"
-source "$HOME/.config/zsh/copyfile.zsh"
 source "$HOME/.config/zsh/dirhistory.zsh"
 source "$HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 # source "$HOME/.config/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
@@ -53,7 +48,7 @@ source ~/.config/zsh/functions.zsh
 
 source ~/.config/zsh/git.zsh
 # Refresh .zshrc for git 
-source ~/.config/zsh/refresh-rc.zsh
+cp ~/.zshrc ~/.config/zsh/.zshrc
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -77,10 +72,11 @@ source ~/.config/zsh/refresh-rc.zsh
 
 eval # ============================================================================= # # Utility functions for zoxide. # # pwd based on the value of _ZO_RESOLVE_SYMLINKS. function __zoxide_pwd() { uiltin pwd -L } # cd + custom logic based on the value of _ZO_ECHO. function __zoxide_cd() { # shellcheck disable=SC2164 uiltin cd "$@" } # ============================================================================= # # Hook configuration for zoxide. # # Hook to add new entries to the database. function __zoxide_hook() { 
 
-export FZF_DEFAULT_OPTS='--height 64% --layout=reverse --border --color=fg:#d0d0d0,bg:#121212,hl:#5f87af --color=fg+:#d0d0d0,bg+:#262626,hl+:#648ce3 --color=info:#6d7d85,prompt:#b53c10,pointer:#5895db --color=marker:#87ff00,spinner:#2b751c,header:#87afaf'
-export FZF_DEFAULT_OPS="--extended"
+# export FZF_DEFAULT_OPTS='--height 64% --layout=reverse --border --color=fg:#d0d0d0,bg:#121212,hl:#5f87af --color=fg+:#d0d0d0,bg+:#262626,hl+:#648ce3 --color=info:#6d7d85,prompt:#b53c10,pointer:#5895db --color=marker:#87ff00,spinner:#2b751c,header:#87afaf'
+# export FZF_DEFAULT_OPTS="--extended"
 export FZF_DEFAULT_COMMAND="fd --type f"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# export FZF_CTRL_T_OPTS="$vf"
 
 # bindkey "^f" fzf-cd-widget
 export FZF_COMPLETION_OPTS='--border --info=inline'
