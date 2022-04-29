@@ -61,6 +61,7 @@ alias snapi="snap install"
 # alias disf="xrandr --output eDP-1 --auto" # HDMI-1
 alias dish="xrandr --output eDP-1 --off --output HDMI-1 --auto"
 alias dise="xrandr --output HDMI-1 --off --output eDP-1 --auto"
+alias disa='xrandr --output eDP-1 --primary --auto --right-of HDMI-1 --auto'
 alias sus="systemctl suspend"
 alias rfig='cd ~/.config/ranger && vim'
 alias efig="cd ~/.config/doom && vim"
