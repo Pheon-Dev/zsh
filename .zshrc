@@ -27,7 +27,7 @@ source "$HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 # source "$HOME/.config/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
 
 setxkbmap -option caps:escape
-nitrogen --restore
+# nitrogen --restore
 
 # curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh
 # wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh
@@ -81,7 +81,8 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
 export FZF_ALT_C_COMMAND="fd --type d . --color=never"
-export FZF_ALT_C_OPTS="--preview 'tree -C {}' | head -50"
+# export FZF_ALT_C_OPTS="--preview 'tree -C {}' | head -50"
+export FZF_ALT_C_OPTS="--preview 'exa --icons -T --color=always --group-directories-first {}' | head -50"
 
 # bindkey "^f" fzf-cd-widget
 export FZF_COMPLETION_OPTS='--border --info=inline'

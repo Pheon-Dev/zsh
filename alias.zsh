@@ -109,3 +109,4 @@ alias lis="live-server"
 alias winfo='xprop'
 alias c='clear'
 alias rn='ranger'
+alias ari='aria2c --file-allocation=none -c -x 10 -d . -Z'
