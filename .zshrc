@@ -108,3 +108,8 @@ _fzf_comprun() {
 }
 bindkey '^S' fzf_completion
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# pnpm
+export PNPM_HOME="/home/pheon/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
