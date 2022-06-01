@@ -51,7 +51,7 @@ alias pnid='pnpm add -D'
 alias pnig='pnpm add -g'
 alias npi="npm i"
 alias npid="npm i -D"
-alias npig="npm i -g"
+alias npig="npm i --location=global"
 alias npau="npm audit fix"
 alias pnau="pnpm audit fix"
 alias npaf="npm audit fix --force"
@@ -112,5 +112,6 @@ alias rn='ranger'
 alias ari='aria2c --file-allocation=none -c -x 10 -d . -Z'
 alias tp='toipe'
 alias pnu='sudo pnpm add -g pnpm'
-alias npu='sudo npm update -g'
+alias npu='sudo npm update --location=global'
 alias lg='lazygit'
+alias sss='systemctl suspend'
