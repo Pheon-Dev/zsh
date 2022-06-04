@@ -62,7 +62,7 @@ alias snapi="snap install"
 alias dish="xrandr --output eDP-1 --off --output HDMI-1 --auto; nitrogen --restore"
 alias dise="xrandr --output HDMI-1 --off --output eDP-1 --auto; nitrogen --restore"
 alias disa='xrandr --output eDP-1 --primary --auto --right-of HDMI-1 --auto; nitrogen --restore'
-alias sus="systemctl suspend"
+alias sss='systemctl suspend'
 alias rfig='cd ~/.config/ranger && vim'
 alias efig="cd ~/.config/doom && vim"
 alias qfig="cd ~/.config/qtile && vim"
@@ -114,4 +114,3 @@ alias tp='toipe'
 alias pnu='sudo pnpm add -g pnpm'
 alias npu='sudo npm update --location=global'
 alias lg='lazygit'
-alias sss='systemctl suspend'
