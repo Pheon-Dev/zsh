@@ -1,7 +1,6 @@
 vf() {
    fzf --preview 'bat --style=numbers --color=always --line-range :500 {}' | xargs nvim
 }
-
 ### ARCHIVE EXTRACTIONS
 # usage: ex <file>
 
@@ -104,6 +103,10 @@ mntd () {
 
 wfe () {
   nmcli dev wifi connect wifi"$1"
+}
+
+dep() {
+ pnpm run build && firebase deploy --only hosting:"$1" && lazygit
 }
 
 mntm () {
