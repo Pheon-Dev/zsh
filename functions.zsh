@@ -33,7 +33,7 @@ docs=(
   tools           "Tools"
   react           "React"
   next            "NextJS"
-  native          "ReactNative"
+  native          "Native"
   flutter         "Flutter"
   frameworks      "Frameworks"
   rust            "Rust"
@@ -50,7 +50,7 @@ dca () {
     return 1
   else
     doc="${docs[$1]}"
-    cd ~/Documents/"$doc"/Apps && ll
+    cd ~/Documents/"$doc"/Apps || cd ~/Documents/"$doc"/App && l
   fi
 }
 
@@ -62,7 +62,7 @@ dcg () {
     return 1
   else
     doc="${docs[$1]}"
-    cd ~/Documents/"$doc"/Git && ll
+    cd ~/Documents/"$doc"/Git && l
   fi
 }
 
