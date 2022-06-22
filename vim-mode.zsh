@@ -3,6 +3,7 @@
 builtin set -o no_aliases
 
 VIM_MODE_VICMD_KEY='jj'
+VIM_MODE_INITIAL_KEYMAP=vicmd
 bindkey -v
 
 #${(%):-%x}_debug () { print -r "$(date) $@" >> /tmp/zsh-debug-vim-mode.log 2>&1 }
