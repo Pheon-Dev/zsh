@@ -2,6 +2,7 @@
 [[ -o aliases ]] && _vim_mode_shopt_aliases=1
 builtin set -o no_aliases
 
+VIM_MODE_VICMD_KEY='jj'
 bindkey -v
 
 #${(%):-%x}_debug () { print -r "$(date) $@" >> /tmp/zsh-debug-vim-mode.log 2>&1 }
