@@ -25,6 +25,7 @@ source "$HOME/.config/zsh/web_search.zsh"
 source "$HOME/.config/zsh/dirhistory.zsh"
 source "$HOME/.config/zsh/fzf-tab/fzf-tab.plugin.zsh"
 source "$HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$HOME/.config/zsh/vim-mode.zsh"
 # source "$HOME/.config/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
 
 setxkbmap -option caps:escape
@@ -114,3 +115,5 @@ eval # =========================================================================
 export PNPM_HOME="/home/pheon/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+#
+#
