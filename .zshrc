@@ -25,6 +25,8 @@ source "$HOME/.config/zsh/web_search.zsh"
 source "$HOME/.config/zsh/dirhistory.zsh"
 source "$HOME/.config/zsh/fzf-tab/fzf-tab.plugin.zsh"
 source "$HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$HOME/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$HOME/.config/zsh/vim-mode.zsh"
 # source "$HOME/.config/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
 
