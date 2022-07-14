@@ -14,11 +14,6 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
-    . /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#3b4261'
-fi
-
 source "$HOME/.config/zsh/auto-notify.zsh"
 source "$HOME/.config/zsh/use.zsh"
 source "$HOME/.config/zsh/web_search.zsh"
