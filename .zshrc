@@ -116,3 +116,4 @@ export PATH="$PNPM_HOME:$PATH"
 export PATH=/home/pheon/.local/share/pnpm:/home/pheon/.cargo/bin:/home/pheon/.emacs.d/bin:/home/pheon/.rvm/gems/ruby-2.3.8/bin:/home/pheon/.rvm/gems/ruby-2.3.8@global/bin:/home/pheon/.rvm/rubies/ruby-2.3.8/bin:/home/pheon/.local/share/pnpm:/home/pheon/.cargo/bin:/home/pheon/.emacs.d/bin:/home/pheon/.rvm/gems/ruby-2.3.8/bin:/home/pheon/.rvm/gems/ruby-2.3.8@global/bin:/home/pheon/.rvm/rubies/ruby-2.3.8/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/pheon/.rvm/bin:/var/lib/snapd/snap/bin:/usr/lib/jvm/default/bin:/usr/local/go/bin
 export DENO_INSTALL="/home/pheon/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
