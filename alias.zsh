@@ -1,4 +1,3 @@
-# alias esc="setxkbmap -option caps:escape"
 # ~/.zshrc
 alias ls="exa --icons --color=always --group-directories-first"
 alias la="exa --icons -abghHliS --color=always --group-directories-first"
@@ -94,10 +93,11 @@ alias wfi="nmcli --show-secrets connection show"
 alias mntl="sudo fdisk -l"
 alias pacu="sudo pacman -Syyu"
 alias pacl="sudo rm /var/lib/pacman/db.lck"
-alias yaya="yay -Sua --noconfirm"    # Update AUR pkgs
-alias yayu="yay -Syu --noconfirm"    # Update AUR & Standard pkgs
-alias yays="yay -S --noconfirm"    # Update AUR & Standard pkgs
+alias yaya="yay -Sua --noconfirm"
+alias yayu="yay -Syyu"
+alias yays="yay -Syu --noconfirm"
 alias paci="sudo pacman -S"
+alias pacu="sudo pacman -Syyu"
 alias pacs="sudo pacman -Syu --noconfirm"
 alias alis="alias | grep"
 alias luamake="/home/pheon/.config/nvim/lua-language-server/3rd/luamake/luamake"
