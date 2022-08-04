@@ -122,3 +122,7 @@ alias yv="yarn add --dev"
 alias yd="yarn dev"
 alias ys="yarn start"
 alias yi="yarn init"
+alias bfig="cd ~/.config/bspwm && nvim"
+alias yx="yarn create next-app"
+# git config --global push.autoSetupRemote true
+alias f="fuck"
