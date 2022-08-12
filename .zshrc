@@ -11,7 +11,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 export EDITOR='nvim'
-# plugins
+
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
