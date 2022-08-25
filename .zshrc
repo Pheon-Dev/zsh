@@ -120,3 +120,4 @@ export DENO_INSTALL="/home/pheon/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval $(thefuck --alias)
+export PATH="/home/pheon/vector/bin:$PATH"

@@ -127,3 +127,5 @@ alias yx="yarn create next-app"
 # git config --global push.autoSetupRemote true
 alias f="fuck"
 alias fsg="flameshot gui -p ~/Downloads/Picture"
+alias vector="~/.vector/bin/vector"
+alias bl="bluetooth on && bluetoothctl connect CC:98:8B:A7:BB:38"
