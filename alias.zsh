@@ -124,7 +124,6 @@ alias ys="yarn start"
 alias yi="yarn init"
 alias bfig="cd ~/.config/bspwm && nvim"
 alias yx="yarn create next-app"
-# git config --global push.autoSetupRemote true
 alias f="fuck"
 alias fsg="flameshot gui -p ~/Downloads/Picture"
 alias vector="~/.vector/bin/vector"
