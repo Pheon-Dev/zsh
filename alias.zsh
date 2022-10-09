@@ -138,3 +138,5 @@ alias pgn="prisma generate"
 alias pst="prisma studio"
 alias pscon="pscale connect   --port "  # 1: db, 2: branch, 3: port
 alias pscll="pscale shell  "  # 1: db, 2: branch
+alias wfn="nmcli connection add type ethernet con-name ether ifname"
+alias wfu="nmcli con up"
