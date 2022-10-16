@@ -51,6 +51,7 @@ source ~/.config/zsh/functions.zsh
 source ~/.config/zsh/git.zsh
 # Refresh .zshrc for git 
 cp ~/.zshrc ~/.config/zsh/.zshrc
+cp ~/.tmux.conf ~/.tmux
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

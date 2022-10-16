@@ -4,6 +4,7 @@ alias la="exa --icons -abghHliS --color=always --group-directories-first"
 alias ll="exa --icons -a --color=always --group-directories-first"
 alias lt="exa --icons -T --color=always --group-directories-first"
 alias l.='exa -a | egrep "^\."'
+alias lv='/home/pheon/.local/bin/lvim'
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep='fgrep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
@@ -26,7 +27,9 @@ alias play="cd /home/pheon/Documents/Play-Ground/"
 alias dwm="cd /home/pheon/Downloads/Movies/"
 alias dc="cd /home/pheon/Documents/"
 alias xf="exiftool"
-alias nodv="pnpx node@$version -v" #@10  v10.18.1
+alias nvg="wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash"
+alias nvl="nvm install node" #latest
+alias nvi="nvm install" #nvi 10.18.1
 alias apnx="pnpx create-next-app"
 alias apre="pnpx create-react-app"
 alias apvi="pnpm create vite || npm create vite"
@@ -72,7 +75,7 @@ alias zfig="cd ~/.config/zsh && vim"
 alias kfig="cd ~/.config/kitty && vim"
 alias cfig="cd ~/Dotfiles/Pheon-Dev-Dotfiles && lv"
 alias mfig="cd ~/.moc/ && vim"
-alias tfig="cd ~/.tmux/plugins && vim"
+alias tfig="cd ~/.tmux && vim"
 alias pfig="nvim ~/.p10k.zsh"
 alias blf='bluetooth off'
 alias bln='bluetooth on'
@@ -117,13 +120,15 @@ alias deni='deno run -A -r https://fresh.deno.dev'
 alias dens='deno task start'
 alias y="yarn"
 alias ya="yarn add"
+alias yb="yarn build"
+alias yt="yarn turbo run build"
 alias yg="yarn global add"
 alias yv="yarn add --dev"
 alias yd="yarn dev"
 alias ys="yarn start"
 alias yi="yarn init"
 alias bfig="cd ~/.config/bspwm && nvim"
-alias yx="yarn create next-app"
+alias yx="yarn create next-app --typescript"
 alias f="fuck"
 alias fsg="flameshot gui -p ~/Downloads/Picture"
 alias vector="~/.vector/bin/vector"
@@ -136,7 +141,7 @@ alias pll="prisma pull"
 alias pnt="prisma init"
 alias pgn="prisma generate"
 alias pst="prisma studio"
-alias pscon="pscale connect   --port "  # 1: db, 2: branch, 3: port
-alias pscll="pscale shell  "  # 1: db, 2: branch
+alias pscon="pscale connect '$1' '$2' --port 3306"  # 1: db, 2: branch, 3: port
+alias pscll="pscale shell '$1' '$2'"  # 1: db, 2: branch
 alias wfn="nmcli connection add type ethernet con-name ether ifname"
 alias wfu="nmcli con up"
