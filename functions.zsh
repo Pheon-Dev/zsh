@@ -77,6 +77,30 @@ dcv () {
   fi
 }
 
+ynx () {
+  yarn create next-app "$2" --typescript
+}
+
+yae () {
+  yarn workspace "$1" add --ignore-engines "$2"
+}
+
+yag () {
+  yarn workspace "$1" global add "$2"
+}
+
+yad () {
+  yarn workspace "$1" add "$2" --dev
+}
+
+yat () {
+  yarn workspace "$1" add "$2"
+}
+
+yar () {
+  yarn workspace "$1" remove "$2"
+}
+
 yta () {
   youtube-dl --extract-audio --audio-format mp3 "$1" --playlist-start "$2"
 }
