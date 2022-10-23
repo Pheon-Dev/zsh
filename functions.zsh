@@ -125,7 +125,7 @@ mntd () {
   sudo fdisk -l && sudo mkdir /run/media/"$1"
 }
 
-wfe () {
+we () {
   nmcli dev wifi connect wifi"$1"
 }
 
