@@ -9,6 +9,8 @@ export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="af-magic"
+# ZSH_THEME="robbyrussell"
 
 export EDITOR='nvim'
 
@@ -120,5 +122,5 @@ export PATH=/home/pheon/.local/share/pnpm:/home/pheon/.cargo/bin:/home/pheon/.em
 export DENO_INSTALL="/home/pheon/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-eval $(thefuck --alias)
+#eval $(thefuck --alias)
 export PATH="/home/pheon/vector/bin:$PATH"
