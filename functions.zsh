@@ -121,10 +121,6 @@ bsou () {
   source ~/.bashrc
 }
 
-mntd () {
-  sudo fdisk -l && sudo mkdir /run/media/"$1"
-}
-
 we () {
   nmcli dev wifi connect wifi"$1"
 }
@@ -133,12 +129,16 @@ dep() {
  pnpm run build && firebase deploy --only hosting:"$1" && lazygit
 }
 
+mntd () {
+  sudo lsblk -l && sudo mkdir /mnt/"$1" #blkid
+}
+
 mntm () {
-  sudo mount /dev/sd"$1""$2" /run/media/"$3"
+  sudo mount /dev/sd"$1""$2" /mnt/"$3"
 }
 
 mntu () {
-  sudo umount /run/media/"$1"
+  sudo umount /mnt/"$1"
 }
 
 # Copy Buffer
