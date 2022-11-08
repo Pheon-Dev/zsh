@@ -4,10 +4,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export ZSH="/home/pheon/.oh-my-zsh"
-export PATH="$HOME/.cargo/bin:$PATH"
-
 ZSH_THEME="powerlevel10k/powerlevel10k"
+
+export ZSH="/home/pheon/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
+
 # ZSH_THEME="af-magic"
 # ZSH_THEME="robbyrussell"
 
@@ -15,8 +16,13 @@ export EDITOR='nvim'
 
 plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
+# nvm alias default node
 
+export PATH="$HOME/.cargo/bin:$PATH"
+
+source "$HOME/.config/zsh/alias.zsh"
+source "$HOME/.config/zsh/functions.zsh"
+source "$HOME/.config/zsh/git.zsh"
 source "$HOME/.config/zsh/auto-notify.zsh"
 source "$HOME/.config/zsh/use.zsh"
 source "$HOME/.config/zsh/web_search.zsh"
@@ -28,9 +34,6 @@ source "$HOME/.config/zsh/fzf-tab/fzf-tab.plugin.zsh"
 source "$HOME/.config/zsh/fzf.zsh"
 # source "$HOME/.config/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
 
-setxkbmap -option caps:escape
-# nitrogen --restore
-
 # curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh
 # wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh
 
@@ -38,15 +41,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# nvm alias default node
-
-source "$HOME/.config/zsh/alias.zsh"
-source ~/.config/zsh/functions.zsh
-
-source ~/.config/zsh/git.zsh
 # Refresh .zshrc for git 
 cp ~/.zshrc ~/.config/zsh/.zshrc
 cp ~/.tmux.conf ~/.tmux
+setxkbmap -option caps:escape
+# nitrogen --restore
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -89,6 +88,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 #
 # # Example theme
 # zapplug "zap-zsh/zap-prompt"
+# # zapplug "Pheon-Dev/utils"
 #
 # # Example install completion
 # # zapcmp "esc/conda-zsh-completion" false
