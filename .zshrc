@@ -1,4 +1,4 @@
-source "$HOME/.config/zsh/zsh-fortune/fortune.plugin.zsh"
+# source "$HOME/.config/zsh/zsh-fortune/fortune.plugin.zsh"
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -24,11 +24,9 @@ source "$HOME/.config/zsh/dirhistory.zsh"
 source "$HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$HOME/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$HOME/.config/zsh/vim-mode.zsh"
-# source "$HOME/.config/zsh/fzf-tab/fzf-tab.plugin.zsh"
+source "$HOME/.config/zsh/fzf-tab/fzf-tab.plugin.zsh"
 source "$HOME/.config/zsh/fzf.zsh"
-source "$HOME/.config/zsh/zeno.zsh/zeno.zsh"
 # source "$HOME/.config/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
-# source "$HOME/.config/zsh/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh"
 
 setxkbmap -option caps:escape
 # nitrogen --restore
@@ -42,13 +40,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # nvm alias default node
 
-# eval $(~/.linuxbrew/bin/brew shellenv)
-
-# eval "$(/bin/brew shellenv)"
-# eval "$(/bin/brew shellenv)"
-#
 source "$HOME/.config/zsh/alias.zsh"
-#
 source ~/.config/zsh/functions.zsh
 
 source ~/.config/zsh/git.zsh
@@ -59,8 +51,6 @@ cp ~/.tmux.conf ~/.tmux
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 #sysinfo
-
-# source /home/pheon/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # PROFIT!!
 # 
@@ -73,11 +63,11 @@ cp ~/.tmux.conf ~/.tmux
 #        Set $_Z_OWNER to allow usage when in 'sudo -s' mode.
 #        (These settings should go in .bashrc/.zshrc before the line added above.)
 #        Install the provided man page z.1 somewhere in your MANPATH, like /usr/local/man/man1.
+
 eval "$(zoxide init zsh)"
  . /usr/share/z/z.sh
 
 eval # ============================================================================= # # Utility functions for zoxide. # # pwd based on the value of _ZO_RESOLVE_SYMLINKS. function __zoxide_pwd() { uiltin pwd -L } # cd + custom logic based on the value of _ZO_ECHO. function __zoxide_cd() { # shellcheck disable=SC2164 uiltin cd "$@" } # ============================================================================= # # Hook configuration for zoxide. # # Hook to add new entries to the database. function __zoxide_hook() { 
-
 
 # pnpm
 export PNPM_HOME="/home/pheon/.local/share/pnpm"
@@ -88,8 +78,6 @@ export PATH=/home/pheon/.local/share/pnpm:/home/pheon/.cargo/bin:/home/pheon/.em
 export DENO_INSTALL="/home/pheon/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-#eval $(thefuck --alias)
-export PATH="/home/pheon/vector/bin:$PATH"
 
 # [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 #
