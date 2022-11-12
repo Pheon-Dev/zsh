@@ -152,3 +152,4 @@ alias dcon="cd ~/.config/arco-dwm && mv config.h bu-config.h && sudo make instal
 alias nv="~/Documents/Neovim/nvim-linux64/bin/nvim"
 alias tcol="cp ~/.config/nvim/tokyo/colors.lua ~/.local/share/nvim/site/pack/packer/start/tokyonight.nvim/lua/tokyonight/colors.lua"
 alias rb="reboot"
+alias fsh="shfmt -l -w ."
