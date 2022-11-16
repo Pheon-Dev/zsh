@@ -9,7 +9,6 @@ bindkey -v
 
 #${(%):-%x}_debug () { print -r "$(date) $@" >> /tmp/zsh-debug-vim-mode.log 2>&1 }
 
-
 # Special keys {{{1
 
 # NB: The terminfo sequences are meant to be used with the terminal
@@ -508,6 +507,25 @@ if [[ $VIM_MODE_TRACK_KEYMAP != no ]]; then
 
         (( $+RPROMPT )) && : ${RPS1=$RPROMPT}
         local prompts="$PS1 $RPS1"
+
+        # echo -e -n "\x1b[\x30 q" # Blinking block
+        # echo -e -n "\x1b[\x31 q" # Blinking block (default)
+        # echo -e -n "\x1b[\x32 q" # Steady block
+        # echo -e -n "\x1b[\x33 q" # Blinking underline
+        # echo -e -n "\x1b[\x34 q" # Steady underline
+        # echo -e -n "\x1b[\x35 q" # Blinking bar
+        # echo -e -n "\x1b[\x36 q" # Steady bar
+        # echo -e -n "\x1b[\x37 q" # Blinking st cursor
+        # echo -e -n "\x1b[\x38 q" # Steady st cursor
+
+        case $keymap in
+            vicmd)        echo -e -n "\x1b[\x32 q" ;;
+            replace)      echo -e -n "\x1b[\x30 q" ;;
+            isearch)      echo -e -n "\x1b[\x36 q" ;;
+            visual)       echo -e -n "\x1b[\x32 q" ;;
+            vline)        echo -e -n "\x1b[\x32 q" ;;
+            main|viins|*) echo -e -n "\x1b[\x35 q" ;;
+        esac
 
         case $keymap in
             vicmd)        MODE_INDICATOR_PROMPT=$modes[C] ;;

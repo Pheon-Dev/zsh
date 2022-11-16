@@ -1,13 +1,12 @@
-# source "$HOME/.config/zsh/zsh-fortune/fortune.plugin.zsh"
 
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-# ZSH_THEME="powerlevel10k/powerlevel10k"
-# export ZSH="/home/pheon/.oh-my-zsh"
-# source $ZSH/oh-my-zsh.sh
-# source "$HOME/.config/zsh/fzf-tab/fzf-tab.plugin.zsh"
-# source "$HOME/.config/zsh/fzf.zsh"
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+ZSH_THEME="powerlevel10k/powerlevel10k"
+export ZSH="/home/pheon/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
+source "$HOME/.config/zsh/fzf-tab/fzf-tab.plugin.zsh"
+source "$HOME/.config/zsh/fzf.zsh"
 
 source "$HOME/.config/zsh/alias.zsh"
 source "$HOME/.config/zsh/functions.zsh"
@@ -77,19 +76,19 @@ export DENO_INSTALL="/home/pheon/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-[ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
-plug "zsh-users/zsh-autosuggestions"
-plug "zsh-users/zsh-syntax-highlighting"
-plug "hlissner/zsh-autopair"
-plug "zap-zsh/vim"
-plug "zap-zsh/supercharge"
-plug "zap-zsh/zap-prompt"
-
-plug "Aloxaf/fzf-tab"
-plug "Freed-Wu/fzf-tab-source"
-plug "zap-zsh/fzf"
-plug "zsh-users/zsh-completions"
-plug "zsh-users/zsh-history-substring-search"
-# plug "romkatv/powerlevel10k"
+# [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
+# plug "zsh-users/zsh-autosuggestions"
+# plug "zsh-users/zsh-syntax-highlighting"
+# plug "hlissner/zsh-autopair"
+# plug "zap-zsh/vim"
+# plug "zap-zsh/supercharge"
+# plug "zap-zsh/zap-prompt"
+# plug "Aloxaf/fzf-tab"
+# plug "Freed-Wu/fzf-tab-source"
+# # plug "zap-zsh/fzf"
+# plug "zsh-users/zsh-completions"
+# plug "zsh-users/zsh-history-substring-search"
+# # plug "romkatv/powerlevel10k"
+# # source "$HOME/.config/zsh/zsh-fortune/fortune.plugin.zsh"
 
 
