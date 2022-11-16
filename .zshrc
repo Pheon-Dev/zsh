@@ -1,13 +1,12 @@
-
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 ZSH_THEME="powerlevel10k/powerlevel10k"
 export ZSH="/home/pheon/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
-source "$HOME/.config/zsh/fzf-tab/fzf-tab.plugin.zsh"
-source "$HOME/.config/zsh/fzf.zsh"
 
+source "$HOME/.config/zsh/fzf-tab/fzf-tab.zsh"
+source "$HOME/.config/zsh/fzf-tab-source/fzf-tab-source.plugin.zsh"
 source "$HOME/.config/zsh/alias.zsh"
 source "$HOME/.config/zsh/functions.zsh"
 source "$HOME/.config/zsh/git.zsh"
@@ -20,6 +19,8 @@ source "$HOME/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$HOME/.config/zsh/vim-mode.zsh"
 # source "$HOME/.config/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
 
+# --border
+export FZF_DEFAULT_OPTS='--height 64% --layout=reverse --color=fg:#d0d0d0,bg:#363636,hl:#5f87af --color=fg+:#d0d0d0,bg+:#363636,hl+:#648ce3 --color=info:#6d7d85,prompt:#b53c10,pointer:#5895db --color=marker:#87ff00,spinner:#2b751c,header:#87afaf'
 
 # ZSH_THEME="af-magic"
 # ZSH_THEME="robbyrussell"
@@ -91,4 +92,6 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # # plug "romkatv/powerlevel10k"
 # # source "$HOME/.config/zsh/zsh-fortune/fortune.plugin.zsh"
 
+# export STARSHIP_CONFIG=~/.config/starship/starship.toml
+# eval "$(starship init zsh)"
 
