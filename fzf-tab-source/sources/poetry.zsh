@@ -1,6 +1,6 @@
 # :fzf-tab:complete:(\\|*/|)poetry:
 case $group in
-command)
+  command)
     poetry $word --help | bat --color=always -plhelp
     ;;
 esac

@@ -1,12 +1,12 @@
 # :fzf-tab:complete:(\\|*/|)journalctl:values
 case $group in
-'boot '*)
+  'boot '*)
     journalctl -b $word | bat --color=always -pllog
     ;;
-'/dev files')
+  '/dev files')
     journalctl -b /dev/$word | bat --color=always -pllog
     ;;
-commands)
+  commands)
     journalctl $word | bat --color=always -pllog
     ;;
 esac

@@ -1,12 +1,12 @@
 # :fzf-tab:complete:(\\|*/|)(scp|rsync):argument-rest
 case $group in
-file)
+  file)
     less ${realpath#--*=}
     ;;
-user)
+  user)
     finger $word
     ;;
-*host*)
+  *host*)
     grc --colour=on ping -c1 $word
     ;;
 esac

@@ -1,9 +1,9 @@
 # :fzf-tab:complete:(\\|*/|)dpkg:argument-rest
 case $group in
-file)
+  file)
     dpkg -S $word
     ;;
-package)
+  package)
     dpkg -L $word
     ;;
 esac

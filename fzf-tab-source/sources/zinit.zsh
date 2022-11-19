@@ -1,6 +1,6 @@
 # :fzf-tab:complete:(\\|)zinit-*
 case $group in
-'-- Plugin --')
+  '-- Plugin --')
     less $PLUGINS_DIR/$word/README*
     ;;
 esac

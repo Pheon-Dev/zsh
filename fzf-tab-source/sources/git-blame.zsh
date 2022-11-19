@@ -1,6 +1,6 @@
 # :fzf-tab:complete:git-blame:argument-2
 case $group in
-'cached file')
+  'cached file')
     git blame $word | delta
     ;;
 esac

@@ -1,12 +1,12 @@
 # :fzf-tab:complete:git-((push|pull):argument-1|fetch:argument-rest)
 case $group in
-'local repository')
+  'local repository')
     less ${realpath#--*=}
     ;;
-remote)
+  remote)
     git remote show $word
     ;;
-*host*)
+  *host*)
     grc --colour=on ping -c1 $word
     ;;
 esac

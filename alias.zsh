@@ -1,6 +1,7 @@
 # ~/.zshrc
 alias ls="exa --icons --color=always --group-directories-first"
 alias la="exa --icons -abghHliS --color=always --group-directories-first"
+alias l="exa --icons -la --color=always --group-directories-first"
 alias ll="exa --icons -a --color=always --group-directories-first"
 alias lt="exa --icons -T --color=always --group-directories-first"
 alias l.='exa -a | egrep "^\."'

@@ -1,9 +1,9 @@
 # :fzf-tab:complete:(\\|*/|)snap:
 case $group in
-option)
+  option)
     snap help $word | bat --color=always -plhelp
     ;;
-argument)
+  argument)
     snap list $word 2> /dev/null
     ;;
 esac
