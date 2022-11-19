@@ -142,6 +142,7 @@ alias pscon="pscale connect '$1' '$2' --port 3306"  # 1: db, 2: branch, 3: port
 alias pscll="pscale shell '$1' '$2'"  # 1: db, 2: branch
 alias wfn="nmcli connection add type ethernet con-name ether ifname"
 alias wfu="nmcli con up"
+alias mcon="cd ~/.config/dmenu && mv config.h bu-config.h && sudo make install"
 alias dcon="cd ~/.config/arco-dwm && mv config.h bu-config.h && sudo make install"
 alias scon="cd ~/.config/arco-st && mv config.h bu-config.h && sudo make install"
 alias nv="~/Documents/Neovim/nvim-linux64/bin/nvim"
