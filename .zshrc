@@ -46,3 +46,5 @@ export PATH="$PNPM_HOME:$PATH"
 export DENO_INSTALL="/home/pheon/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+source "$HOME/Documents/CMT/CMT-203/VI/name.sh"

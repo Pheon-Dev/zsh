@@ -121,6 +121,15 @@ bsou () {
   source ~/.bashrc
 }
 
+# show profile
+wn () {
+  nmcli connection show "$1"
+}
+
+wu () {
+  nmcli connection up "$1"
+}
+
 we () {
   nmcli dev wifi connect wifi"$1"
 }
