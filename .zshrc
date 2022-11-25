@@ -6,12 +6,18 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 export ZSH="/home/pheon/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# export STARSHIP_CONFIG=~/.config/starship/starship.toml
+# eval "$(starship init zsh)"
 
 export EDITOR='nvim'
+export VISUAL='nvim'
 
 source "$HOME/.config/zsh/fzf-tab/fzf-tab.zsh"
-# source "$HOME/.config/zsh/fzf-tab-source/fzf-tab-source.plugin.zsh"
-source "$HOME/.config/zsh/fzf.zsh"
+source "$HOME/.config/zsh/fzf-tab-source/fzf-tab-source.plugin.zsh"
+# source "$HOME/.config/zsh/fzf.zsh"
+
 source "$HOME/.config/zsh/alias.zsh"
 source "$HOME/.config/zsh/functions.zsh"
 source "$HOME/.config/zsh/git.zsh"
@@ -35,8 +41,6 @@ cp ~/.zshrc ~/.config/zsh/.zshrc
 cp ~/.tmux.conf ~/.tmux
 setxkbmap -option caps:escape
 
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 eval "$(zoxide init zsh)"
  . /usr/share/z/z.sh
 
@@ -47,4 +51,5 @@ export DENO_INSTALL="/home/pheon/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-source "$HOME/Documents/CMT/CMT-203/VI/name.sh"
+# PROMPT='%F{cyan}%m:%~ %f ❯ '
+# RPROMPT='%* %?'
