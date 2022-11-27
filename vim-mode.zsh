@@ -7,6 +7,19 @@ VIM_MODE_VICMD_KEY='jj'
 VIM_MODE_INITIAL_KEYMAP=last
 bindkey -v
 
+# bindkey ^H beginning-of-line
+# bindkey ^P backward-char
+# bindkey ^L end-of-line
+# bindkey ^N forward-char
+# bindkey ^D kill-line
+# bindkey ^K history-incremental-search-forward
+# bindkey ^J history-incremental-search-backward 
+# bindkey ^X backward-kill-line
+# bindkey ^C backward-kill-word
+# bindkey ^Y yank
+# bindkey ^U undo
+# bindkey ^R redo
+
 #${(%):-%x}_debug () { print -r "$(date) $@" >> /tmp/zsh-debug-vim-mode.log 2>&1 }
 
 # Special keys {{{1

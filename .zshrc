@@ -1,8 +1,9 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="robbyrussell"
 
 export ZSH="/home/pheon/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
@@ -27,7 +28,7 @@ source "$HOME/.config/zsh/dirhistory.zsh"
 source "$HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$HOME/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$HOME/.config/zsh/vim-mode.zsh"
-source "$HOME/.config/zsh/autopair.zsh"
+source "$HOME/.config/zsh/zsh-autopair/autopair.zsh"
 # source "$HOME/.config/zsh/auto-notify.zsh"
 # source "$HOME/.config/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
 
@@ -37,12 +38,12 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-cp ~/.zshrc ~/.config/zsh/.zshrc
-cp ~/.tmux.conf ~/.tmux
+cp $HOME/.zshrc $HOME/.config/zsh/.zshrc
+cp $HOME/.tmux.conf $HOME/.tmux
 setxkbmap -option caps:escape
 
 eval "$(zoxide init zsh)"
- . /usr/share/z/z.sh
+. /usr/share/z/z.sh
 
 export PNPM_HOME="/home/pheon/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
@@ -50,6 +51,3 @@ export PATH="$PNPM_HOME:$PATH"
 export DENO_INSTALL="/home/pheon/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-# PROMPT='%F{cyan}%m:%~ %f ❯ '
-# RPROMPT='%* %?'
