@@ -7,3 +7,4 @@ zstyle ':fzf-tab:complete:mpv:*' fzf-preview 'exa -1a --icons --color=always $re
 zstyle ':fzf-tab:complete:*:*' fzf-preview 'bat --color=always ${(Q)realpath}'
 zstyle ':fzf-tab:complete:vim:*' fzf-preview 'bat -pp --color=always $realpath'
 zstyle ':fzf-tab:complete:cat:*' fzf-preview 'bat -pp --color=always $realpath'
+zstyle ':fzf-tab:complete:*:*' fzf-preview 'bat --color=always ${(Q)realpath} || bat -pp --color=always $realpath'
