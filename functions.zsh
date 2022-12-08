@@ -47,6 +47,16 @@ dca () {
     fi
 }
 
+# DOCKER
+dtag () {
+    docker tag local-image:$1 new-repo:$1
+}
+
+dpsh () {
+    docker push new-repo:$1
+}
+
+# PLANETSCALE
 pscon () {
     pscale connect $1 $2 --port $3  # 1: db, 2: branch, 3: port
 }
@@ -55,6 +65,7 @@ pscll () {
     pscale shell $1 $2  # 1: db, 2: branch
 }
 
+# YARN
 ynx () {
     yarn create next-app "$2" --typescript
 }
@@ -83,6 +94,7 @@ yta () {
     youtube-dl --extract-audio --audio-format mp3 "$1" --playlist-start "$2"
 }
 
+# SOURCING FILES
 psou () {
     source ~/.p10k.zsh
 }
