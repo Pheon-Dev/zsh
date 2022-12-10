@@ -1,8 +1,10 @@
 ed() {
     fzf --preview 'bat --style=numbers --color=always --line-range :500 {}' | xargs nvim
 }
-### ARCHIVE EXTRACTIONS
-# usage: ex <file>
+
+ginit () {
+    git init && git remote add origin https://github.com/Pheon-Dev/$1.git && git branch -M main && echo -e "$1 repo initialised. \n Set the remote origin."
+}
 
 ex () {
     if [ -f $1 ]; then
