@@ -2,8 +2,10 @@ ed() {
     fzf --preview 'bat --style=numbers --color=always --line-range :500 {}' | xargs nvim
 }
 
-ginit () {
-    git init && git remote add origin https://github.com/Pheon-Dev/$1.git && git branch -M main && echo -e "$1 repo initialised. \n Set the remote origin."
+lk () {
+    regex='(((http|https|ftp|gopher)|mailto)[.:][^ >"\t]*|www\.[-a-z0-9.]+)[^ .,;\t>">\):]'
+    url=$(grep -Po "$regex" | dmenu -p "Go:" -w "$WINDOWID") || exit
+    $BROWSER "$url"
 }
 
 ex () {
@@ -28,6 +30,51 @@ ex () {
     else
         echo "'$1' is not a valid file"
     fi
+}
+
+
+gt () {
+    if [[ $2 == "" ]]; then
+        echo ""
+        if [[ $1 == "" ]]; then
+            echo "$(tput setaf 1) ** Missing Flag Option and Repo Name ** \n"
+        else
+            echo "$(tput setaf 1) ** Missing Repo Name ** \n"
+        fi
+        echo -n "$(tput setaf 2) gt"
+        echo -n "$(tput setaf 3) <option> "
+        echo "$(tput setaf 4) <repo> \n"
+        echo -e "$(tput setaf 5) List of options :"
+        echo -n "$(tput setaf 6)     hub "
+        echo -n "$(tput setaf 8) →"
+        echo -e "$(tput setaf 7) Init a GitHub Repository"
+        echo -n "$(tput setaf 6)     lab "
+        echo -n "$(tput setaf 8) →"
+        echo -e "$(tput setaf 7) Init a GitLab Repository \n "
+        return 1
+    fi
+    echo ""
+    echo -e "$(tput setaf 7) Git Repository Initialised Successfully :"
+    echo -n "$(tput setaf 2)      "
+    echo -n "$(tput setaf 8) →"
+    echo -e "$(tput setaf 4) $2"
+    if [[ $1 == "hub" ]]; then
+        git init > /dev/null 2>$1 && git remote add origin https://github.com/Pheon-Dev/$2.git && git branch -M main && git remote set-url origin https://$GITHUB_TOKEN@github.com/Pheon-Dev/$2.git
+        echo -n "$(tput setaf 2)      "
+        echo -n "$(tput setaf 8) →"
+        echo -n "$(tput setaf 3) github \n"
+    fi
+    if [[ $1 == "lab" ]]; then
+        git init > /dev/null 2>$1 && git remote add origin https://githlab.com/devpheon/$2.git && git branch -M main && git remote set-url origin https://oauth2:$GITLAB_TOKEN@gitlab.com/devpheon/$2.git
+        echo -n "$(tput setaf 2)      "
+        echo -n "$(tput setaf 8) →"
+        echo -n "$(tput setaf 3) gitlab \n"
+    fi
+    echo -n "$(tput setaf 2)      "
+    echo -n "$(tput setaf 8) →"
+    echo -n "$(tput setaf 5) "
+    git remote -v | grep -E "fetch" | cut -d " " -f 1 | awk 'BEGIN { FS = " " } { print $2 }'
+    echo ""
 }
 
 typeset -A docs
