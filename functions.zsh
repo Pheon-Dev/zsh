@@ -34,27 +34,74 @@ ex () {
 
 
 gt () {
-    if [[ $2 == "" ]]; then
-        echo ""
-        if [[ $1 == "" ]]; then
-            echo "$(tput setaf 1) ** Missing Flag Option and Repo Name ** \n"
-        else
+    echo " "
+    if [[ $3 == "" ]]; then
+        if [[ $2 == "" ]]; then
+            if [[ $1 == "" ]]; then
+                echo "$(tput setaf 1) ** Missing Flag Option ** \n"
+                echo -n "$(tput setaf 2) gt"
+                echo -n "$(tput setaf 3) <option>"
+                echo "$(tput setaf 4) <repo> \n"
+                echo -e "$(tput setaf 5) List of flag options :"
+                echo -n "$(tput setaf 3)     set "
+                echo -n "$(tput setaf 8) →"
+                echo -e "$(tput setaf 6) Set Remote URL for Origin"
+                echo -n "$(tput setaf 3)     hub "
+                echo -n "$(tput setaf 8) →"
+                echo -e "$(tput setaf 6) Init a GitHub Repository"
+                echo -n "$(tput setaf 3)     lab "
+                echo -n "$(tput setaf 8) →"
+                echo -e "$(tput setaf 6) Init a GitLab Repository \n "
+                return 1
+            fi
             echo "$(tput setaf 1) ** Missing Repo Name ** \n"
+            echo -n "$(tput setaf 2) gt"
+            echo -n "$(tput setaf 3) <option>"
+            echo -n "$(tput setaf 4) <repo>"
+            if [[ $1 == "set" ]]; then
+                echo -e "$(tput setaf 7) <site>"
+            fi
+            echo -e "\n"
+            echo -e "$(tput setaf 5) Repository name :"
+            echo -n "$(tput setaf 4)     <repo-name> "
+            echo -n "$(tput setaf 8) →"
+            echo -e "$(tput setaf 6) Custom Repository Name \n "
+            return 1
         fi
-        echo -n "$(tput setaf 2) gt"
-        echo -n "$(tput setaf 3) <option> "
-        echo "$(tput setaf 4) <repo> \n"
-        echo -e "$(tput setaf 5) List of options :"
-        echo -n "$(tput setaf 6)     hub "
-        echo -n "$(tput setaf 8) →"
-        echo -e "$(tput setaf 7) Init a GitHub Repository"
-        echo -n "$(tput setaf 6)     lab "
-        echo -n "$(tput setaf 8) →"
-        echo -e "$(tput setaf 7) Init a GitLab Repository \n "
-        return 1
+        if [[ $1 == "set" ]]; then
+            echo "$(tput setaf 1) ** Missing Site Option ** \n"
+            echo -n "$(tput setaf 2) gt"
+            echo -n "$(tput setaf 3) <option>"
+            echo -n "$(tput setaf 4) <repo>"
+            echo "$(tput setaf 7) <site> \n"
+            echo -e "$(tput setaf 5) List of site options :"
+            echo -n "$(tput setaf 7)     hub "
+            echo -n "$(tput setaf 8) →"
+            echo -e "$(tput setaf 6) GitHub "
+            echo -n "$(tput setaf 7)     lab "
+            echo -n "$(tput setaf 8) →"
+            echo -e "$(tput setaf 6) GitLab \n "
+            return 1
+        fi
     fi
-    echo ""
-    echo -e "$(tput setaf 7) Git Repository Initialised Successfully :"
+
+    if [[ $1 == "set" ]]; then
+        echo -e "$(tput setaf 6) Git Remote URL Successfully Set :"
+        if [[ $3 == "hub" ]]; then
+            git remote set-url origin https://$GITHUB_TOKEN@github.com/Pheon-Dev/$2.git
+            echo -n "$(tput setaf 2)      "
+            echo -n "$(tput setaf 8) →"
+            echo -n "$(tput setaf 3) github \n"
+        fi
+        if [[ $3 == "lab" ]]; then
+            git remote set-url origin https://oauth2:$GITLAB_TOKEN@gitlab.com/devpheon/$2.git
+            echo -n "$(tput setaf 2)      "
+            echo -n "$(tput setaf 8) →"
+            echo -n "$(tput setaf 3) gitlab \n"
+        fi
+    else
+        echo -e "$(tput setaf 6) Git Repository Successfully Initialised:"
+    fi
     echo -n "$(tput setaf 2)      "
     echo -n "$(tput setaf 8) →"
     echo -e "$(tput setaf 4) $2"
