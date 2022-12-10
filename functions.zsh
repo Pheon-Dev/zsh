@@ -86,37 +86,30 @@ gt () {
     fi
 
     if [[ $1 == "set" ]]; then
-        echo -e "$(tput setaf 6) Git Remote URL Successfully Set :"
         if [[ $3 == "hub" ]]; then
+            echo -n "$(tput setaf 3)  GitHub"
+            echo -e "$(tput setaf 6) Remote URL Successfully Set : \n"
             git remote set-url origin https://$GITHUB_TOKEN@github.com/Pheon-Dev/$2.git
-            echo -n "$(tput setaf 2)      "
-            echo -n "$(tput setaf 8) →"
-            echo -n "$(tput setaf 3) github \n"
         fi
         if [[ $3 == "lab" ]]; then
+            echo -n "$(tput setaf 3)  GitLab"
+            echo -e "$(tput setaf 6) Remote URL Successfully Set : \n"
             git remote set-url origin https://oauth2:$GITLAB_TOKEN@gitlab.com/devpheon/$2.git
-            echo -n "$(tput setaf 2)      "
-            echo -n "$(tput setaf 8) →"
-            echo -n "$(tput setaf 3) gitlab \n"
         fi
-    else
-        echo -e "$(tput setaf 6) Git Repository Successfully Initialised:"
+    fi
+    if [[ $1 == "hub" ]]; then
+        echo -n "$(tput setaf 3)  GitHub"
+        echo -e "$(tput setaf 6) Repository Successfully Initialised : \n"
+        git init > /dev/null 2>&1 && git remote add origin https://github.com/Pheon-Dev/$2.git && git branch -M main && git remote set-url origin https://$GITHUB_TOKEN@github.com/Pheon-Dev/$2.git
+    fi
+    if [[ $1 == "lab" ]]; then
+        echo -n "$(tput setaf 3)  GitLab"
+        echo -e "$(tput setaf 6) Repository Successfully Initialised : \n"
+        git init > /dev/null 2>&1 && git remote add origin https://githlab.com/devpheon/$2.git && git branch -M main && git remote set-url origin https://oauth2:$GITLAB_TOKEN@gitlab.com/devpheon/$2.git
     fi
     echo -n "$(tput setaf 2)      "
     echo -n "$(tput setaf 8) →"
     echo -e "$(tput setaf 4) $2"
-    if [[ $1 == "hub" ]]; then
-        git init > /dev/null 2>$1 && git remote add origin https://github.com/Pheon-Dev/$2.git && git branch -M main && git remote set-url origin https://$GITHUB_TOKEN@github.com/Pheon-Dev/$2.git
-        echo -n "$(tput setaf 2)      "
-        echo -n "$(tput setaf 8) →"
-        echo -n "$(tput setaf 3) github \n"
-    fi
-    if [[ $1 == "lab" ]]; then
-        git init > /dev/null 2>$1 && git remote add origin https://githlab.com/devpheon/$2.git && git branch -M main && git remote set-url origin https://oauth2:$GITLAB_TOKEN@gitlab.com/devpheon/$2.git
-        echo -n "$(tput setaf 2)      "
-        echo -n "$(tput setaf 8) →"
-        echo -n "$(tput setaf 3) gitlab \n"
-    fi
     echo -n "$(tput setaf 2)      "
     echo -n "$(tput setaf 8) →"
     echo -n "$(tput setaf 5) "
