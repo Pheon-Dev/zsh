@@ -136,6 +136,9 @@ dca () {
     fi
 }
 
+got () {
+    go mod init github.com/Pheon-Dev/$1
+}
 # DOCKER
 dtag () {
     docker tag local-image:$1 new-repo:$1
