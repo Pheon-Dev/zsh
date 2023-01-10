@@ -113,7 +113,7 @@ alias ari='aria2c --file-allocation=none -c -x 10 -d . -Z'
 alias tp='toipe'
 alias pnu='sudo pnpm add -g pnpm'
 alias npu='sudo npm update --location=global'
-alias lg='lazygit'
+alias lll='lazygit'
 alias pnb='pnpm run build'
 alias pnt='pnpm create tauri-app'
 alias deni='deno run -A -r https://fresh.deno.dev'
@@ -154,5 +154,9 @@ alias gob="go build"
 alias gor="go run"
 alias gon="go run ."
 alias goy="go mod tidy"
-alias f="flamingo"
+alias f="flamingo && clear"
 alias pk="peek"
+alias zz="zellij"
+alias za="zellij attach"
+alias zl="zellij list-sessions"
+alias zn="zellij --session"
