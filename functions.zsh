@@ -49,7 +49,7 @@ zl () {
         echo " "
         return 1
     fi
-    zellij -l /home/pheon/.config/zellij/$1.kdl
+    zellij -l /home/pheon/.config/zellij/layouts/$1.kdl
 }
 
 gt () {
