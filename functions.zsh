@@ -33,6 +33,25 @@ ex () {
 }
 
 
+zl () {
+    echo " "
+    pwd=$(pwd)
+    if [[ $1 == "" ]]; then
+        echo "$(tput setaf 1) ** Missing Layout Option ** \n"
+        echo -n "$(tput setaf 2) zl"
+        echo -n "$(tput setaf 3) <option> \n"
+        echo " "
+        echo -e "$(tput setaf 5) List of layout options :"
+        echo "$(tput setaf 3)"
+        layouts=$(ls "$HOME/.config/zellij/layouts" | awk 'BEGIN { FS = "\n" } { print " " echo "    " $1 }' | cut -d "." -f 1)
+        echo -n "$layouts"
+        echo " "
+        echo " "
+        return 1
+    fi
+    zellij -l /home/pheon/.config/zellij/$1.kdl
+}
+
 gt () {
     echo " "
     if [[ $3 == "" ]]; then
