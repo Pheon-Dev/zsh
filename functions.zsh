@@ -64,25 +64,25 @@ got () {
     mkdir -p /home/pheon/Documents/go/src/github.com/Pheon-Dev/$1
     cd /home/pheon/Documents/go/src/github.com/Pheon-Dev/$1
     echo " "
-    echo -e "$(tput setaf 2)Initializing App ..."
-    echo "$(tput setaf 3)"
+    echo -e "$(tput setaf 6)Initializing App ..."
+    echo "$(tput setaf 2)"
     go mod init github.com/Pheon-Dev/$1
     echo " "
-    echo -e "$(tput setaf 2)Initializing Cobra ..."
-    echo "$(tput setaf 3)"
+    echo -e "$(tput setaf 6)Initializing Cobra ..."
+    echo "$(tput setaf 2)"
     cobra-cli init
     echo " "
-    echo -n "$(tput setaf 2)Running your newly created"
+    echo -n "$(tput setaf 6)Running your newly created"
     echo -n "$(tput setaf 4) $1 app "
-    echo -e "$(tput setaf 2): "
-    echo "$(tput setaf 6)"
+    echo -e "$(tput setaf 6): "
+    echo "$(tput setaf 5)"
     go run .
     echo " "
-    echo -n "$(tput setaf 2)Edit the newly created"
+    echo -n "$(tput setaf 6)Edit the newly created"
     echo -n "$(tput setaf 4) $1 app "
-    echo -n "$(tput setaf 2)using your favourite"
-    echo -n "$(tput setaf 7) $EDITOR "
-    echo -n "$(tput setaf 2)editor (y/n)? "
+    echo -n "$(tput setaf 6)using your favourite"
+    echo -n "$(tput setaf 3) $EDITOR "
+    echo -n "$(tput setaf 6)editor (y/n)? "
     read edit
     if [[ $edit == "y" ]]; then
         echo " "
@@ -90,24 +90,24 @@ got () {
         return 1
     fi
     echo " "
-    echo -n "$(tput setaf 2)Return to previous"
+    echo -n "$(tput setaf 6)Return to previous"
     echo -n "$(tput setaf 4) $pwd "
-    echo -n "$(tput setaf 2)directory (y/n)? "
+    echo -n "$(tput setaf 6)directory (y/n)? "
     read cwd
     if [[ $cwd == "y" ]]; then
         echo " "
         wd=$(pwd)
-        echo -n "$(tput setaf 2)You can always edit your"
+        echo -n "$(tput setaf 6)You can always edit your"
         echo -n "$(tput setaf 4) $1 app "
-        echo -e "$(tput setaf 2)from:"
+        echo -e "$(tput setaf 6)from:"
         echo -e "$(tput setaf 3) → $wd \n"
-        echo -e "$(tput setaf 2)Good bye and thank you!"
+        echo -e "$(tput setaf 6)Good bye and thank you!"
         echo " "
         cd $pwd
         return 1
     fi
     echo " "
-    echo -e "$(tput setaf 2)Files Created :"
+    echo -e "$(tput setaf 6)Files Created :\n"
     exa -la
     echo " "
 }
