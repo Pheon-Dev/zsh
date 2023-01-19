@@ -32,6 +32,75 @@ ex () {
     fi
 }
 
+alias wa="nmcli dev wifi list"
+alias wt="wifi toggle"
+alias ww="nmcli dev wifi connect ."
+alias wr="nmcli dev wifi connect"
+alias wd="nmcli dev disconnect"
+alias ws="nmcli dev status"
+alias wo="nmcli radio wifi on"
+alias wi="nmcli --show-secrets connection show"
+
+wn () {
+    nmcli connection show "$1"
+}
+
+wu () {
+    nmcli connection up "$1"
+}
+
+we () {
+    nmcli dev wifi connect wifi"$1"
+}
+
+n () {
+    echo " "
+    help () {
+        echo "$(tput setaf 1) ** Missing Connection Option ** \n"
+        echo -n "$(tput setaf 2) n"
+        echo -n "$(tput setaf 3) <option> \n"
+        echo " "
+        echo -e "$(tput setaf 5) List of flag options :"
+        echo -n "$(tput setaf 3)     w "
+        echo -n "$(tput setaf 8) →"
+        echo -e "$(tput setaf 6) wifi"
+        echo -n "$(tput setaf 3)     e "
+        echo -n "$(tput setaf 8) →"
+        echo -e "$(tput setaf 6) ethernet \n"
+        return 1
+    }
+    if [[ $1 == "" ]]; then
+        help
+    fi
+    if [[ $1 == "w" ]]; then
+        if [[ $2 == "." ]]; then
+            nmcli dev wifi connect .
+            # nmcli dev wifi list | grep -E "86:9A:C8:E3:09:CA" | awk 'BEGIN { FS = "\n" } { print " " echo "    " $1 }'
+        fi
+        if [[ $2 == "4" ]]; then
+            nmcli dev wifi connect wifi"$1"
+        fi
+        if [[ $2 == "7" ]]; then
+            nmcli dev wifi connect wifi"$1"
+        fi
+        if [[ $2 == "2" ]]; then
+            nmcli dev wifi connect wifi"$1"
+        fi
+        if [[ $2 == "3" ]]; then
+            nmcli dev wifi connect wifi"$1"
+        fi
+        return 1
+    fi
+    if [[ $1 == "e" ]]; then
+        if [[ $2 == "s" ]]; then
+            nmcli connection show "$3" # Wired Connection
+        fi
+        if [[ $2 == "c" ]]; then
+            nmcli connection up "$3" # Wired Connection
+        fi
+        return 1
+    fi
+}
 
 zl () {
     echo " "
@@ -48,7 +117,7 @@ zl () {
         echo " "
         return 1
     fi
-    zellij -l /home/pheon/.config/zellij/layouts/$1.kdl
+    zellij -l /home/pheon/.config/zellij/layouts/$1.kdl --session $1
 }
 
 got () {
@@ -280,18 +349,6 @@ bsou () {
 }
 
 # show profile
-wn () {
-    nmcli connection show "$1"
-}
-
-wu () {
-    nmcli connection up "$1"
-}
-
-we () {
-    nmcli dev wifi connect wifi"$1"
-}
-
 dep() {
     pnpm run build && firebase deploy --only hosting:"$1" && lazygit
 }
