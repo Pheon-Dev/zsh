@@ -52,7 +52,8 @@ alias tk="tmux kill-server"
 alias ts="tmux source $HOME/.tmux.conf"
 
 # EDITOR
-alias v="$EDITOR"
+alias v="~/Documents/Neovim/nvim-linux64/bin/nvim"
+# alias v="$EDITOR"
 alias vi="$EDITOR"
 alias vim="$EDITOR"
 
@@ -176,7 +177,6 @@ alias mcon="cd $HOME/.config/dmenu && mv config.h bu-config.h && sudo make insta
 alias dcon="cd $HOME/.config/arco-dwm && mv config.h bu-config.h && sudo make install"
 alias scon="cd $HOME/.config/arco-st && mv config.h bu-config.h && sudo make install"
 
-alias nv="~/Documents/Neovim/nvim-linux64/bin/nvim"
 alias rb="reboot"
 alias fsh="shfmt -l -w ."
 alias sls="slides"
