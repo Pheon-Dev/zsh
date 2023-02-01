@@ -140,6 +140,7 @@ got () {
     echo -e "$(tput setaf 6)Initializing Cobra ..."
     echo "$(tput setaf 2)"
     cobra-cli init
+    go mod tidy
     echo " "
     echo -n "$(tput setaf 6)Running your newly created"
     echo -n "$(tput setaf 4) $1 app "

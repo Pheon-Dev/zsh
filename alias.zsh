@@ -128,7 +128,7 @@ alias pacs="sudo pacman -Syu --noconfirm"
 
 alias alis="alias | grep"
 alias icat="kitty +kitten icat --align=left"
-alias lis="live-server"
+alias lis="live-server" # cargo install live-server
 alias winfo='xprop'
 alias c='clear'
 alias rn='ranger'
