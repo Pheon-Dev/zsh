@@ -1,0 +1,5 @@
+butterfly   $HOME/Documents/Rust/butterfly
+nvim        $HOME/.config/nvim
+dwm         $HOME/.config/arco-dwm
+st          $HOME/.config/arco-at
+zellij      $HOME/.config/zellij

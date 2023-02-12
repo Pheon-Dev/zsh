@@ -57,9 +57,12 @@ ww () {
       echo -n "$(tput setaf 3)     -i, --info "
       echo -n "$(tput setaf 8) →"
       echo -e "$(tput setaf 6)        Show more WiFi info"
+      echo -n "$(tput setaf 3)     -u, --nmtui "
+      echo -n "$(tput setaf 8) →"
+      echo -e "$(tput setaf 6)       Network Manager Terminal UI"
       echo -n "$(tput setaf 3)     -e, --ethernet "
       echo -n "$(tput setaf 8) →"
-      echo -e "$(tput setaf 6)        Ethernet connection"
+      echo -e "$(tput setaf 6)    Ethernet connection"
       echo -n "$(tput setaf 3)     -h, --help "
       echo -n "$(tput setaf 8) →"
       echo -e "$(tput setaf 6)        Show this help info \n"
@@ -101,6 +104,10 @@ ww () {
   fi
   if [[ $1 == "-h" || $1 == "--help"  ]]; then
     help
+    return 1
+  fi
+  if [[ $1 == "-u" || $1 == "--nmtui"  ]]; then
+    nmtui
     return 1
   fi
   clear
