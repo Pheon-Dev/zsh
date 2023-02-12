@@ -70,7 +70,7 @@ ww () {
     return 1
   fi
   if [[ $1 == "-d"  || $1 == "--disconnect" ]]; then
-    nmcli dev disconnect
+    nmcli dev disconnect $2
     return 1
   fi
   if [[ $1 == "-s" || $1 == "--status"  ]]; then
@@ -119,7 +119,7 @@ ww () {
     clear
   done
 
-  nmcli dev wifi list | awk 'BEGIN { FS = "\n" } NR==1 {next;} { print $1}' | gum filter | awk 'BEGIN { FS = " " } { print ($1 =="*")? $2: $1 }' | xargs nmcli dev wifi connect
+  nmcli dev wifi list | awk 'BEGIN { FS = "\n" } NR==1 {next;} { print $1}' | awk 'BEGIN { FS = " " } { print ($1 =="*")? ($4 =="Infra")? $2 "    " $3 : $2 "    " $3 " " $4 : ($3 =="Infra")? $1 "    " $2: $1 "    " $2 " " $3 }' | gum filter | awk 'BEGIN { FS = " " } { print ($1 =="*")? $2: $1 }' | xargs nmcli dev wifi connect
 }
 
 zl () {
