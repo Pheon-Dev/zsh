@@ -57,6 +57,9 @@ ww () {
       echo -n "$(tput setaf 3)     -i, --info "
       echo -n "$(tput setaf 8) →"
       echo -e "$(tput setaf 6)        Show more WiFi info"
+      echo -n "$(tput setaf 3)     -e, --ethernet "
+      echo -n "$(tput setaf 8) →"
+      echo -e "$(tput setaf 6)        Ethernet connection"
       echo -n "$(tput setaf 3)     -h, --help "
       echo -n "$(tput setaf 8) →"
       echo -e "$(tput setaf 6)        Show this help info \n"
@@ -74,11 +77,11 @@ ww () {
     nmcli dev status
     return 1
   fi
-  if [[ $1 == "-on" || $1 == "--radio-on"  ]]; then
+  if [[ $1 == "-n" || $1 == "--radio-on"  ]]; then
     nmcli dev radio on
     return 1
   fi
-  if [[ $1 == "-off" || $1 == "--radio-off"  ]]; then
+  if [[ $1 == "-" || $1 == "--radio-off"  ]]; then
     nmcli dev radio off
     return 1
   fi
@@ -86,85 +89,37 @@ ww () {
     nmcli --show-secrets connection show
     return 1
   fi
+  if [[ $1 == "-e" || $1 == "--ethernet"  ]]; then
+    if [[ $2 == "-s" || $2 == "--show"  ]]; then
+        nmcli connection show "$3"
+    fi
+
+    if [[ $2 == "-c" || $2 == "--connect"  ]]; then
+        nmcli connection up "$3"
+    fi
+    return 1
+  fi
   if [[ $1 == "-h" || $1 == "--help"  ]]; then
     help
     return 1
   fi
   clear
-  search=1;
+  search="h";
   echo " "
   echo "$(tput setaf 2)Searching for available connections ..."
   nmcli dev wifi list > /dev/null 2>&1
-  until [ $search -eq 0 ]; do
+  until [ "$search" = "l" ]; do
     echo "$(tput setaf 2)\e[1A\e[K List of available connections ..."
-    echo "\n"
-  nmcli dev wifi list | awk 'BEGIN { FS = "\n" } NR==1 {next;} { print $1}'
-    echo "\n"
-    echo -n "$(tput setaf 6)Press [Enter] if connection is not listed above or [0] to continue: "
+    printf "\n"
+    nmcli dev wifi list | awk 'BEGIN { FS = "\n" } NR==1 {next;} { print $1}'
+    printf "\n"
+    echo -n "$(tput setaf 6)Press [Enter] if preferred connection is not listed above or [l] to continue: "
     search=1
     read -r search
     clear
   done
 
   nmcli dev wifi list | awk 'BEGIN { FS = "\n" } NR==1 {next;} { print $1}' | gum filter | awk 'BEGIN { FS = " " } { print ($1 =="*")? $2: $1 }' | xargs nmcli dev wifi connect
-}
-
-
-wn () {
-    nmcli connection show "$1"
-}
-
-wu () {
-    nmcli connection up "$1"
-}
-
-n () {
-    echo " "
-    help () {
-        echo "$(tput setaf 1) ** Missing Connection Option ** \n"
-        echo -n "$(tput setaf 2) n"
-        echo -n "$(tput setaf 3) <option> \n"
-        echo " "
-        echo -e "$(tput setaf 5) List of flag options :"
-        echo -n "$(tput setaf 3)     w "
-        echo -n "$(tput setaf 8) →"
-        echo -e "$(tput setaf 6) wifi"
-        echo -n "$(tput setaf 3)     e "
-        echo -n "$(tput setaf 8) →"
-        echo -e "$(tput setaf 6) ethernet \n"
-        return 1
-    }
-    if [[ $1 == "" ]]; then
-        help
-    fi
-    if [[ $1 == "w" ]]; then
-        if [[ $2 == "." ]]; then
-            nmcli dev wifi connect .
-            # nmcli dev wifi list | grep -E "86:9A:C8:E3:09:CA" | awk 'BEGIN { FS = "\n" } { print " " echo "    " $1 }'
-        fi
-        if [[ $2 == "4" ]]; then
-            nmcli dev wifi connect wifi"$1"
-        fi
-        if [[ $2 == "7" ]]; then
-            nmcli dev wifi connect wifi"$1"
-        fi
-        if [[ $2 == "2" ]]; then
-            nmcli dev wifi connect wifi"$1"
-        fi
-        if [[ $2 == "3" ]]; then
-            nmcli dev wifi connect wifi"$1"
-        fi
-        return 1
-    fi
-    if [[ $1 == "e" ]]; then
-        if [[ $2 == "s" ]]; then
-            nmcli connection show "$3" # Wired Connection
-        fi
-        if [[ $2 == "c" ]]; then
-            nmcli connection up "$3" # Wired Connection
-        fi
-        return 1
-    fi
 }
 
 zl () {
