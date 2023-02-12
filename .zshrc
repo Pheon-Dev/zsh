@@ -20,7 +20,7 @@ source "$HOME/.config/zsh/fzf-tab-source/fzf-tab-source.plugin.zsh"
 # source "$HOME/.config/zsh/fzf.zsh"
 
 source "$HOME/.config/zsh/env.zsh"
-source "$HOME/.config/zsh/functions.zsh"
+source "$HOME/.config/zsh/functions.sh"
 source "$HOME/.config/zsh/alias.zsh"
 source "$HOME/.config/zsh/git.zsh"
 source "$HOME/.config/zsh/use.zsh"

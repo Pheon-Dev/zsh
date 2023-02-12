@@ -9,22 +9,22 @@ lk () {
 }
 
 ex () {
-    if [ -f $1 ]; then
+    if [ -f "$1" ]; then
         case $1 in
-            *.tar.bz2)    tar xjf $1    ;;
-            *.tar.gz)     tar xzf $1    ;;
-            *.bz2)        bunzip2 $1    ;;
-            *.rar)        unrar x $1    ;;
-            *.gz)         gunzip $1     ;;
-            *.tar)        tar xf $1     ;;
-            *.tbz2)       tar xjf $1    ;;
-            *.tgz)        tar xzf $1    ;;
-            *.zip)        unzip $1      ;;
-            *.Z)          uncompress $1 ;;
-            *.7z)         7z x $1       ;;
-            *.deb)        ar x $1       ;;
-            *.tar.xz)     tar xf $1     ;;
-            *.tar.zst)    unzstd $1     ;;
+            *.tar.bz2)    tar xjf "$1"    ;;
+            *.tar.gz)     tar xzf "$1"    ;;
+            *.bz2)        bunzip2 "$1"    ;;
+            *.rar)        unrar x "$1"    ;;
+            *.gz)         gunzip "$1"     ;;
+            *.tar)        tar xf "$1"     ;;
+            *.tbz2)       tar xjf "$1"    ;;
+            *.tgz)        tar xzf "$1"    ;;
+            *.zip)        unzip "$1"      ;;
+            *.Z)          uncompress "$1" ;;
+            *.7z)         7z x "$1"       ;;
+            *.deb)        ar x "$1"       ;;
+            *.tar.xz)     tar xf "$1"     ;;
+            *.tar.zst)    unzstd "$1"     ;;
             *)            echo "'$1' cannot be extracted via ex()" ;;
         esac
     else
@@ -32,7 +32,26 @@ ex () {
     fi
 }
 
-alias wa="nmcli dev wifi list"
+wa () {
+  clear
+  search=1;
+  echo " "
+  echo "$(tput setaf 2)Searching for available connections ..."
+  nmcli dev wifi list > /dev/null 2>&1
+  until [ $search -eq 0 ]; do
+    echo "$(tput setaf 2)\e[1A\e[K List of available connections ..."
+    echo "\n"
+  nmcli dev wifi list | awk 'BEGIN { FS = "\n" } NR==1 {next;} { print $1}'
+    echo "\n"
+    echo -n "$(tput setaf 6)Press [Enter] if connection is not listed above or [0] to continue: "
+    search=1
+    read -r search
+    clear
+  done
+
+  nmcli dev wifi list | awk 'BEGIN { FS = "\n" } NR==1 {next;} { print $1}' | gum filter | awk 'BEGIN { FS = " " } { print ($1 =="*")? $2: $1 }' | xargs nmcli dev wifi connect
+}
+
 alias wt="wifi toggle"
 alias ww="nmcli dev wifi connect ."
 alias wr="nmcli dev wifi connect"
@@ -249,12 +268,12 @@ gt () {
     if [[ $1 == "hub" ]]; then
         echo -n "$(tput setaf 3)  GitHub"
         echo -e "$(tput setaf 6) Repository Successfully Initialised : \n"
-        git init > /dev/null 2>&1 && git remote add origin https://github.com/Pheon-Dev/$2.git && git branch -M main && git remote set-url origin https://$GITHUB_TOKEN@github.com/Pheon-Dev/$2.git
+        git init > /dev/null 2>&1 && git remote add origin https://github.com/Pheon-Dev/$2.git && git branch -M main && git remote set-url origin https://$GITHUB_TOKEN@github.com/Pheon-Dev/$2.git && touch .gitignore README.md
     fi
     if [[ $1 == "lab" ]]; then
         echo -n "$(tput setaf 3)  GitLab"
         echo -e "$(tput setaf 6) Repository Successfully Initialised : \n"
-        git init > /dev/null 2>&1 && git remote add origin https://githlab.com/devpheon/$2.git && git branch -M main && git remote set-url origin https://oauth2:$GITLAB_TOKEN@gitlab.com/devpheon/$2.git
+        git init > /dev/null 2>&1 && git remote add origin https://githlab.com/devpheon/$2.git && git branch -M main && git remote set-url origin https://oauth2:$GITLAB_TOKEN@gitlab.com/devpheon/$2.git && touch .gitignore README.md
     fi
     echo -n "$(tput setaf 2)      "
     echo -n "$(tput setaf 8) →"
@@ -274,16 +293,16 @@ docs=(
     ts              "Typescript"
 )
 
-dca () {
-    emulate -L zsh
-    if [[ -z "$docs[$1]" ]]; then
-        echo -l "'$1' not found. Try :\n  go  nx  ts  rs"
-        return 1
-    else
-        doc="${docs[$1]}"
-        cd ~/Documents/"$doc" && l
-    fi
-}
+# dca () {
+#     emulate -L zsh
+#     if [[ -z "$docs[$1]" ]]; then
+#         echo -l "'$1' not found. Try :\n  go  nx  ts  rs"
+#         return 1
+#     else
+#         doc="${docs[$1]}"
+#         cd ~/Documents/"$doc" && l
+#     fi
+# }
 
 # DOCKER
 dtag () {

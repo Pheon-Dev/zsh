@@ -12,6 +12,7 @@ alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep='fgrep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
 alias x="exit"
+alias js="joshuto"
 alias ytl="youtube-dl"
 alias shuffle="mpv --shuffle"
 
@@ -85,7 +86,7 @@ alias dish="xrandr --output eDP-1 --off --output HDMI-1 --auto; nitrogen --resto
 alias dise="xrandr --output HDMI-1 --off --output eDP-1 --auto; nitrogen --restore"
 alias disa='xrandr --output eDP-1 --primary --auto --right-of HDMI-1 --auto; nitrogen --restore'
 
-alias sss='systemctl suspend'
+alias u='systemctl suspend'
 alias e='archlinux-logout'
 
 # CONFIG
@@ -193,11 +194,11 @@ alias f="flamingo && clear"
 alias pk="peek"
 
 # ZELLIJ
-alias zz="zellij"
+alias zj="zellij"
 alias za="zellij attach"
 alias zs="zellij list-sessions"
 alias zn="zellij --session"
-alias zd="zl defo"
+alias zz="zl general"
 alias zf="zellij edit --floating --"
 alias h="helix"
 
@@ -205,4 +206,8 @@ alias h="helix"
 alias cn="cargo new"
 alias ca="cargo add"
 alias cr="cargo run"
+alias cw="cargo-watch -x"
 alias cb="cargo build"
+alias ci="cargo install"
+alias gw='glow'
+alias zr='zellij run --floating -- exa --icons -la --color=always'
