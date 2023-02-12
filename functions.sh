@@ -59,7 +59,10 @@ ww () {
       echo -e "$(tput setaf 6)        Show more WiFi info"
       echo -n "$(tput setaf 3)     -u, --nmtui "
       echo -n "$(tput setaf 8) →"
-      echo -e "$(tput setaf 6)       Network Manager Terminal UI"
+      echo -e "$(tput setaf 6)       TUI Network Manager"
+      echo -n "$(tput setaf 3)     -c, --nmce "
+      echo -n "$(tput setaf 8) →"
+      echo -e "$(tput setaf 6)        GUI connection editor"
       echo -n "$(tput setaf 3)     -e, --ethernet "
       echo -n "$(tput setaf 8) →"
       echo -e "$(tput setaf 6)    Ethernet connection"
@@ -104,6 +107,10 @@ ww () {
   fi
   if [[ $1 == "-h" || $1 == "--help"  ]]; then
     help
+    return 1
+  fi
+  if [[ $1 == "-c" || $1 == "--nmce"  ]]; then
+    nm-connection-editor
     return 1
   fi
   if [[ $1 == "-u" || $1 == "--nmtui"  ]]; then
