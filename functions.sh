@@ -32,7 +32,64 @@ ex () {
     fi
 }
 
-wa () {
+ww () {
+  help () {
+      echo "$(tput setaf 1) ** Missing Connection Option ** \n"
+      echo -n "$(tput setaf 2) ww"
+      echo -n "$(tput setaf 3) <option> \n"
+      echo " "
+      echo -e "$(tput setaf 5) List of flag options :"
+      echo -n "$(tput setaf 3)     -t, --toggle "
+      echo -n "$(tput setaf 8) →"
+      echo -e "$(tput setaf 6)      Toggle WiFi ON|OFF"
+      echo -n "$(tput setaf 3)     -d, --disconnect "
+      echo -n "$(tput setaf 8) →"
+      echo -e "$(tput setaf 6)  Disconnect WiFi connection"
+      echo -n "$(tput setaf 3)     -s, --status "
+      echo -n "$(tput setaf 8) →"
+      echo -e "$(tput setaf 6)      Show WiFi status"
+      echo -n "$(tput setaf 3)     -n, --radio-on "
+      echo -n "$(tput setaf 8) →"
+      echo -e "$(tput setaf 6)    Turn WiFi radio on"
+      echo -n "$(tput setaf 3)     -f, --radio-off "
+      echo -n "$(tput setaf 8) →"
+      echo -e "$(tput setaf 6)   Turn WiFi radio off"
+      echo -n "$(tput setaf 3)     -i, --info "
+      echo -n "$(tput setaf 8) →"
+      echo -e "$(tput setaf 6)        Show more WiFi info"
+      echo -n "$(tput setaf 3)     -h, --help "
+      echo -n "$(tput setaf 8) →"
+      echo -e "$(tput setaf 6)        Show this help info \n"
+      return 1
+  }
+  if [[ $1 == "-t" || $1 == "--toggle" ]]; then
+    wifi toggle
+    return 1
+  fi
+  if [[ $1 == "-d"  || $1 == "--disconnect" ]]; then
+    nmcli dev disconnect
+    return 1
+  fi
+  if [[ $1 == "-s" || $1 == "--status"  ]]; then
+    nmcli dev status
+    return 1
+  fi
+  if [[ $1 == "-on" || $1 == "--radio-on"  ]]; then
+    nmcli dev radio on
+    return 1
+  fi
+  if [[ $1 == "-off" || $1 == "--radio-off"  ]]; then
+    nmcli dev radio off
+    return 1
+  fi
+  if [[ $1 == "-i" || $1 == "--info"  ]]; then
+    nmcli --show-secrets connection show
+    return 1
+  fi
+  if [[ $1 == "-h" || $1 == "--help"  ]]; then
+    help
+    return 1
+  fi
   clear
   search=1;
   echo " "
@@ -52,13 +109,6 @@ wa () {
   nmcli dev wifi list | awk 'BEGIN { FS = "\n" } NR==1 {next;} { print $1}' | gum filter | awk 'BEGIN { FS = " " } { print ($1 =="*")? $2: $1 }' | xargs nmcli dev wifi connect
 }
 
-alias wt="wifi toggle"
-alias ww="nmcli dev wifi connect ."
-alias wr="nmcli dev wifi connect"
-alias wd="nmcli dev disconnect"
-alias ws="nmcli dev status"
-alias wo="nmcli radio wifi on"
-alias wi="nmcli --show-secrets connection show"
 
 wn () {
     nmcli connection show "$1"
@@ -66,10 +116,6 @@ wn () {
 
 wu () {
     nmcli connection up "$1"
-}
-
-we () {
-    nmcli dev wifi connect wifi"$1"
 }
 
 n () {
