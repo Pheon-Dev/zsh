@@ -60,7 +60,7 @@ ww () {
       echo -n "$(tput setaf 3)     -u, --nmtui "
       echo -n "$(tput setaf 8) →"
       echo -e "$(tput setaf 6)       TUI Network Manager"
-      echo -n "$(tput setaf 3)     -c, --nmce "
+      echo -n "$(tput setaf 3)     -g, --gui "
       echo -n "$(tput setaf 8) →"
       echo -e "$(tput setaf 6)        GUI connection editor"
       echo -n "$(tput setaf 3)     -e, --ethernet "
@@ -109,7 +109,7 @@ ww () {
     help
     return 1
   fi
-  if [[ $1 == "-c" || $1 == "--nmce"  ]]; then
+  if [[ $1 == "-g" || $1 == "--gui"  ]]; then
     nm-connection-editor
     return 1
   fi
@@ -134,6 +134,10 @@ ww () {
   done
 
   nmcli dev wifi list | awk 'BEGIN { FS = "\n" } NR==1 {next;} { print $1}' | awk 'BEGIN { FS = " " } { print ($1 =="*")? ($4 =="Infra")? $2 "    " $3 : $2 "    " $3 " " $4 : ($3 =="Infra")? $1 "    " $2: $1 "    " $2 " " $3 }' | gum filter | awk 'BEGIN { FS = " " } { print ($1 =="*")? $2: $1 }' | xargs nmcli dev wifi connect
+}
+
+we () {
+ nmcli connection add con-name new-enp1s0 ifname enp1s0 type ethernet ip4 192.168.7.31/24 gw4 192.168.7.1                                       12:30:13
 }
 
 zl () {
