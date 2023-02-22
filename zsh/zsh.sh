@@ -1,3 +1,5 @@
+#!/usr/bin/zsh
+
 [ -n "$ZSH_VERSION" ] || {
   # ANSI formatting function (\033[<code>m)
   # 0: reset, 1: bold, 4: underline, 22: no bold, 24: no underline, 31: red, 33: yellow
@@ -37,9 +39,6 @@
   return 1
 }
 
-# If ZSH is not defined, use the current script's directory.
-[[ -z "$ZSH" ]] && export ZSH="${${(%):-%x}:a:h}"
-
 if [[ -z "$ZSH_CACHE_DIR" ]]; then
   ZSH_CACHE_DIR="$ZSH/cache"
 fi
@@ -61,58 +60,16 @@ fpath=("$ZSH/functions" "$ZSH/completions" $fpath)
 # Load all stock functions (from $fpath files) called below.
 autoload -U compaudit compinit
 
-# Set ZSH_CUSTOM to the path where your custom config files
-# and plugins exists, or else we will use the default custom/
-if [[ -z "$ZSH_CUSTOM" ]]; then
-    ZSH_CUSTOM="$ZSH/custom"
-fi
-
-# Figure out the SHORT hostname
-if [[ "$OSTYPE" = darwin* ]]; then
-  # macOS's $HOST changes with dhcp, etc. Use ComputerName if possible.
-  SHORT_HOST=$(scutil --get ComputerName 2>/dev/null) || SHORT_HOST="${HOST/.*/}"
-else
-  SHORT_HOST="${HOST/.*/}"
-fi
-
-# Save the location of the current completion dump file.
-if [[ -z "$ZSH_COMPDUMP" ]]; then
-  ZSH_COMPDUMP="${ZDOTDIR:-$HOME}/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
-fi
-
-# Construct zcompdump OMZ metadata
-zcompdump_revision="#omz revision: $(builtin cd -q "$ZSH"; git rev-parse HEAD 2>/dev/null)"
-zcompdump_fpath="#omz fpath: $fpath"
-
-# Delete the zcompdump file if OMZ zcompdump metadata changed
-if ! command grep -q -Fx "$zcompdump_revision" "$ZSH_COMPDUMP" 2>/dev/null \
-   || ! command grep -q -Fx "$zcompdump_fpath" "$ZSH_COMPDUMP" 2>/dev/null; then
-  command rm -f "$ZSH_COMPDUMP"
-  zcompdump_refresh=1
-fi
-
 if [[ "$ZSH_DISABLE_COMPFIX" != true ]]; then
   source "$ZSH/lib/compfix.zsh"
   # Load only from secure directories
   compinit -i -d "$ZSH_COMPDUMP"
   # If completion insecurities exist, warn the user
-  handle_completion_insecurities &|
+  # handle_completion_insecurities &|
 else
   # If the user wants it, load from all found directories
   compinit -u -d "$ZSH_COMPDUMP"
 fi
-
-# Append zcompdump metadata if missing
-if (( $zcompdump_refresh )) \
-  || ! command grep -q -Fx "$zcompdump_revision" "$ZSH_COMPDUMP" 2>/dev/null; then
-  # Use `tee` in case the $ZSH_COMPDUMP filename is invalid, to silence the error
-  tee -a "$ZSH_COMPDUMP" &>/dev/null <<EOF
-
-$zcompdump_revision
-$zcompdump_fpath
-EOF
-fi
-unset zcompdump_revision zcompdump_fpath zcompdump_refresh
 
 # Load all of the config files in ~/zsh that end in .zsh
 # TIP: Add files you don't want in git to .gitignore
@@ -122,16 +79,3 @@ for config_file ("$ZSH"/lib/*.zsh); do
   source "$config_file"
 done
 unset custom_config_file
-
-# Load all of your custom configurations from custom/
-for config_file ("$ZSH_CUSTOM"/*.zsh(N)); do
-  source "$config_file"
-done
-unset config_file
-
-# Load the theme
-is_theme() {
-  local base_dir=$1
-  local name=$2
-  builtin test -f $base_dir/$name.zsh-theme
-}
