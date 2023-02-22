@@ -409,7 +409,7 @@ cpb() {
     if which clipcopy &>/dev/null; then
         printf "%s" "$BUFFER" | clipcopy
     else
-        zle -M "clipcopy not found. Please make sure you have Oh My Zsh installed correctly."
+        zle -M "clipcopy not found. Please make sure you have Zsh installed correctly."
     fi
 }
 
