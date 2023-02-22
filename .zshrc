@@ -1,16 +1,7 @@
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-
-# ZSH_THEME="powerlevel10k/powerlevel10k"
-# ZSH_THEME="robbyrussell"
-
-# export ZSH="$HOME/.oh-my-zsh"
 export ZSH="$HOME/.config/zsh/zsh"
 source $ZSH/zsh.sh
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# export STARSHIP_CONFIG=~/.config/starship/starship.toml
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
 eval "$(starship init zsh)"
 
 export EDITOR='nvim'
