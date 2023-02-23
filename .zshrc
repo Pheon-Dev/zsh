@@ -1,6 +1,7 @@
 export ZSH="$HOME/.config/zsh/zsh"
 source $ZSH/zsh.sh
 
+export STARSHIP_CACHE=~/.starship/cache
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 eval "$(starship init zsh)"
 
