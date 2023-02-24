@@ -231,7 +231,7 @@ _gt_help () {
   echo -e "$(tput setaf 6) Set Remote URL for Origin"
   echo -n "$(tput setaf 3)     --init, -i "
   echo -n "$(tput setaf 8) →"
-  echo -e "$(tput setaf 6) Set Remote URL for Origin \n"
+  echo -e "$(tput setaf 6) Initialize New Repo \n"
 
 }
 
@@ -320,25 +320,6 @@ gt () {
     git remote -v | grep -E "fetch" | cut -d " " -f 1 | awk 'BEGIN { FS = " " } { print $2 }'
     echo ""
 }
-
-typeset -A docs
-docs=(
-    go              "go"
-    nx              "NextJS"
-    rs              "Rust"
-    ts              "Typescript"
-)
-
-# dca () {
-#     emulate -L zsh
-#     if [[ -z "$docs[$1]" ]]; then
-#         echo -l "'$1' not found. Try :\n  go  nx  ts  rs"
-#         return 1
-#     else
-#         doc="${docs[$1]}"
-#         cd ~/Documents/"$doc" && l
-#     fi
-# }
 
 # DOCKER
 dtag () {
