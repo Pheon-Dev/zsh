@@ -223,8 +223,7 @@ got () {
 _gt_help () {
   echo "$(tput setaf 1) ** Missing Flag Option ** \n"
   echo -n "$(tput setaf 2) gt"
-  echo -n "$(tput setaf 3) <option>"
-  echo "$(tput setaf 4) <repo> \n"
+  echo "$(tput setaf 3) <option> \n"
   echo -e "$(tput setaf 5) List of flag options :"
   echo -n "$(tput setaf 3)     --set, -s  "
   echo -n "$(tput setaf 8) →"
