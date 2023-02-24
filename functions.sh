@@ -122,12 +122,12 @@ ww () {
   echo " "
   echo "$(tput setaf 2)Searching for available connections ..."
   nmcli dev wifi list > /dev/null 2>&1
-  until [ "$search" = "l" ]; do
+  until [ "$search" = "" ]; do
     echo "$(tput setaf 2)\e[1A\e[K List of available connections ..."
     printf "\n"
     nmcli dev wifi list | awk 'BEGIN { FS = "\n" } NR==1 {next;} { print $1}'
     printf "\n"
-    echo -n "$(tput setaf 6)Press [Enter] if preferred connection is not listed above or [l] to continue: "
+    echo -n "$(tput setaf 6)Press [Enter] if preferred connection is listed above or [any character] + [Enter] to reload: "
     search=1
     read -r search
     clear
