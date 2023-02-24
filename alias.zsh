@@ -204,6 +204,8 @@ alias zr='zellij run --floating --'
 alias h="helix"
 
 # RUST
+alias co="cargo"
+alias cx="cargo remove"
 alias cn="cargo new"
 alias ca="cargo add"
 alias cr="cargo run"

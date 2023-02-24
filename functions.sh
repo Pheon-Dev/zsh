@@ -220,76 +220,40 @@ got () {
     echo " "
 }
 
-gt () {
+gtl () {
     echo " "
-    if [[ $3 == "" ]]; then
-        if [[ $2 == "" ]]; then
-            if [[ $1 == "" ]]; then
-                echo "$(tput setaf 1) ** Missing Flag Option ** \n"
-                echo -n "$(tput setaf 2) gt"
-                echo -n "$(tput setaf 3) <option>"
-                echo "$(tput setaf 4) <repo> \n"
-                echo -e "$(tput setaf 5) List of flag options :"
-                echo -n "$(tput setaf 3)     set "
-                echo -n "$(tput setaf 8) →"
-                echo -e "$(tput setaf 6) Set Remote URL for Origin"
-                echo -n "$(tput setaf 3)     hub "
-                echo -n "$(tput setaf 8) →"
-                echo -e "$(tput setaf 6) Init a GitHub Repository"
-                echo -n "$(tput setaf 3)     lab "
-                echo -n "$(tput setaf 8) →"
-                echo -e "$(tput setaf 6) Init a GitLab Repository \n "
-                return 1
-            fi
-            echo "$(tput setaf 1) ** Missing Repo Name ** \n"
+    if [[ $2 == "" ]]; then
+        if [[ $1 == "" ]]; then
+            echo "$(tput setaf 1) ** Missing Flag Option ** \n"
             echo -n "$(tput setaf 2) gt"
             echo -n "$(tput setaf 3) <option>"
-            echo -n "$(tput setaf 4) <repo>"
-            if [[ $1 == "set" ]]; then
-                echo -e "$(tput setaf 7) <site>"
-            fi
-            echo -e "\n"
-            echo -e "$(tput setaf 5) Repository name :"
-            echo -n "$(tput setaf 4)     <repo-name> "
+            echo "$(tput setaf 4) <repo> \n"
+            echo -e "$(tput setaf 5) List of flag options :"
+            echo -n "$(tput setaf 3)     --set, --s  "
             echo -n "$(tput setaf 8) →"
-            echo -e "$(tput setaf 6) Custom Repository Name \n "
+            echo -e "$(tput setaf 6) Set Remote URL for Origin"
+            echo -n "$(tput setaf 3)     --init, --i "
+            echo -n "$(tput setaf 8) →"
+            echo -e "$(tput setaf 6) Set Remote URL for Origin \n"
             return 1
         fi
-        if [[ $1 == "set" ]]; then
-            echo "$(tput setaf 1) ** Missing Site Option ** \n"
-            echo -n "$(tput setaf 2) gt"
-            echo -n "$(tput setaf 3) <option>"
-            echo -n "$(tput setaf 4) <repo>"
-            echo "$(tput setaf 7) <site> \n"
-            echo -e "$(tput setaf 5) List of site options :"
-            echo -n "$(tput setaf 7)     hub "
-            echo -n "$(tput setaf 8) →"
-            echo -e "$(tput setaf 6) GitHub "
-            echo -n "$(tput setaf 7)     lab "
-            echo -n "$(tput setaf 8) →"
-            echo -e "$(tput setaf 6) GitLab \n "
-            return 1
-        fi
+        echo "$(tput setaf 1) ** Missing Repo Name ** \n"
+        echo -n "$(tput setaf 2) gt"
+        echo -n "$(tput setaf 3) <option>"
+        echo -n "$(tput setaf 4) <repo> \n"
+        echo -e "$(tput setaf 5) Repository name :"
+        echo -n "$(tput setaf 4)     <repo-name> "
+        echo -n "$(tput setaf 8) →"
+        echo -e "$(tput setaf 6) Custom Repository Name \n "
+        return 1
     fi
 
-    if [[ $1 == "set" ]]; then
-        if [[ $3 == "hub" ]]; then
-            echo -n "$(tput setaf 3)  GitHub"
-            echo -e "$(tput setaf 6) Remote URL Successfully Set : \n"
-            git remote set-url origin https://$GITHUB_TOKEN@github.com/Pheon-Dev/$2.git
-        fi
-        if [[ $3 == "lab" ]]; then
+    if [[ $1 == "--set" || $1 == "-s" ]]; then
             echo -n "$(tput setaf 3)  GitLab"
             echo -e "$(tput setaf 6) Remote URL Successfully Set : \n"
             git remote set-url origin https://oauth2:$GITLAB_TOKEN@gitlab.com/devpheon/$2.git
-        fi
     fi
-    if [[ $1 == "hub" ]]; then
-        echo -n "$(tput setaf 3)  GitHub"
-        echo -e "$(tput setaf 6) Repository Successfully Initialised : \n"
-        git init > /dev/null 2>&1 && git remote add origin https://github.com/Pheon-Dev/$2.git && git branch -M main && git remote set-url origin https://$GITHUB_TOKEN@github.com/Pheon-Dev/$2.git && touch .gitignore README.md
-    fi
-    if [[ $1 == "lab" ]]; then
+    if [[ $1 == "--init" || $1 == "-i" ]]; then
         echo -n "$(tput setaf 3)  GitLab"
         echo -e "$(tput setaf 6) Repository Successfully Initialised : \n"
         git init > /dev/null 2>&1 && git remote add origin https://githlab.com/devpheon/$2.git && git branch -M main && git remote set-url origin https://oauth2:$GITLAB_TOKEN@gitlab.com/devpheon/$2.git && touch .gitignore README.md
@@ -297,6 +261,59 @@ gt () {
     echo -n "$(tput setaf 2)      "
     echo -n "$(tput setaf 8) →"
     echo -e "$(tput setaf 4) $2"
+    echo -n "$(tput setaf 2)      "
+    echo -n "$(tput setaf 8) →"
+    echo -n "$(tput setaf 5) "
+    git remote -v | grep -E "fetch" | cut -d " " -f 1 | awk 'BEGIN { FS = " " } { print $2 }'
+    echo ""
+}
+
+gt () {
+    echo " "
+    if [[ $1 == "" ]]; then
+        echo "$(tput setaf 1) ** Missing Flag Option ** \n"
+        echo -n "$(tput setaf 2) gt"
+        echo -n "$(tput setaf 3) <option>"
+        echo "$(tput setaf 4) <repo> \n"
+        echo -e "$(tput setaf 5) List of flag options :"
+        echo -n "$(tput setaf 3)     --set, --s  "
+        echo -n "$(tput setaf 8) →"
+        echo -e "$(tput setaf 6) Set Remote URL for Origin"
+        echo -n "$(tput setaf 3)     --init, --i "
+        echo -n "$(tput setaf 8) →"
+        echo -e "$(tput setaf 6) Set Remote URL for Origin \n"
+
+        return 1
+    fi
+
+    repo_name=""
+    if [[ $1 == "--set" || $1 == "-s" ]]; then
+      repo_name=$(git remote -v | grep -E "fetch" | cut -d " " -f 1 | awk 'BEGIN { FS = " " } { print $2 }' | awk 'BEGIN { FS = "/" } { print $5 }' | awk 'BEGIN { FS = "." } { print $1 }')
+      echo -n "$(tput setaf 3)  GitHub"
+      echo -e "$(tput setaf 6) Remote URL Successfully Set : \n"
+      git remote set-url origin https://$GITHUB_TOKEN@github.com/Pheon-Dev/$repo_name.git
+    fi
+    if [[ $1 == "--init" || $1 == "-i" ]]; then
+      if [[ $2 == "" ]]; then
+          echo "$(tput setaf 1) ** Missing Repo Name ** \n"
+          echo -n "$(tput setaf 2) gt"
+          echo -n "$(tput setaf 3) <option>"
+          echo -n "$(tput setaf 4) <repo> \n\n"
+          echo -e "$(tput setaf 5) Repository name :"
+          echo -n "$(tput setaf 4)     <repo-name> "
+          echo -n "$(tput setaf 8) →"
+          echo -e "$(tput setaf 6) Custom Repository Name \n "
+          return 1
+      fi
+      repo_name=$2
+      echo -n "$(tput setaf 3)  GitHub"
+      echo -e "$(tput setaf 6) Repository Successfully Initialised : \n"
+      git init > /dev/null 2>&1 && git remote add origin https://github.com/Pheon-Dev/$repo_name.git && git branch -M main && git remote set-url origin https://$GITHUB_TOKEN@github.com/Pheon-Dev/$repo_name.git && touch .gitignore README.md
+    fi
+
+    echo -n "$(tput setaf 2)      "
+    echo -n "$(tput setaf 8) →"
+    echo -e "$(tput setaf 4) $repo_name"
     echo -n "$(tput setaf 2)      "
     echo -n "$(tput setaf 8) →"
     echo -n "$(tput setaf 5) "
