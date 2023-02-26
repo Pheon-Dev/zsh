@@ -41,7 +41,8 @@ alias blr="bluetoothctl connect"
 alias bli="bluetoothctl info"
 alias bld="bluetoothctl disconnect CC:98:8B:A7:BB:38"
 alias blp="bluetoothctl pair CC:98:8B:A7:BB:38"
-alias bl="systemctl start bluetooth && bluetoothctl connect CC:98:8B:A7:BB:38"
+# alias bl="systemctl start bluetooth && bluetoothctl connect CC:98:8B:A7:BB:38"
+alias bl="bluetoothctl connect CC:98:8B:A7:BB:38"
 
 blhgdfh () {
   help () {
@@ -519,8 +520,7 @@ _mt_help () {
 mt () {
   if [[ $1 == "-h" || $1 == "--help" ]]; then
     _mt_help
-      return 1
-
+    return 1
   fi
   clear
   echo "$(tput setaf 6)"
@@ -528,7 +528,7 @@ mt () {
   echo ""
   echo "$(tput setaf 2)  [ Enter ] to continue"
   echo "$(tput setaf 1)  [ C-c | q | Q ] to Quit \n"
-  echo -n "$(tput setaf 5)Enter one option from the list above to continue : "
+  echo -n "$(tput setaf 5) ● Enter one option from the list above to continue : "
   read -r continue
   if [[ $continue == "q" || $continue == "Q" || $continue == "n" || $continue == "N" ]]; then
     echo ""
@@ -537,13 +537,13 @@ mt () {
   fi
   clear
   echo ""
-  echo "$(tput setaf 2) [ Enter ] to Mount"
-  echo "$(tput setaf 1) [ u | U ] to Unmount \n"
-  echo -n "$(tput setaf 5)Enter one option from the list above to continue : "
+  echo "$(tput setaf 2) ∆ [ Enter ] to Mount"
+  echo "$(tput setaf 1) ∇ [ u | U ] to Unmount \n"
+  echo -n "$(tput setaf 5) ● Enter one option from the list above to continue : "
   read -r continue
   if [[ $continue == "u" || $continue == "U" ]]; then
     if find /mnt -mindepth 1 -maxdepth 1 | read; then
-      echo "$(tput setaf 1)"
+        echo "$(tput setaf 1)"
         mount_loc=$(sudo ls /mnt | gum filter)
         sudo umount /mnt/$mount_loc > /dev/null 2>&1
         sudo rm -rf /mnt/$mount_loc > /dev/null 2>&1
@@ -558,7 +558,7 @@ mt () {
     return 1
   fi
   echo ""
-  echo -n "$(tput setaf 2)Enter mount point name : "
+  echo -n "$(tput setaf 2) ● Enter mount point name : "
   read -r mount_point
   sudo mkdir /mnt/$mount_point
   echo "$(tput setaf 1)"
