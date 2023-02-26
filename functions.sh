@@ -542,14 +542,15 @@ mt () {
   echo -n "$(tput setaf 5)Enter one option from the list above to continue : "
   read -r continue
   if [[ $continue == "u" || $continue == "U" ]]; then
-    echo ""
     if find /mnt -mindepth 1 -maxdepth 1 | read; then
+      echo "$(tput setaf 1)"
         mount_loc=$(sudo ls /mnt | gum filter)
         sudo umount /mnt/$mount_loc > /dev/null 2>&1
         sudo rm -rf /mnt/$mount_loc > /dev/null 2>&1
-      echo -n "$(tput setaf 6) \n"
-  echo " Mount Point : $mount_loc \n"
-      echo -e "$(tput setaf 2) Unounted Successfully! \n"
+        echo " "
+        echo -n "$(tput setaf 6) Mount Point : "
+        echo -e "$(tput setaf 7) $mount_loc \n"
+        echo -e "$(tput setaf 2) Unounted Successfully! \n"
     else
       echo "$(tput setaf 1) No Mountpoint Found \n"
     fi
@@ -557,18 +558,19 @@ mt () {
     return 1
   fi
   echo ""
-  echo -n "$(tput setaf 5)Enter mount point name : "
+  echo -n "$(tput setaf 2)Enter mount point name : "
   read -r mount_point
+  sudo mkdir /mnt/$mount_point
+  echo "$(tput setaf 1)"
   drive=$(sudo lsblk -l | awk 'BEGIN { FS = "\n" } NR==1 {next;} { print $1 }' | gum filter | awk 'BEGIN { FS = " " } { print $1 }')
   echo ""
-  sudo mkdir /mnt/$mount_point
-  echo ""
   sudo mount /dev/$drive /mnt/$mount_point
-      echo -n "$(tput setaf 6)"
-  echo "Drive : $drive"
-  echo "Mount Point : $mount_point \n"
-      echo -e "$(tput setaf 2) Mounted Successfully! \n"
-      echo "$(tput setaf 2) Good Bye! \n"
+  echo -n "$(tput setaf 6) Drive : "
+  echo -e "$(tput setaf 7) $drive"
+  echo -n "$(tput setaf 6) Mount Point : "
+  echo -e "$(tput setaf 7) $mount_point \n"
+  echo -e "$(tput setaf 2) Mounted Successfully! \n"
+  echo "$(tput setaf 2) Good Bye! \n"
   return 1
 }
 
