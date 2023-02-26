@@ -32,6 +32,109 @@ ex () {
     fi
 }
 
+# BLUETOOTH
+alias blf='systemctl stop bluetooth'
+alias bln='systemctl start bluetooth'
+alias bls="bluetoothctl scan on"
+alias blc="bluetoothctl connect CC:98:8B:A7:BB:38"
+alias blr="bluetoothctl connect"
+alias bli="bluetoothctl info"
+alias bld="bluetoothctl disconnect CC:98:8B:A7:BB:38"
+alias blp="bluetoothctl pair CC:98:8B:A7:BB:38"
+alias bl="systemctl start bluetooth && bluetoothctl connect CC:98:8B:A7:BB:38"
+
+blhgdfh () {
+  help () {
+      echo "$(tput setaf 1) ** Missing Connection Option ** \n"
+      echo -n "$(tput setaf 2) bl"
+      echo -n "$(tput setaf 3) <option> \n"
+      echo " "
+      echo -e "$(tput setaf 5) List of flag options :"
+      echo -n "$(tput setaf 3)     -d, --disconnect "
+      echo -n "$(tput setaf 8) →"
+      echo -e "$(tput setaf 6)  Disconnect Bluetooth connection"
+      echo -n "$(tput setaf 3)     -s, --status "
+      echo -n "$(tput setaf 8) →"
+      echo -e "$(tput setaf 6)      Show Bluetooth status"
+      echo -n "$(tput setaf 3)     -n, --on "
+      echo -n "$(tput setaf 8) →"
+      echo -e "$(tput setaf 6)    Turn Bluetooth on"
+      echo -n "$(tput setaf 3)     -f, --off "
+      echo -n "$(tput setaf 8) →"
+      echo -e "$(tput setaf 6)   Turn Bluetooth off"
+      echo -n "$(tput setaf 3)     -i, --info "
+      echo -n "$(tput setaf 8) →"
+      echo -e "$(tput setaf 6)        Show more WiFi info"
+      echo -n "$(tput setaf 3)     -h, --help "
+      echo -n "$(tput setaf 8) →"
+      echo -e "$(tput setaf 6)        Show this help info \n"
+      return 1
+  }
+  if [[ $1 == "-t" || $1 == "--toggle" ]]; then
+    wifi toggle
+    return 1
+  fi
+  if [[ $1 == "-d"  || $1 == "--disconnect" ]]; then
+    nmcli dev disconnect $2
+    return 1
+  fi
+  if [[ $1 == "-s" || $1 == "--status"  ]]; then
+    nmcli dev status
+    return 1
+  fi
+  if [[ $1 == "-n" || $1 == "--radio-on"  ]]; then
+    nmcli dev radio on
+    return 1
+  fi
+  if [[ $1 == "-" || $1 == "--radio-off"  ]]; then
+    nmcli dev radio off
+    return 1
+  fi
+  if [[ $1 == "-i" || $1 == "--info"  ]]; then
+    nmcli --show-secrets connection show
+    return 1
+  fi
+  if [[ $1 == "-e" || $1 == "--ethernet"  ]]; then
+    if [[ $2 == "-s" || $2 == "--show"  ]]; then
+        nmcli connection show "$3"
+    fi
+
+    if [[ $2 == "-c" || $2 == "--connect"  ]]; then
+        nmcli connection up "$3"
+    fi
+    return 1
+  fi
+  if [[ $1 == "-h" || $1 == "--help"  ]]; then
+    help
+    return 1
+  fi
+  if [[ $1 == "-g" || $1 == "--gui"  ]]; then
+    nm-connection-editor
+    return 1
+  fi
+  if [[ $1 == "-u" || $1 == "--nmtui"  ]]; then
+    nmtui
+    return 1
+  fi
+  clear
+  search="h";
+  echo " "
+  echo "$(tput setaf 2)Searching for available connections ..."
+  nmcli dev wifi list > /dev/null 2>&1
+  until [ "$search" = "" ]; do
+    echo "$(tput setaf 2)\e[1A\e[K List of available connections ..."
+    printf "\n"
+    bluetoothctl scan on
+    printf "\n"
+    echo -n "$(tput setaf 6)Press [Enter] if preferred connection is listed above or [any character] + [Enter] to reload: "
+    search=1
+    read -r search
+    clear
+  done
+
+  nmcli dev wifi list | awk 'BEGIN { FS = "\n" } NR==1 {next;} { print $1}' | awk 'BEGIN { FS = " " } { print ($1 =="*")? ($4 =="Infra")? $2 "    " $3 : $2 "    " $3 " " $4 : ($3 =="Infra")? $1 "    " $2: $1 "    " $2 " " $3 }' | gum filter | awk 'BEGIN { FS = " " } { print ($1 =="*")? $2: $1 }' | xargs nmcli dev wifi connect
+}
+
 ww () {
   help () {
       echo "$(tput setaf 1) ** Missing Connection Option ** \n"
@@ -389,6 +492,7 @@ dep() {
     pnpm run build && firebase deploy --only hosting:"$1" && lazygit
 }
 
+alias mntl="sudo lsblk -l" # fdisk
 mntd () {
     sudo lsblk -l && sudo mkdir /mnt/"$1" #blkid
 }
@@ -399,6 +503,73 @@ mntm () {
 
 mntu () {
     sudo umount /mnt/"$1"
+}
+
+_mt_help () {
+    echo -e "$(tput setaf 1) ** Missing Argument ** \n"
+    echo -n "$(tput setaf 2) mt"
+    echo -n "$(tput setaf 3) <option>"
+    echo -n "$(tput setaf 4) <mountpoint> \n\n"
+    echo -e "$(tput setaf 5) Mountpoint :"
+    echo -n "$(tput setaf 4)     <mountpoint> "
+    echo -n "$(tput setaf 8) →"
+    echo -e "$(tput setaf 6) Custom Mountpoint \n "
+  }
+
+mt () {
+  if [[ $1 == "-h" || $1 == "--help" ]]; then
+    _mt_help
+      return 1
+
+  fi
+  clear
+  echo "$(tput setaf 6)"
+  lsblk -a
+  echo ""
+  echo "$(tput setaf 2)  [ Enter ] to continue"
+  echo "$(tput setaf 1)  [ C-c | q | Q ] to Quit \n"
+  echo -n "$(tput setaf 5)Enter one option from the list above to continue : "
+  read -r continue
+  if [[ $continue == "q" || $continue == "Q" || $continue == "n" || $continue == "N" ]]; then
+    echo ""
+      echo "$(tput setaf 2) Good Bye! \n"
+    return 1
+  fi
+  clear
+  echo ""
+  echo "$(tput setaf 2) [ Enter ] to Mount"
+  echo "$(tput setaf 1) [ u | U ] to Unmount \n"
+  echo -n "$(tput setaf 5)Enter one option from the list above to continue : "
+  read -r continue
+  if [[ $continue == "u" || $continue == "U" ]]; then
+    echo ""
+    if find /mnt -mindepth 1 -maxdepth 1 | read; then
+        mount_loc=$(sudo ls /mnt | gum filter)
+        sudo umount /mnt/$mount_loc > /dev/null 2>&1
+        sudo rm -rf /mnt/$mount_loc > /dev/null 2>&1
+      echo -n "$(tput setaf 6) \n"
+  echo " Mount Point : $mount_loc \n"
+      echo -e "$(tput setaf 2) Unounted Successfully! \n"
+    else
+      echo "$(tput setaf 1) No Mountpoint Found \n"
+    fi
+      echo "$(tput setaf 2) Good Bye! \n"
+    return 1
+  fi
+  echo ""
+  echo -n "$(tput setaf 5)Enter mount point name : "
+  read -r mount_point
+  drive=$(sudo lsblk -l | awk 'BEGIN { FS = "\n" } NR==1 {next;} { print $1 }' | gum filter | awk 'BEGIN { FS = " " } { print $1 }')
+  echo ""
+  sudo mkdir /mnt/$mount_point
+  echo ""
+  sudo mount /dev/$drive /mnt/$mount_point
+      echo -n "$(tput setaf 6)"
+  echo "Drive : $drive"
+  echo "Mount Point : $mount_point \n"
+      echo -e "$(tput setaf 2) Mounted Successfully! \n"
+      echo "$(tput setaf 2) Good Bye! \n"
+  return 1
 }
 
 # Copy Buffer

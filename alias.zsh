@@ -103,17 +103,6 @@ alias zfg="cd $HOME/.config/zsh && $EDITOR"
 alias jfg="cd $HOME/.config/zellij && $EDITOR"
 alias bfg="cd $HOME/.config/dwmbar && $EDITOR"
 
-# BLUETOOTH
-alias blf='bluetooth off'
-alias bln='bluetooth on'
-alias bls="bluetoothctl scan on"
-alias blc="bluetoothctl connect CC:98:8B:A7:BB:38"
-alias blr="bluetoothctl connect"
-alias bli="bluetoothctl info"
-alias bld="bluetoothctl disconnect CC:98:8B:A7:BB:38"
-alias blp="bluetoothctl pair CC:98:8B:A7:BB:38"
-
-alias mntl="sudo lsblk -l" # fdisk
 
 # YAY
 alias yaya="yay -Sua --noconfirm"
@@ -163,7 +152,6 @@ alias ye="yarn add --ignore-engines"
 
 alias f="fuck"
 alias fsg="flameshot gui -p ~/Downloads/Picture"
-alias bl="bluetooth on && bluetoothctl connect CC:98:8B:A7:BB:38"
 alias psc="pscale"
 
 # PRISMA
