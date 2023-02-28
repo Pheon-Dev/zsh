@@ -181,14 +181,6 @@ alias goy="go mod tidy"
 alias f="flamingo && clear"
 alias pk="peek"
 
-# ZELLIJ
-alias zj="zellij"
-alias za="zellij attach"
-alias zs="zellij list-sessions"
-alias zn="zellij --session"
-alias zz="zl general"
-alias zf="zellij edit --floating --"
-alias zr='zellij run --floating --'
 alias h="helix"
 
 # RUST
