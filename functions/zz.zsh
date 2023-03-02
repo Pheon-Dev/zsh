@@ -2,23 +2,22 @@
 
 # ZELLIJ
 alias zj="zellij"
-alias za="zellij attach"
-alias zs="zellij list-sessions"
-alias zn="zellij --session"
-# alias zz="zl general"
 alias zf="zellij edit --floating --"
 alias zr='zellij run --floating --'
 
 zz () {
   clear
+  if [[ $1 == "" ]]; then
   echo ""
-  echo "$(tput setaf 3)  [ Enter ] start a new session"
-  echo "$(tput setaf 3)  [ a ]     attach to a session"
-  echo "$(tput setaf 3)  [ l ]     list available layouts"
-  echo "$(tput setaf 3)  [ h ]     help"
-  echo "$(tput setaf 1)  [ C-c | q | Q ] to Quit \n"
+  echo "$(tput setaf 3)   [ Enter ] start a new session"
+  echo "$(tput setaf 3)   [ s ]     active session"
+  echo "$(tput setaf 3)   [ a ]     attach to a session"
+  echo "$(tput setaf 3)   [ l ]     list available layouts"
+  echo "$(tput setaf 3)   [ h ]     help"
+  echo "$(tput setaf 1)   [ C-c | q | Q ] to Quit \n"
   echo -n "$(tput setaf 2) Enter one of the above command options to continue : "
   read -r option
+  fi
   if [[ $option == "q" || $option == "Q" ]]; then
     echo ""
     echo -n "$(tput setaf 3) Good Bye! \n"
@@ -31,10 +30,14 @@ zz () {
     echo -n "$(tput setaf 2) zz"
     echo -n "$(tput setaf 3) <option> \n"
     echo " "
-    echo -e "$(tput setaf 5) List of layout options : \n"
-    echo -n "$(tput setaf 3)    -l, --layout \n"
-    echo -n "$(tput setaf 3)    -a, --attach \n"
-    echo -n "$(tput setaf 3)    -h, --help \n"
+    echo -e "$(tput setaf 5) Available options : \n"
+    echo -n "$(tput setaf 3)    -l, --layout"
+    echo -n "$(tput setaf 6)    list of layout options \n"
+    echo -n "$(tput setaf 3)    -a, --attach"
+    echo -n "$(tput setaf 6)    attach an active session \n"
+    echo -n "$(tput setaf 3)    -h, --help"
+    echo -n "$(tput setaf 6)      show this help \n"
+    echo " "
     return 1
   fi
   if [[ $1 == "-a" || $1 == "--attach" || $option == "a" ]]; then

@@ -1,8 +1,10 @@
-#!/bin/bash sh
+#!/bin/bash
 
 # BLUETOOTH
-alias blf='systemctl stop bluetooth'
-alias bln='systemctl start bluetooth'
+# alias blf='systemctl stop bluetooth'
+# alias bln='systemctl start bluetooth'
+alias blf='bluetooth off'
+alias bln='bluetooth on'
 alias bls="bluetoothctl scan on"
 alias blc="bluetoothctl connect CC:98:8B:A7:BB:38"
 alias blr="bluetoothctl connect"
@@ -11,6 +13,33 @@ alias bld="bluetoothctl disconnect CC:98:8B:A7:BB:38"
 alias blp="bluetoothctl pair CC:98:8B:A7:BB:38"
 # alias bl="systemctl start bluetooth && bluetoothctl connect CC:98:8B:A7:BB:38"
 alias bl="bluetoothctl connect CC:98:8B:A7:BB:38"
+bkjhl () {
+
+# Define the MAC address of the device to search for
+target_device="CC:98:8B:A7:BB:38"
+# target_device=$(bluetoothctl scan on | gum filter)
+
+# Run bluetoothctl command to scan for devices
+bluetoothctl scan on &
+
+# Loop until target device is found
+while true; do
+    # Read the output of the bluetoothctl command line by line
+    while read -r line; do
+        # If the line contains the MAC address of the target device, exit the script
+        if [[ "$line" == *"$target_device"* ]]; then
+            echo "Device found!"
+            bluetoothctl connect $target_device
+            echo "Device connected!"
+            pkill bluetoothctl
+            return 1
+        fi
+    done < <(bluetoothctl info)
+
+    # Wait for 1 second before checking the output again
+    sleep 1
+done
+}
 
 blhgdfh () {
   help () {
@@ -22,6 +51,9 @@ blhgdfh () {
       echo -n "$(tput setaf 3)     -d, --disconnect "
       echo -n "$(tput setaf 8) →"
       echo -e "$(tput setaf 6)  Disconnect Bluetooth connection"
+      echo -n "$(tput setaf 3)     -s, --scan "
+      echo -n "$(tput setaf 8) →"
+      echo -e "$(tput setaf 6)      Scan for Bluetooth devices"
       echo -n "$(tput setaf 3)     -s, --status "
       echo -n "$(tput setaf 8) →"
       echo -e "$(tput setaf 6)      Show Bluetooth status"
@@ -39,7 +71,16 @@ blhgdfh () {
       echo -e "$(tput setaf 6)        Show this help info \n"
       return 1
   }
-  if [[ $1 == "-t" || $1 == "--toggle" ]]; then
+  read -r option
+  if [[ $1 == "-n" || $1 == "--on" || $option == "n" ]]; then
+    bluetooth on
+    return 1
+  fi
+  if [[ $1 == "-" || $1 == "--off"  || $option == "f" ]]; then
+    bluetooth off
+    return 1
+  fi
+  if [[ $1 == "-s" || $1 == "--scan" || $option == "s" ]]; then
     wifi toggle
     return 1
   fi
@@ -49,14 +90,6 @@ blhgdfh () {
   fi
   if [[ $1 == "-s" || $1 == "--status"  ]]; then
     nmcli dev status
-    return 1
-  fi
-  if [[ $1 == "-n" || $1 == "--radio-on"  ]]; then
-    nmcli dev radio on
-    return 1
-  fi
-  if [[ $1 == "-" || $1 == "--radio-off"  ]]; then
-    nmcli dev radio off
     return 1
   fi
   if [[ $1 == "-i" || $1 == "--info"  ]]; then

@@ -171,34 +171,10 @@ alias fsh="shfmt -l -w ."
 alias sls="slides"
 alias sl="slock"
 
-# GO
-alias gobi="go build . && go install"
-alias goi="go install"
-alias gob="go build"
-alias gor="go run"
-alias gon="go run ."
-alias goy="go mod tidy"
 alias f="flamingo && clear"
 alias pk="peek"
 
 alias h="helix"
-
-# RUST
-alias co="cargo"
-alias cx="cargo remove"
-alias cn="cargo new"
-alias ca="cargo add"
-alias cr="cargo run"
-alias ct="cargo test"
-alias cw="cargo-watch -x"
-alias cb="cargo build"
-alias ci="cargo install"
-
-alias crp="cargo publish"
-alias crb="cargo bench"
-alias crd="cargo doc"
-
-alias re="rustc --explain"
 
 alias gw='glow'
 alias gpt='npx terminalgpt chat'
