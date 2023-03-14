@@ -178,3 +178,5 @@ alias h="helix"
 
 alias gw='glow'
 alias gpt='npx terminalgpt chat'
+
+alias notes="cd $HOME/.nb/home && nvim"

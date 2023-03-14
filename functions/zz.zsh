@@ -2,6 +2,8 @@
 
 # ZELLIJ
 alias zj="zellij"
+alias zl="zellij -l compact"
+alias zs="zellij list-sessions"
 alias zf="zellij edit --floating --"
 alias zr='zellij run --floating --'
 
