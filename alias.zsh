@@ -176,6 +176,7 @@ alias pk="peek"
 
 alias h="helix"
 
+alias rf='rm -rf'
 alias gw='glow'
 alias gpt='npx terminalgpt chat'
 
