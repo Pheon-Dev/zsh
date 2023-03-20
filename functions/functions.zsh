@@ -1,5 +1,9 @@
 #!/bin/bash sh
 
+cm () {
+  mkdir $1 && cd $1
+}
+
 ed() {
     fzf --preview 'bat --style=numbers --color=always --line-range :500 {}' | xargs nvim
 }
