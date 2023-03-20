@@ -37,8 +37,8 @@ mt () {
     if find /mnt -mindepth 1 -maxdepth 1 | read; then
         echo "$(tput setaf 1)"
         mount_loc=$(sudo ls /mnt | gum filter)
-        sudo umount /mnt/$mount_loc > /dev/null 2>&1
-        sudo rm -rf /mnt/$mount_loc > /dev/null 2>&1
+        sudo umount /mnt/$mount_loc
+        sudo rm -rf /mnt/$mount_loc
         echo " "
         echo -n "$(tput setaf 6) Mount Point : "
         echo -e "$(tput setaf 7) $mount_loc \n"
