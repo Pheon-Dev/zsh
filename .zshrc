@@ -31,6 +31,7 @@ source "$HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$HOME/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$HOME/.config/zsh/vim-mode.zsh"
 source "$HOME/.config/zsh/zsh-autopair/autopair.zsh"
+source "$HOME/.config/zsh/zsh-search-substring/search-substring.zsh"
 # source "$HOME/.config/zsh/auto-notify.zsh"
 # source "$HOME/.config/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
 
@@ -41,7 +42,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 cp $HOME/.zshrc $HOME/.config/zsh/.zshrc
-cp $HOME/.tmux.conf $HOME/.tmux
 setxkbmap -option caps:escape
 
 eval "$(zoxide init zsh)"
