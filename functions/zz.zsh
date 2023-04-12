@@ -18,8 +18,8 @@ zz () {
   echo "$(tput setaf 3)   [ h ]     help"
   echo "$(tput setaf 1)   [ C-c | q | Q ] to Quit \n"
   echo -n "$(tput setaf 2) Enter one of the above command options to continue : "
-  read -r option
   fi
+  read -r option
   if [[ $option == "q" || $option == "Q" ]]; then
     echo ""
     echo -n "$(tput setaf 3) Good Bye! \n"

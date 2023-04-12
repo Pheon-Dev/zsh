@@ -123,7 +123,7 @@ alias winfo='xprop'
 alias c='clear'
 alias rn='ranger'
 alias ari='aria2c --file-allocation=none -c -x 10 -d . -Z'
-alias tp='toipe'
+alias tp='toipe -w top10000'
 
 alias pnu='sudo pnpm add -g pnpm'
 alias npu='sudo npm update --location=global'
