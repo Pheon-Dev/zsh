@@ -53,8 +53,7 @@ alias tk="tmux kill-server"
 alias ts="tmux source $HOME/.tmux.conf"
 
 # EDITOR
-alias v="~/Documents/Neovim/nvim-linux64/bin/nvim"
-# alias v="$EDITOR"
+alias v="$EDITOR"
 alias vi="$EDITOR"
 alias vim="$EDITOR"
 
