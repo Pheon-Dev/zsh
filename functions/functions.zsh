@@ -1,4 +1,43 @@
-#!/bin/bash sh
+#!/bin/bash zsh
+
+ports () {
+  help () {
+      echo "$(tput setaf 1) ** Missing Connection Option ** \n"
+      echo -n "$(tput setaf 2) ports"
+      echo -n "$(tput setaf 3) <option> \n"
+      echo " "
+      echo -e "$(tput setaf 5) List of flag options :"
+      echo -n "$(tput setaf 3)     -l, --list "
+      echo -n "$(tput setaf 8) →"
+      echo -e "$(tput setaf 6)      List port status"
+      echo -n "$(tput setaf 3)     -k, --kill "
+      echo -n "$(tput setaf 8) →"
+      echo -e "$(tput setaf 6)      Kill port"
+      echo -n "$(tput setaf 3)     -h, --help "
+      echo -n "$(tput setaf 8) →"
+      echo -e "$(tput setaf 6)      Show this help info \n"
+      return 1
+  }
+  if [[ $1 == "" || $1 == "-h" || $1 == "--help" ]]; then
+    echo ""
+    help
+    echo ""
+  fi
+  if [[ $1 == "-l" || $1 == "--list" ]]; then
+    echo ""
+    echo -e "$(tput setaf 5)Port                 PID"
+    echo -e "$(tput setaf 6)"
+    fuser $2/tcp
+    echo ""
+  fi
+  if [[ $1 == "-k" || $1 == "--kill" ]]; then
+    echo ""
+    echo -e "$(tput setaf 5)Port                 PID"
+    echo -e "$(tput setaf 6)"
+    fuser -k $2/tcp
+    echo ""
+  fi
+}
 
 ex () {
   if [ -f $1 ]; then

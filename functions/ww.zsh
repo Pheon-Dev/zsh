@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash zsh
 
 ww () {
   help () {
@@ -55,7 +55,7 @@ ww () {
     nmcli dev radio on
     return 1
   fi
-  if [[ $1 == "-" || $1 == "--radio-off"  ]]; then
+  if [[ $1 == "-f" || $1 == "--radio-off"  ]]; then
     nmcli dev radio off
     return 1
   fi
