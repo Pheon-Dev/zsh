@@ -17,6 +17,9 @@ ytl () {
       echo -n "$(tput setaf 3)     -v, --video "
       echo -n "$(tput setaf 8) →"
       echo -e "$(tput setaf 6)      download video only"
+      echo -n "$(tput setaf 3)     -p, --playlist "
+      echo -n "$(tput setaf 8) →"
+      echo -e "$(tput setaf 6)      download audio playlist"
       echo -n "$(tput setaf 3)     -f, --force "
       echo -n "$(tput setaf 8) →"
       echo -e "$(tput setaf 6)      force download video only"
@@ -28,6 +31,11 @@ ytl () {
   if [[ $1 == "" || $1 == "-h" || $1 == "--help" ]]; then
     echo ""
     help
+    echo ""
+  fi
+  if [[ $1 == "-p" || $1 == "--playlist" ]]; then
+    echo ""
+    yt-dlp -x -f bestaudio -I $2 $3
     echo ""
   fi
   if [[ $1 == "-a" || $1 == "--audio" ]]; then
