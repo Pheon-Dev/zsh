@@ -38,6 +38,11 @@ ytl () {
     yt-dlp -x -f bestaudio -I $2 $3
     echo ""
   fi
+  if [[ $1 == "-vp" || $1 == "--vplaylist" ]]; then
+    echo ""
+    yt-dlp -f bestaudio -I $2 $3
+    echo ""
+  fi
   if [[ $1 == "-a" || $1 == "--audio" ]]; then
     echo ""
     yt-dlp -x -f bestaudio $2
