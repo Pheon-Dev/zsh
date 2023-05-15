@@ -17,9 +17,12 @@ ytl () {
       echo -n "$(tput setaf 3)     -v, --video "
       echo -n "$(tput setaf 8) →"
       echo -e "$(tput setaf 6)      download video only"
-      echo -n "$(tput setaf 3)     -h, --help "
+      echo -n "$(tput setaf 3)     -f, --force "
       echo -n "$(tput setaf 8) →"
-      echo -e "$(tput setaf 6)      Show this help info \n"
+      echo -e "$(tput setaf 6)      force download video only"
+      echo -n "$(tput setaf 3)     -h, --help "
+      echo -n "$(tput setaf 8)  →"
+      echo -e "$(tput setaf 6)       Show this help info \n"
       return 1
   }
   if [[ $1 == "" || $1 == "-h" || $1 == "--help" ]]; then
@@ -35,6 +38,11 @@ ytl () {
   if [[ $1 == "-v" || $1 == "--video" ]]; then
     echo ""
     yt-dlp --external-downloader aria2c --external-downloader-args '-c -j 3 -x 3 -s 3 -k 1M' $2
+    echo ""
+  fi
+  if [[ $1 == "-f" || $1 == "--force" ]]; then
+    echo ""
+    yt-dlp --ignore-errors --continue --no-overwrites --download-archive progress.txt usual options $2
     echo ""
   fi
 }
