@@ -4,6 +4,41 @@ v23 () {
   find . -type f -name "*.mkv" -exec bash -c 'FILE="$1"; ffmpeg -i "${FILE}" -vn -c:a libmp3lame -y "${FILE%.mkv}.mp3";rm -rf $FILE' _ '{}' \;
 }
 
+ytl () {
+  help () {
+      echo "$(tput setaf 1) ** Missing Connection Option ** \n"
+      echo -n "$(tput setaf 2) ytl"
+      echo -n "$(tput setaf 3) <option> \n"
+      echo " "
+      echo -e "$(tput setaf 5) List of flag options :"
+      echo -n "$(tput setaf 3)     -a, --audio "
+      echo -n "$(tput setaf 8) →"
+      echo -e "$(tput setaf 6)      download audio only"
+      echo -n "$(tput setaf 3)     -v, --video "
+      echo -n "$(tput setaf 8) →"
+      echo -e "$(tput setaf 6)      download video only"
+      echo -n "$(tput setaf 3)     -h, --help "
+      echo -n "$(tput setaf 8) →"
+      echo -e "$(tput setaf 6)      Show this help info \n"
+      return 1
+  }
+  if [[ $1 == "" || $1 == "-h" || $1 == "--help" ]]; then
+    echo ""
+    help
+    echo ""
+  fi
+  if [[ $1 == "-a" || $1 == "--audio" ]]; then
+    echo ""
+    yt-dlp -x -f bestaudio $2
+    echo ""
+  fi
+  if [[ $1 == "-v" || $1 == "--video" ]]; then
+    echo ""
+    yt-dlp --external-downloader aria2c --external-downloader-args '-c -j 3 -x 3 -s 3 -k 1M' $2
+    echo ""
+  fi
+}
+
 ports () {
   help () {
       echo "$(tput setaf 1) ** Missing Connection Option ** \n"
@@ -124,9 +159,9 @@ yar () {
     yarn workspace "$1" remove "$2"
 }
 
-yta () {
-    youtube-dl --extract-audio --audio-format mp3 "$1" --playlist-start "$2"
-}
+# yta () {
+#     youtube-dl --extract-audio --audio-format mp3 "$1" --playlist-start "$2"
+# }
 
 # SOURCING FILES
 psou () {

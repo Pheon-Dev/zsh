@@ -13,7 +13,7 @@ alias egrep="egrep --color=auto"
 alias fgrep='fgrep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
 alias x="exit"
 alias js="joshuto"
-alias ytl="youtube-dl"
+# alias ytl="youtube-dl"
 alias shuffle="mpv --shuffle"
 
 # MOCP
