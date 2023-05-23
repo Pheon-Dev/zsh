@@ -13,6 +13,7 @@ source "$HOME/.config/zsh/fzf-tab-source/fzf-tab-source.plugin.zsh"
 # source "$HOME/.config/zsh/fzf.zsh"
 
 source "$HOME/.config/zsh/env.zsh"
+source "$HOME/.config/zsh/functions/dock.zsh"
 source "$HOME/.config/zsh/functions/got.zsh"
 source "$HOME/.config/zsh/functions/gt.zsh"
 source "$HOME/.config/zsh/functions/gset.zsh"
