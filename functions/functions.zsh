@@ -1,5 +1,5 @@
 #!/bin/bash zsh
-#
+
 v23 () {
   find . -type f -name "*.mkv" -exec bash -c 'FILE="$1"; ffmpeg -i "${FILE}" -vn -c:a libmp3lame -y "${FILE%.mkv}.mp3";rm -rf $FILE' _ '{}' \;
 }
@@ -38,12 +38,12 @@ ytl () {
   fi
   if [[ $1 == "-p" || $1 == "--playlist" ]]; then
     echo ""
-    yt-dlp -x -f bestaudio -I $2 $3
+    yt-dlp -x -f bestaudio -I $3 $2
     echo ""
   fi
   if [[ $1 == "-vp" || $1 == "--vplaylist" ]]; then
     echo ""
-    yt-dlp -f bestaudio -I $2 $3
+    yt-dlp -f bestaudio -I $3 $2
     echo ""
   fi
   if [[ $1 == "-a" || $1 == "--audio" ]]; then
