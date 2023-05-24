@@ -3,10 +3,11 @@
 dock () {
   if [[ $1 == "" ]]; then
     echo ""
-    echo "$(tput setaf 3)   [ -s, --start ] start a docker daemon"
-    echo "$(tput setaf 3)   [ -p, --pause ] pause a docker daemon"
-    echo "$(tput setaf 3)   [ -x, --stop  ] stop a docker daemon"
-    echo "$(tput setaf 3)   [ -u, --up    ] start up a db on docker"
+    echo "$(tput setaf 3)   [ -s, --start  ] start a docker daemon"
+    echo "$(tput setaf 3)   [ -p, --pause  ] pause a docker daemon"
+    echo "$(tput setaf 3)   [ -x, --stop   ] stop a docker daemon"
+    echo "$(tput setaf 3)   [ -u, --up     ] start up a db on docker"
+    echo "$(tput setaf 3)   [ -i, --inspect] inspect postgres database"
 
     return 1
   fi
@@ -25,6 +26,10 @@ dock () {
 
   if [[ $1 == "-u" || $1 == "--up" ]]; then
     sudo docker-compose up -d
+  fi
+
+  if [[ $1 == "-i" || $1 == "--inspect" ]]; then
+    sudo docker inspect postgres
   fi
 
   if [[ $1 == "-r" || $1 == "--run" ]]; then
