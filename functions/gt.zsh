@@ -70,7 +70,6 @@ gt () {
         return 1
     fi
 
-    prev=$(git remote -v | grep -E "fetch" | cut -d " " -f 1 | awk 'BEGIN { FS = " " } { print $2 }')
     repo_name=""
     if [[ $1 == "--set" || $1 == "-s" ]]; then
       repo_name=$(git remote -v | grep -E "fetch" | cut -d " " -f 1 | awk 'BEGIN { FS = " " } { print $2 }' | awk 'BEGIN { FS = "/" } { print $5 }' | awk 'BEGIN { FS = "." } { print $1 }')
@@ -95,6 +94,7 @@ gt () {
     echo -n "$(tput setaf 4)      "
     echo -n "$(tput setaf 8) →"
     echo -e "$(tput setaf 4) $repo_name"
+    prev=$(git remote -v | grep -E "fetch" | cut -d " " -f 1 | awk 'BEGIN { FS = " " } { print $2 }')
     if [[ $1 == "--set" || $1 == "-s" ]]; then
       echo -n "$(tput setaf 1)      "
       echo -n "$(tput setaf 8) →"
