@@ -17,5 +17,5 @@ alias crd="cargo doc"
 alias re="rustc --explain"
 
 # manta
-alias ctst='cargo-watch -q -c -w tests/ -x "test -q quick_dev -- --nocapture"'
+alias ctst='cargo-watch -q -c -w examples/ -x "test -q quick_dev -- --nocapture"'
 alias cwtc="cargo-watch -q -c -w src/ -x run"
