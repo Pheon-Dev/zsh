@@ -45,7 +45,18 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 cp $HOME/.zshrc $HOME/.config/zsh/.zshrc
-setxkbmap -option caps:escape
+
+# https://wiki.archlinux.org/title/Xorg/Keyboard_configuration
+# $ grep -E "(ctrl|caps):" /usr/share/X11/xkb/rules/base.lst
+# caps
+# setxkbmap -option "caps:swapescape"
+# setxkbmap -option "caps:escape"
+setxkbmap -option "caps:ctrl_modifier"
+setxkbmap -option "ctrl:swap_lalt_lctl"
+# setxkbmap -option "ctrl:hyper_capscontrol"
+# setxkbmap -option "ctrl:swapcaps"
+# setxkbmap -option "ctrl:nocaps"
+xcape -e 'Control_L=Escape' -t 100
 
 eval "$(zoxide init zsh)"
 . /usr/share/z/z.sh
