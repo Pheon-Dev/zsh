@@ -2,7 +2,7 @@
 
 dock () {
   if [[ $1 == "" ]]; then
-    echo ""
+    echo "$(tput setaf 3)   [ -t, --status ] status of docker daemon"
     echo "$(tput setaf 3)   [ -s, --start  ] start a docker daemon"
     echo "$(tput setaf 3)   [ -p, --pause  ] pause a docker daemon"
     echo "$(tput setaf 3)   [ -x, --stop   ] stop a docker daemon"
@@ -10,6 +10,10 @@ dock () {
     echo "$(tput setaf 3)   [ -i, --inspect] inspect postgres database"
 
     return 1
+  fi
+
+  if [[ $1 == "-t" || $1 == "--status" ]]; then
+    sudo systemctl status docker
   fi
 
   if [[ $1 == "-s" || $1 == "--start" ]]; then
