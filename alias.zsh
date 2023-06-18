@@ -90,13 +90,13 @@ alias e='archlinux-logout'
 
 # CONFIG
 alias afg="cd $HOME/.config/alacritty && $EDITOR"
-alias dfg="cd $HOME/.config/arco-dwm && $EDITOR"
+alias dfg="cd $HOME/.config/dwm && $EDITOR"
 alias kfg="cd $HOME/.config/kitty && $EDITOR"
 alias lfg="cd $HOME/.config/lazygit && $EDITOR"
 alias mfg="cd $HOME/.config/dmenu && $EDITOR"
 alias rfg="cd $HOME/.config/ranger && $EDITOR"
 alias tfg="cd $HOME/.tmux && $EDITOR"
-alias sfg="cd $HOME/.config/arco-st && $EDITOR"
+alias sfg="cd $HOME/.config/st && $EDITOR"
 alias nfg="cd $HOME/.config/nvim && $EDITOR"
 alias zfg="cd $HOME/.config/zsh && $EDITOR"
 alias jfg="cd $HOME/.config/zellij && $EDITOR"
@@ -161,9 +161,7 @@ alias pnt="prisma init"
 alias pgn="prisma generate"
 alias pst="prisma studio"
 
-alias mcon="cd $HOME/.config/dmenu && mv config.h bu-config.h && sudo make install"
-alias dcon="cd $HOME/.config/arco-dwm && mv config.h bu-config.h && sudo make install"
-alias scon="cd $HOME/.config/arco-st && mv config.h bu-config.h && sudo make install"
+alias smk="sudo make clean install"
 
 alias rb="reboot"
 alias fsh="shfmt -l -w ."
@@ -181,3 +179,4 @@ alias gpt='npx terminalgpt chat'
 
 alias notes="cd $HOME/.nb/home && nvim"
 
+alias lout="sudo systemctl restart ly.service"

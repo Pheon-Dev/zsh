@@ -1,5 +1,5 @@
 #!/bin/bash zsh
-
+# nmcli dev wifi show
 ww () {
   help () {
       echo "$(tput setaf 1) ** Missing Connection Option ** \n"
