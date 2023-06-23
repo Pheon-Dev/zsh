@@ -8,7 +8,7 @@ alias gor="go run"
 alias gon="go run ."
 alias goy="go mod tidy"
 
-got () {
+goat () {
     echo " "
     if [[ $1 == "" ]]; then
         echo "$(tput setaf 1) ** Missing App Name Option ** \n"
@@ -18,8 +18,8 @@ got () {
         return 1
     fi
     pwd=$(pwd)
-    mkdir -p /home/pheon/Documents/go/src/github.com/Pheon-Dev/$1
-    cd /home/pheon/Documents/go/src/github.com/Pheon-Dev/$1
+    mkdir -p $HOME/go/src/github.com/Pheon-Dev/$1
+    cd $HOME/go/src/github.com/Pheon-Dev/$1
     echo " "
     echo -e "$(tput setaf 6)Initializing App ..."
     echo "$(tput setaf 2)"
@@ -27,7 +27,7 @@ got () {
     echo " "
     echo -e "$(tput setaf 6)Initializing Cobra ..."
     echo "$(tput setaf 2)"
-    cobra-cli init
+    cobra-cli init || go install github.com/spf13/cobra-cli@latest
     go mod tidy
     echo " "
     echo -n "$(tput setaf 6)Running your newly created"
@@ -35,6 +35,7 @@ got () {
     echo -e "$(tput setaf 6): "
     echo "$(tput setaf 5)"
     go run .
+    gt -i $1
     echo " "
     echo -n "$(tput setaf 6)Edit the newly created"
     echo -n "$(tput setaf 4) $1 app "
