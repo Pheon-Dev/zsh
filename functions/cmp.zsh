@@ -7,7 +7,8 @@ zstyle ':completion:*' file-list all
 
 zstyle ':completion:*' list-colors '=*=90'
 zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
-zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
+zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
+zstyle ':completion:*:descriptions'                 format $'%{\e[0;32m%}↘ %B%d%b%{\e[0m%}'  # format on completion
 zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 zstyle ':autocomplete:*' delay 0.0  # seconds (float)
 
