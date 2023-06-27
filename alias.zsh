@@ -59,7 +59,8 @@ alias v="$EDITOR"
 alias vi="$EDITOR"
 alias vim="$EDITOR"
 
-alias cat="bat -pp"
+alias cat="bat"
+alias man="batman"
 
 # NPNPM
 alias npd="pnpm run dev"
