@@ -20,7 +20,6 @@ unsetopt listbeep
   .autocomplete:__main__ "$@"
 } 
 
-source "$HOME/.config/zsh/zsh-plugins/zsh-autocomplete/cmp.zsh"
 () {
    local -a prefix=( '\e'{\[,O} )
    local -a up=( ${^prefix}A ) down=( ${^prefix}B )
@@ -32,3 +31,5 @@ source "$HOME/.config/zsh/zsh-plugins/zsh-autocomplete/cmp.zsh"
       bindkey "$key" down-line-or-history
    done
 }
+
+source "$HOME/.config/zsh/zsh-plugins/zsh-autocomplete/cmp.zsh"
