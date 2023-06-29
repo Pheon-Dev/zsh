@@ -14,7 +14,6 @@ source "$HOME/.config/zsh/functions/rust.zsh"
 # source "$HOME/.config/zsh/functions/web_search.zsh"
 # source "$HOME/.config/zsh/zsh-search-substring/search-substring.zsh"
 # source "$HOME/.config/zsh/auto-notify.zsh"
-# source "$HOME/.config/zsh/fzf-tab/fzf-tab.zsh"
 # source "$HOME/.config/zsh/dirhistory.zsh"
 
 # https://wiki.archlinux.org/title/Xorg/Keyboard_configuration
@@ -27,6 +26,15 @@ setxkbmap -option "caps:escape"
 # setxkbmap -option "ctrl:swap_lalt_lctl"
 # xcape -e 'Control_L=Escape'
 
+eval "$(zoxide init zsh)"
+. /usr/share/z/z.sh
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+export PIP_BREAK_SYSTEM_PACKAGES=1
+export PATH="$HOME/.cargo/bin:$PATH"
+
+export BAT_CONFIG_PATH="$HOME/.config/bat/bat.conf"
 
 time-zsh () {
   for i in $(seq 1 10); do
