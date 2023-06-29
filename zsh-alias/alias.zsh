@@ -1,6 +1,4 @@
-# ~/.zshrc
-
-source "$HOME/.config/zsh/zsh-alias/zsh-git/git.zsh"
+#!/bin/bash zsh
 
 # EXA
 alias ls="exa --icons --color=always --group-directories-first"
@@ -187,5 +185,3 @@ alias notes="cd $HOME/.nb/home && nvim"
 
 alias lout="sudo systemctl restart ly.service"
 alias nitro="nitrogen --restore > /dev/null 2>&1"
-
-source "$HOME/.config/zsh/zsh-alias/use.zsh"
