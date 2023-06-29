@@ -1,5 +1,5 @@
 #!/bin/bash zsh
-
+# zmodload zsh/zprof
 source "$HOME/.config/zsh/functions/pass.zsh"
 source "$HOME/.config/zsh/functions/dock.zsh"
 source "$HOME/.config/zsh/functions/gt.zsh"
@@ -12,9 +12,6 @@ source "$HOME/.config/zsh/functions/bl.zsh"
 source "$HOME/.config/zsh/functions/zz.zsh"
 source "$HOME/.config/zsh/functions/rust.zsh"
 # source "$HOME/.config/zsh/functions/web_search.zsh"
-# source "$HOME/.config/zsh/zsh-search-substring/search-substring.zsh"
-# source "$HOME/.config/zsh/auto-notify.zsh"
-# source "$HOME/.config/zsh/dirhistory.zsh"
 
 # https://wiki.archlinux.org/title/Xorg/Keyboard_configuration
 # $ grep -E "(ctrl|caps):" /usr/share/X11/xkb/rules/base.lst
