@@ -6,14 +6,21 @@
 zstyle ':completion:*' file-list all
 
 zstyle ':completion:*' list-colors '=*=90'
-zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
-zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
-zstyle ':completion:*:descriptions'                 format $'%{\e[0;32m%}↘ %B%d%b%{\e[0m%}'  # format on completion
-zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
-zstyle ':autocomplete:*' delay 0.0  # seconds (float)
+
+zstyle ':completion:*:director*' format $'%{\e[0;34m%} %d'
+zstyle ':completion:*:descriptions' format $'%{\e[0;32m%} %d'
+zstyle ':completion:*:options' format $'%{\e[0;36m%} %d'
+zstyle ':completion:*:warnings' format $'%{\e[0;31m%}  no matches for a %d'
+
+zstyle ':completion:*:file*' format $'%{\e[0;33m%} %f'
+zstyle ':completion:*:corrections' format $'%{\e[0;35m%} %e'
+zstyle ':completion:*:messages' format $'%{\e[0;37m%} %d'
 
 bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
 bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
+
+# zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+# zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 # zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1a --icons --color=always $realpath'
 # zstyle ':fzf-tab:complete:mpv:*' fzf-preview 'exa -1a --icons --color=always $realpath'
@@ -25,9 +32,7 @@ bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 # export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
 # zstyle ':completion:*:approximate:'                 max-errors 'reply=( $((($#PREFIX+$#SUFFIX)/3 )) numeric )' # allow one error for every three characters typed in approximate completer
 # zstyle ':completion:*:complete:-command-::commands' ignored-patterns '*\~' # don't complete backup files as executables
-# zstyle ':completion:*:correct:*'                    insert-unambiguous true             # start menu completion only if it could find no unambiguous initial string
 # zstyle ':completion:*:corrections'                  format $'%{\e[0;31m%}%d (errors: %e)%{\e[0m%}' #
-# zstyle ':completion:*:correct:*'                    original true                       #
 # zstyle ':completion:*:descriptions'                 format $'%{\e[0;31m%}completing %B%d%b%{\e[0m%}'  # format on completion
 # zstyle ':completion:*:*:cd:*:directory-stack'       menu yes select              # complete 'cd -<tab>' with menu
 # zstyle ':completion:*:expand:*'                     tag-order all-expansions            # insert all expansions for expand completer
@@ -45,8 +50,6 @@ bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 # fi
 # zstyle -e ':completion:*'                           special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
 # zstyle ':completion:*:messages'                     format '%d'                         #
-# zstyle ':completion:*:options'                      auto-description '%d'               #
-# zstyle ':completion:*:options'                      description 'yes'                   # describe options in full
 # zstyle ':completion:*:processes'                    command 'ps -au$USER'               # on processes completion complete all user processes
 # zstyle ':completion:*:*:-subscript-:*'              tag-order indexes parameters        # offer indexes before parameters in subscripts
 # zstyle ':completion:*'                              verbose true                        # provide verbose completion information
