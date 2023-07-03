@@ -6,6 +6,7 @@ dock () {
     echo "$(tput setaf 3)   [ -s, --start  ] start a docker daemon"
     echo "$(tput setaf 3)   [ -p, --pause  ] pause a docker daemon"
     echo "$(tput setaf 3)   [ -x, --stop   ] stop a docker daemon"
+    echo "$(tput setaf 3)   [ -q, --query  ] run psql to query db"
     echo "$(tput setaf 3)   [ -u, --up     ] start up a db on docker"
     echo "$(tput setaf 3)   [ -i, --inspect] inspect postgres database"
 
@@ -36,8 +37,13 @@ dock () {
     sudo docker inspect postgres
   fi
 
+  if [[ $1 == "-q" || $1 == "--query" ]]; then
+    sudo docker exec -it -u postgres pg psql
+  fi
+
   if [[ $1 == "-r" || $1 == "--run" ]]; then
-    sudo docker run --rm 5432:5432 -e "POSTGRES_PASSWORD=postgres" --name pg postgres:15 #14/15
+    # sudo docker run --rm 5432:5432 -e "POSTGRES_PASSWORD=postgres" --name pg postgres:15 #14/15
+    sudo docker run --rm --name pg -p 5432:5432  -e POSTGRES_PASSWORD=welcome  postgres:15
   fi
 
   if [[ $1 == "-b" || $1 == "--build" ]]; then
