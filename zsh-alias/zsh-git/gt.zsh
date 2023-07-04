@@ -75,7 +75,7 @@ gt () {
       repo_name=$(git remote -v | grep -E "fetch" | cut -d " " -f 1 | awk 'BEGIN { FS = " " } { print $2 }' | awk 'BEGIN { FS = "/" } { print $5 }' | awk 'BEGIN { FS = "." } { print $1 }')
       echo -n "$(tput setaf 3)  GitHub"
       echo -e "$(tput setaf 6) Remote URL Successfully Set : \n"
-      git remote set-url origin https://$GITHUB_TOKEN@github.com/Pheon-Dev/$repo_name.git
+      pass-export && git remote set-url origin https://$GITHUB_TOKEN@github.com/Pheon-Dev/$repo_name.git
     fi
 
     if [[ $1 == "--init" || $1 == "-i" ]]; then
@@ -87,7 +87,7 @@ gt () {
       repo_name=$2
       echo -n "$(tput setaf 3)  GitHub"
       echo -e "$(tput setaf 6) Repository Successfully Initialised : \n"
-      git init > /dev/null 2>&1 && git remote add origin https://github.com/Pheon-Dev/$repo_name.git && git branch -M main && git remote set-url origin https://$GITHUB_TOKEN@github.com/Pheon-Dev/$repo_name.git && touch .gitignore README.md
+      pass-export && git init > /dev/null 2>&1 && git remote add origin https://github.com/Pheon-Dev/$repo_name.git && git branch -M main && git remote set-url origin https://$GITHUB_TOKEN@github.com/Pheon-Dev/$repo_name.git && touch .gitignore README.md
     fi
 
     
