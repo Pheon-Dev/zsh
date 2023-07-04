@@ -1,5 +1,6 @@
 #!/bin/bash zsh
 
+# TODO: add branch option
 _gt_help () {
   echo "$(tput setaf 1) ** Missing Flag Option ** \n"
   echo -n "$(tput setaf 2) gt"
