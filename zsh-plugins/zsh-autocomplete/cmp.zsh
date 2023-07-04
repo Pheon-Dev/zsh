@@ -14,7 +14,7 @@ zstyle ':completion:*:messages' format $'%{\e[0;37m%}--  %d --'
 bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
 bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+# zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 zstyle ':completion:*:approximate:'                 max-errors 'reply=( $((($#PREFIX+$#SUFFIX)/3 )) numeric )' # allow one error for every three characters typed in approximate completer
 zstyle ':completion:*:complete:-command-::commands' ignored-patterns '*\~' # don't complete backup files as executables
@@ -25,8 +25,8 @@ zstyle ':completion:*:history-words'                list false                  
 zstyle ':completion:*:history-words'                menu yes                            # activate menu
 zstyle ':completion:*:history-words'                remove-all-dups yes                 # ignore duplicate entries
 zstyle ':completion:*:history-words'                stop yes                            #
-zstyle ':completion:*'                              matcher-list 'm:{a-z}={A-Z}'        # match uppercase from lowercase
-zstyle ':completion:*:matches'                      group 'yes'                         # separate matches into groups
+# zstyle ':completion:*'                              matcher-list 'm:{a-z}={A-Z}'        # match uppercase from lowercase
+# zstyle ':completion:*:matches'                      group 'yes'                         # separate matches into groups
 zstyle ':completion:*'                              group-name ''
 if [[ -z "$NOMENU" ]] ; then
   zstyle ':completion:*'                            menu select=2                       # if there are more than 5 options allow selecting from a menu
