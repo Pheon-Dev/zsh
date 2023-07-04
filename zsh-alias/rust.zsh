@@ -18,4 +18,5 @@ alias re="rustc --explain"
 
 # manta
 alias cwt='cargo-watch -q -c -w examples/ -x "run --example quick_dev"'
-alias cwr="cargo-watch -q -c -w src/ -w .cargo/ -x run"
+# alias cwr="cargo-watch -q -c -w src/ -w .cargo/ -x run"
+alias cwr="cargo-watch -q -c -w src/ -x run"
