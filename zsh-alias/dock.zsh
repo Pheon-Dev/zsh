@@ -10,7 +10,7 @@ dock () {
     echo "$(tput setaf 3)   [ -u, --up     ] start up a db on docker"
     echo "$(tput setaf 3)   [ -i, --inspect] inspect postgres database"
 
-    return 1
+    return 0
   fi
 
   if [[ $1 == "-t" || $1 == "--status" ]]; then

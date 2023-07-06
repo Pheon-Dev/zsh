@@ -31,7 +31,7 @@ glb () {
     echo " "
     if [[ $1 == "" ]]; then
       _gt_help
-        return 1
+        return 0
     fi
 
     repo_name=""
@@ -45,7 +45,7 @@ glb () {
     if [[ $1 == "--init" || $1 == "-i" ]]; then
       if [[ $2 == "" ]]; then
         _gt_repo
-          return 1
+          return 0
       fi
 
       repo_name=$2
@@ -68,7 +68,7 @@ gt () {
     echo " "
     if [[ $1 == "" ]]; then
       _gt_help
-        return 1
+        return 0
     fi
 
     repo_name=""
@@ -82,7 +82,7 @@ gt () {
     if [[ $1 == "--init" || $1 == "-i" ]]; then
       if [[ $2 == "" ]]; then
         _gt_repo
-          return 1
+          return 0
       fi
 
       repo_name=$2

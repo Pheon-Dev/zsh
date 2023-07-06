@@ -1,5 +1,6 @@
 #!/bin/zsh zsh
 
+# --bind "alt-w:unbind(change,alt-w)+change-prompt(2. fzf> )+enable-search+clear-query" \
 frg() {
   RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
   INITIAL_QUERY="${*:-}"
@@ -8,7 +9,11 @@ frg() {
     --bind "change:reload:sleep 0.1; $RG_PREFIX {q} || true" \
     --delimiter : \
     --preview 'bat --color=always {1} --highlight-line {2}' \
-    --bind 'enter:become(nvim {1} +{2})'
+    --bind 'enter:execute(nvim {1} +{2})' \
+    --bind "change:reload:sleep 0.1; $RG_PREFIX {q} || true" \
+    --color "hl:-1:underline,hl+:-1:underline:reverse" \
+
+  return 0
 }
 
 ff () {
