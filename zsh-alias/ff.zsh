@@ -20,24 +20,30 @@ ff () {
   echo " "
   if [[ $1 == "" ]]; then
     echo "$(tput setaf 3)   [ -c, --current] from current working directory"
-    echo "$(tput setaf 3)   [ -g, --grep] search for a text"
+    echo "$(tput setaf 3)   [ -g, --grep   ] search for a text"
     echo "$(tput setaf 3)   [ -h, --home   ] from $HOME"
+    echo "$(tput setaf 3)   [ -e, --edit   ] edit file | folder"
     echo " "
     return 0
   fi
-  goto () {
+
+  goto() {
     cd $(fd --type directory -H --strip-cwd-prefix --follow --exclude '.git*' -E '.yarn' -E '.rustup' -E 'go/pkg/mod/*' -E '.cargo/registry/*' -E '.cache' -E '/home/linuxbrew' -E 'node_modules' -E 'targets' | fzf)
-    clear
-    return 0
   }
+
   if [[ $1 == "-c" || $1 == "--current" ]]; then
     goto
   fi
+  if [[ $1 == "-e" || $1 == "--edit" ]]; then
+    fd --type directory -H --strip-cwd-prefix --follow --exclude '.git*' -E '.yarn' -E '.rustup' -E 'go/pkg/mod/*' -E '.cargo/registry/*' -E '.cache' -E '/home/linuxbrew' -E 'node_modules' -E 'targets' | fzf
+  fi
   if [[ $1 == "-h" || $1 == "--home" ]]; then
-    cd ~
+    cd
     goto
   fi
   if [[ $1 == "-g" || $1 == "--grep" ]]; then
     frg
   fi
+  # clear
+  return 0
 }
