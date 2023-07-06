@@ -9,7 +9,7 @@ export FZF_DEFAULT_OPTS="\
         (exa --icons -T --color=always --group-directories-first {} || tree -C {}) \
       ) || \
       echo {} 2> /dev/null | head -200' \
-  --preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
+  --preview-window 'up,60%,border,+{2}+3/3,~3' \
   --ansi --header 'Search for a file or folder' \
   --delimiter : \
   --prompt '  ' \
@@ -33,6 +33,7 @@ ff () {
   clear
   return 1
 }
+
 # UB_PID_FILE="/tmp/.$(uuidgen)"
 # ueberzugpp layer --no-stdin --silent --use-escape-codes --pid-file $UB_PID_FILE
 # UB_PID=$(cat $UB_PID_FILE)
