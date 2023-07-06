@@ -25,15 +25,17 @@ ff () {
     echo " "
     return 0
   fi
-  if [[ $1 == "-c" || $1 == "--current" ]]; then
-    cd $(fd --type directory -H --strip-cwd-prefix --follow --exclude '.git*' | fzf)
+  goto () {
+    cd $(fd --type directory -H --strip-cwd-prefix --follow --exclude '.git*' -E '.yarn' -E '.rustup' -E 'go/pkg/mod/*' -E '.cargo/registry/*' -E '.cache' -E '/home/linuxbrew' -E 'node_modules' -E 'targets' | fzf)
     clear
     return 0
+  }
+  if [[ $1 == "-c" || $1 == "--current" ]]; then
+    goto
   fi
   if [[ $1 == "-h" || $1 == "--home" ]]; then
-    cd ~ && cd $(fd --type directory -H --strip-cwd-prefix --follow --exclude '.git*' | fzf)
-    clear
-    return 0
+    cd ~
+    goto
   fi
   if [[ $1 == "-g" || $1 == "--grep" ]]; then
     frg
