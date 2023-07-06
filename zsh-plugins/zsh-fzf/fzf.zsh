@@ -14,8 +14,8 @@ export FZF_DEFAULT_OPTS="\
   --header 'CTRL-H: Directories / CTRL-L: Files' \
   --delimiter : \
   --prompt '  ' \
-  --bind 'ctrl-h:change-prompt(Directories> )+reload(fd --type directory --hidden --follow --exclude \".git*\")' \
-  --bind 'ctrl-l:change-prompt(Files> )+reload(fd --type file --hidden --follow --exclude \".git*\")'\
+  --bind 'ctrl-h:change-prompt( )+reload(fd --type directory --hidden --follow --exclude \".git*\")' \
+  --bind 'ctrl-l:change-prompt( )+reload(fd --type file --hidden --follow --exclude \".git*\")'\
   --bind 'alt-i:execute(cd {} && nvim || nvim {})' \
   --color=fg:#c0caf5,bg:#21222c,hl:#bd93f9,border:#44475a \
   --color=fg+:#c0caf5,bg+:#21222c,hl+:#bd93f9 \
