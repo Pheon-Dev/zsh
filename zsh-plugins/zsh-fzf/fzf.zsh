@@ -10,7 +10,8 @@ export FZF_DEFAULT_OPTS="\
       ) || \
       echo {} 2> /dev/null | head -200' \
   --preview-window 'up,60%,border,+{2}+3/3,~3' \
-  --ansi --header 'Search for a file or folder' \
+  --ansi \
+  --header 'CTRL-H: Directories / CTRL-L: Files' \
   --delimiter : \
   --prompt '  ' \
   --bind 'ctrl-h:change-prompt(Directories> )+reload(fd --type directory --hidden --follow --exclude \".git*\")' \
@@ -24,12 +25,11 @@ export FZF_DEFAULT_OPTS="\
 
 ff () {
   if [[ $1 == "-c" || $1 == "--current" ]]; then
-  cd $(fd -H --strip-cwd-prefix --follow --exclude '.git*' | fzf)
-  clear
-  return 1
+    cd $(fd --type directory -H --strip-cwd-prefix --follow --exclude '.git*' | fzf)
+    clear
+    return 1
   fi
-  cd
-  cd $(fd -H --strip-cwd-prefix --follow --exclude '.git*' | fzf)
+  cd ~ && cd $(fd --type directory -H --strip-cwd-prefix --follow --exclude '.git*' | fzf)
   clear
   return 1
 }
