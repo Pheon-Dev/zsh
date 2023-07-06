@@ -13,9 +13,9 @@ export FZF_DEFAULT_OPTS="\
   --ansi --header 'Search for a file or folder' \
   --delimiter : \
   --prompt '  ' \
-  --bind 'ctrl-d:change-prompt(Directories> )+reload(fd --type directory --hidden --follow --exclude \".git*\")' \
-  --bind 'ctrl-s:change-prompt(Files> )+reload(fd --type file --hidden --follow --exclude \".git*\")'\
-  --bind 'alt-i:execute(cd {} && nvim || nvim {})'
+  --bind 'ctrl-h:change-prompt(Directories> )+reload(fd --type directory --hidden --follow --exclude \".git*\")' \
+  --bind 'ctrl-l:change-prompt(Files> )+reload(fd --type file --hidden --follow --exclude \".git*\")'\
+  --bind 'alt-i:execute(cd {} && nvim || nvim {})' \
   --color=fg:#c0caf5,bg:#21222c,hl:#bd93f9,border:#44475a \
   --color=fg+:#c0caf5,bg+:#21222c,hl+:#bd93f9 \
   --color=info:#f1fa8c,prompt:#50fa7b,pointer:#ff79c6 \
