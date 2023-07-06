@@ -15,6 +15,7 @@ alias crb="cargo bench"
 alias crd="cargo doc"
 
 alias re="rustc --explain"
+alias ytd="yarn tauri dev"
 
 # manta
 alias cwt='cargo-watch -q -c -w examples/ -x "run --example quick_dev"'
