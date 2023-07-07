@@ -10,12 +10,11 @@ export FZF_DEFAULT_OPTS="\
       ) || \
       echo {} 2> /dev/null | head -200' \
   --preview-window 'up,60%,border,+{2}+3/3,~3' \
-  --ansi \
-  --header '[c-d]:   Directories | [c-f]:  Files' \
+  --ansi --header 'Search for a  file [c-f] |  directory [c-d] :' \
   --delimiter : \
-  --prompt '  ' \
-  --bind 'ctrl-d:change-prompt( )+reload(fd --type directory --hidden --follow --exclude \".git*\")' \
-  --bind 'ctrl-f:unbind(change,ctrl-f)+change-prompt( )+reload(fd --type file --hidden --follow --exclude \".git*\")'\
+  --ansi \
+  --bind 'ctrl-d:change-prompt(Directory  : )+reload(fd --type directory --hidden --follow --exclude \".git*\")' \
+  --bind 'ctrl-f:change-prompt(File  : )+reload(fd --type file --hidden --follow --exclude \".git*\")'\
   --bind 'ctrl-l:execute(cd {} 2>/dev/null && nvim || nvim {})' \
   --bind 'alt-i:execute(nvim --server ~/.cache/nvim/server.pipe --remote ~/{})' \
   --bind 'ctrl-h:abort' \
