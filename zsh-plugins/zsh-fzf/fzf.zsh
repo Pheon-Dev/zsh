@@ -12,7 +12,7 @@ export FZF_DEFAULT_OPTS="\
   --preview-window 'up,60%,border,+{2}+3/3,~3' \
   --ansi --header 'Search for a  file [c-f] |  directory [c-d] :' \
   --delimiter : \
-  --ansi \
+  --prompt 'Search   : ' \
   --bind 'ctrl-d:change-prompt(Directory  : )+reload(fd --type directory --hidden --follow --exclude \".git*\")' \
   --bind 'ctrl-f:change-prompt(File  : )+reload(fd --type file --hidden --follow --exclude \".git*\")'\
   --bind 'ctrl-l:execute(cd {} 2>/dev/null && nvim || nvim {})' \
