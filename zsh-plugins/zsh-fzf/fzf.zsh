@@ -16,6 +16,7 @@ export FZF_DEFAULT_OPTS="\
   --bind 'ctrl-d:change-prompt(Directory  : )+reload(fd --type directory --hidden --follow --exclude \".git*\")' \
   --bind 'ctrl-f:change-prompt(File  : )+reload(fd --type file --hidden --follow --exclude \".git*\")'\
   --bind 'ctrl-l:execute(cd {} 2>/dev/null && nvim || nvim {})' \
+  --bind 'alt-o:execute(cd {} 2>/dev/null)' \
   --bind 'alt-i:execute(nvim --server ~/.cache/nvim/server.pipe --remote ~/{})' \
   --bind 'ctrl-h:abort' \
   --color=fg:#c0caf5,bg:#21222c,hl:#bd93f9,border:#44475a \
@@ -42,20 +43,29 @@ frg() {
   return 0
 }
 
-ff () {
-  echo " "
-  if [[ $1 == "-h" || $1 == "--help" ]]; then
+fdf() {
+  fd --type directory -H --strip-cwd-prefix --follow --exclude '.git*' -E '.yarn' -E '.rustup' -E 'go/pkg/mod/*' -E '.cargo/registry/*' -E '.cache' -E '/home/linuxbrew' -E 'node_modules' -E 'targets' | fzf 
+}
+
+ff() {
+  if [[ $1 == "-h" || $1 == "--help" || $1 == "" ]]; then
+    echo " "
     echo "$(tput setaf 3)   [ -g, --grep   ] search for a text"
     echo "$(tput setaf 3)   [ -h, --help   ] help"
+    echo "$(tput setaf 3)   [ -e, --edit   ] edit"
+    echo "$(tput setaf 3)   [ -c, --cd     ] cd"
     echo " "
     return 0
   fi
   cd
+  if [[ $1 == "-e" || $1 == "--edit" ]]; then
+    fdf
+  fi
   if [[ $1 == "-g" || $1 == "--grep" ]]; then
     frg
   fi
-  if [[ $1 == "" ]]; then
-    fd --type directory -H --strip-cwd-prefix --follow --exclude '.git*' -E '.yarn' -E '.rustup' -E 'go/pkg/mod/*' -E '.cargo/registry/*' -E '.cache' -E '/home/linuxbrew' -E 'node_modules' -E 'targets' | fzf
+  if [[ $1 == "-c" || $1 == "-cd" ]]; then
+    cd $(fdf)
   fi
   clear
   return 0
