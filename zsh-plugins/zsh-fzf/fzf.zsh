@@ -11,7 +11,7 @@ export FZF_DEFAULT_OPTS="\
       echo {} 2> /dev/null | head -200' \
   --preview-window 'up,60%,border,+{2}+3/3,~3' \
   --ansi \
-  --header 'CTRL-D:   Directories | CTRL-F:  Files' \
+  --header '[c-d]:   Directories | [c-f]:  Files' \
   --delimiter : \
   --prompt '  ' \
   --bind 'ctrl-d:change-prompt( )+reload(fd --type directory --hidden --follow --exclude \".git*\")' \
