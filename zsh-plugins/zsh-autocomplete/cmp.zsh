@@ -28,11 +28,11 @@ zstyle ':completion:*:history-words'                stop yes                    
 # zstyle ':completion:*'                              matcher-list 'm:{a-z}={A-Z}'        # match uppercase from lowercase
 # zstyle ':completion:*:matches'                      group 'yes'                         # separate matches into groups
 zstyle ':completion:*'                              group-name ''
-if [[ -z "$NOMENU" ]] ; then
-  zstyle ':completion:*'                            menu select=2                       # if there are more than 5 options allow selecting from a menu
-else
-  setopt no_auto_menu # don't use any menus at all
-fi
+# if [[ -z "$NOMENU" ]] ; then
+#   zstyle ':completion:*'                            menu select=2                       # if there are more than 5 options allow selecting from a menu
+# else
+#   setopt no_auto_menu # don't use any menus at all
+# fi
 # zstyle -e ':completion:*'                           special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
 zstyle ':completion:*:processes'                    command 'ps -au$USER'               # on processes completion complete all user processes
 zstyle ':completion:*:*:-subscript-:*'              tag-order indexes parameters        # offer indexes before parameters in subscripts
