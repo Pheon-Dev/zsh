@@ -11,6 +11,7 @@ frg() {
     --bind 'enter:execute(nvim {1} +{2})' \
     --bind 'ctrl-l:execute(nvim {1} +{2})' \
     --bind 'ctrl-h:abort' \
+    --pointer ▊ \
     --bind "change:reload:sleep 0.1; $RG_PREFIX {q} || true" \
     --color "hl:-1:underline,hl+:-1:underline:reverse" \
 
