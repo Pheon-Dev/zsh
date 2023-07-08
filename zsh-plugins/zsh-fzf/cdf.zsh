@@ -22,7 +22,6 @@ export FZF_DEFAULT_OPTS="\
   --color=marker:#ff79c6,spinner:#f1fa8c,header:#6272a4
   "
 
-# --bind 'alt-w:unbind(change,alt-w)+change-prompt(2. fzf> )+enable-search+clear-query' \
 fdf() {
   fd --type directory -H --strip-cwd-prefix --follow --exclude '.git*' -E '.yarn' -E '.rustup' -E 'go/pkg/mod/*' -E '.cargo/registry/*' -E '.cache' -E '/home/linuxbrew' -E 'node_modules' -E 'targets' -E 'pouch' | fzf 
 }

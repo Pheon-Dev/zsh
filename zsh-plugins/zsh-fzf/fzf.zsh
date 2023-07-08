@@ -1,5 +1,6 @@
 #!/bin/bash zsh
 # https://github.com/junegunn/fzf/blob/master/ADVANCED.md
+# --bind 'alt-w:unbind(change,alt-w)+change-prompt(2. fzf> )+enable-search+clear-query' \
 
 export FZF_DEFAULT_OPTS="\
   --preview '( \
@@ -17,11 +18,20 @@ export FZF_DEFAULT_OPTS="\
   --bind 'ctrl-f:change-prompt(File  : )+reload(fd --type file --hidden --follow --exclude \".git*\")'\
   --bind 'ctrl-l:execute(cd {} 2>/dev/null && nvim --listen ~/.cache/nvim/server.pipe || nvim --server ~/.cache/nvim/server.pipe --remote ~/{})' \
   --bind 'ctrl-h:abort' \
+  --bind 'ctrl-n:preview-down' \
+  --bind 'ctrl-p:preview-up' \
   --color=fg:#c0caf5,bg:#21222c,hl:#bd93f9,border:#44475a \
   --color=fg+:#c0caf5,bg+:#21222c,hl+:#bd93f9 \
   --color=info:#f1fa8c,prompt:#50fa7b,pointer:#ff79c6 \
   --color=marker:#ff79c6,spinner:#f1fa8c,header:#6272a4
 "
+
+export FZF_CTRL_T_OPTS="--height 60% \
+--border sharp \
+--layout reverse \
+--prompt '∷ ' \
+--pointer ▶ \
+--marker ⇒"
 
 ff() {
   if [[ $1 == "-h" || $1 == "--help" || $1 == "" ]]; then
