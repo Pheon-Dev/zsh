@@ -10,7 +10,7 @@ export FZF_DEFAULT_OPTS="\
       ) || \
       echo {} 2> /dev/null | head -200' \
   --preview-window 'up,60%,border,+{2}+3/3,~3' \
-  --ansi --header 'Search for a  file [c-f] |  directory [c-d] :' \
+  --ansi --header ' file [c-f] |  directory [c-d] |  nvim [c-l] |  quit [c-h] :' \
   --delimiter : \
   --prompt 'Search   : ' \
   --bind 'ctrl-d:change-prompt(Directory  : )+reload(fd --type directory --hidden --follow --exclude \".git*\")' \
@@ -42,7 +42,7 @@ frg() {
 }
 
 fdf() {
-  fd --type directory -H --strip-cwd-prefix --follow --exclude '.git*' -E '.yarn' -E '.rustup' -E 'go/pkg/mod/*' -E '.cargo/registry/*' -E '.cache' -E '/home/linuxbrew' -E 'node_modules' -E 'targets' | fzf 
+  fd --type directory -H --strip-cwd-prefix --follow --exclude '.git*' -E '.yarn' -E '.rustup' -E 'go/pkg/mod/*' -E '.cargo/registry/*' -E '.cache' -E '/home/linuxbrew' -E 'node_modules' -E 'targets' -E 'pouch' | fzf 
 }
 
 ff() {
