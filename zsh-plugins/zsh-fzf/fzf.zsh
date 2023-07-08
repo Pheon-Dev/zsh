@@ -15,9 +15,7 @@ export FZF_DEFAULT_OPTS="\
   --prompt 'Search   : ' \
   --bind 'ctrl-d:change-prompt(Directory  : )+reload(fd --type directory --hidden --follow --exclude \".git*\")' \
   --bind 'ctrl-f:change-prompt(File  : )+reload(fd --type file --hidden --follow --exclude \".git*\")'\
-  --bind 'ctrl-l:execute(cd {} 2>/dev/null && nvim || nvim {})' \
-  --bind 'alt-o:execute(cd {} 2>/dev/null)' \
-  --bind 'alt-i:execute(nvim --server ~/.cache/nvim/server.pipe --remote ~/{})' \
+  --bind 'ctrl-l:execute(cd {} 2>/dev/null && nvim --listen ~/.cache/nvim/server.pipe || nvim --server ~/.cache/nvim/server.pipe --remote ~/{})' \
   --bind 'ctrl-h:abort' \
   --color=fg:#c0caf5,bg:#21222c,hl:#bd93f9,border:#44475a \
   --color=fg+:#c0caf5,bg+:#21222c,hl+:#bd93f9 \
@@ -67,6 +65,7 @@ ff() {
   if [[ $1 == "-c" || $1 == "-cd" ]]; then
     cd $(fdf)
   fi
+  rm -rf ~/.cache/nvim/server.pipe
   clear
   return 0
 }
