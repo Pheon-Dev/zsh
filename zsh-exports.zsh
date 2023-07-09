@@ -9,11 +9,12 @@ setxkbmap -option "caps:escape"
 # setxkbmap -option "ctrl:swap_lalt_lctl"
 # xcape -e 'Control_L=Escape'
 
-eval "$(zoxide init zsh)"
-. /usr/share/z/z.sh
+if [[ ! "$OSTYPE" =~ ^freebsd ]]; then
+  eval "$(zoxide init zsh)"
+  . /usr/share/z/z.sh
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 export PIP_BREAK_SYSTEM_PACKAGES=1
 export PATH="$HOME/.cargo/bin:$PATH"
 
