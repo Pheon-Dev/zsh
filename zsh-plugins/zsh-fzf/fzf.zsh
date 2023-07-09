@@ -2,7 +2,7 @@
 # https://github.com/junegunn/fzf/blob/master/ADVANCED.md
 # --bind 'alt-w:unbind(change,alt-w)+change-prompt(2. fzf> )+enable-search+clear-query' \
 
-IGNORE=.git*,.yarn,.rustup,go/pkg/mod/*,.cargo/*,.cache,/home/linuxbrew,node_modules,targets,Downloads/pouch
+export IGNORE=.git*,.yarn,.rustup,go/pkg/mod/*,.cargo/*,.cache,/home/linuxbrew,node_modules,targets,Downloads/pouch
 
 fdir() {
   fd --type directory -H --strip-cwd-prefix --follow --exclude "{$IGNORE}"
@@ -17,12 +17,13 @@ export FZF_DEFAULT_OPTS="\
       ) || \
       echo {} 2> /dev/null | head -200' \
   --preview-window 'up,60%,border,+{2}+3/3,~3' \
-  --ansi --header ' file [c-f] |  directory [c-d] |  nvim [c-l] |  quit [c-h] :' \
+  --ansi \
   --delimiter : \
   --prompt 'Search   : ' \
+  --header ' file [c-f] |  directory [c-d] | ⏎ accept [c-l] |  quit [c-h] :' \
   --bind 'ctrl-d:change-prompt(Directory  : )+reload(fd --type directory -H --strip-cwd-prefix --follow --exclude \"{$IGNORE}\")' \
   --bind 'ctrl-f:change-prompt(File  : )+reload(fd --type file --hidden --follow --exclude \"{$IGNORE}\")'\
-  --bind 'ctrl-l:execute(cd {} 2>/dev/null && nvim --listen ~/.cache/nvim/server.pipe || nvim --server ~/.cache/nvim/server.pipe --remote ~/{})' \
+  --bind 'ctrl-l:accept' \
   --bind 'ctrl-h:abort' \
   --bind 'ctrl-n:preview-down' \
   --bind 'ctrl-p:preview-up' \
@@ -56,13 +57,13 @@ frg() {
 
 fdf() {
   fdir | fzf \
+    --header ' file [c-f] |  directory [c-d] |  nvim [c-l] |  quit [c-h] :' \
     --bind 'ctrl-l:execute(cd {} 2>/dev/null && nvim --listen ~/.cache/nvim/server.pipe || nvim --server ~/.cache/nvim/server.pipe --remote ~/{})'\
     --preview-label '[edit] Results Preview'
 }
 
 cdf() {
   fdir | fzf \
-    --bind 'ctrl-l:accept' \
     --preview-label '[cd] Results Preview'
 }
 
