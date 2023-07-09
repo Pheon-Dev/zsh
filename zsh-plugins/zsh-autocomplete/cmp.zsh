@@ -13,6 +13,19 @@ zstyle ':completion:*:messages' format $'%{\e[0;37m%}--  %d --'
 
 bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
 bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
+# bindkey -M menuselect '\r' .accept-line
+zstyle ':autocomplete:*' add-space \
+    executables aliases functions builtins reserved-words commands
+# zstyle ':autocomplete:*' default-context history-incremental-search-backward
+zstyle ':autocomplete:*' ignored-input '..##'
+# Autocompletion
+zstyle -e ':autocomplete:list-choices:*' list-lines 'reply=( $(( LINES / 3 )) )'
+
+# Override history search.
+zstyle ':autocomplete:history-incremental-search-backward:*' list-lines 8
+
+# History menu.
+# zstyle ':autocomplete:history-search-backward:*' list-lines 256
 
 # zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
