@@ -18,8 +18,6 @@ unsetopt listbeep
 
   builtin autoload +X -Uz ~autocomplete/Functions/**/.autocomplete:*~*.zwc(D-:)
   .autocomplete:__main__ "$@"
-
-  source "$HOME/.config/zsh/zsh-plugins/zsh-autocomplete/cmp.zsh"
 } 
 
 # () {
@@ -33,6 +31,3 @@ unsetopt listbeep
 #       bindkey "$key" down-line-or-history
 #    done
 # }
-
-bindkey "^p" up-line-or-history
-bindkey "^n" down-line-or-history
