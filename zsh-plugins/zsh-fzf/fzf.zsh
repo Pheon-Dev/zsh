@@ -2,6 +2,12 @@
 # https://github.com/junegunn/fzf/blob/master/ADVANCED.md
 # --bind 'alt-w:unbind(change,alt-w)+change-prompt(2. fzf> )+enable-search+clear-query' \
 
+IGNORE=.git*,.yarn,.rustup,go/pkg/mod/*,.cargo/*,.cache,/home/linuxbrew,node_modules,targets,Downloads/pouch
+
+fdir() {
+  fd --type directory -H --strip-cwd-prefix --follow --exclude "{$IGNORE}"
+}
+
 export FZF_DEFAULT_OPTS="\
   --preview '( \
     [[ -f {} ]] && \
@@ -14,19 +20,51 @@ export FZF_DEFAULT_OPTS="\
   --ansi --header ' file [c-f] |  directory [c-d] |  nvim [c-l] |  quit [c-h] :' \
   --delimiter : \
   --prompt 'Search   : ' \
-  --bind 'ctrl-d:change-prompt(Directory  : )+reload(fd --type directory --hidden --follow --exclude \".git*\")' \
-  --bind 'ctrl-f:change-prompt(File  : )+reload(fd --type file --hidden --follow --exclude \".git*\")'\
+  --bind 'ctrl-d:change-prompt(Directory  : )+reload(fd --type directory -H --strip-cwd-prefix --follow --exclude \"{$IGNORE}\")' \
+  --bind 'ctrl-f:change-prompt(File  : )+reload(fd --type file --hidden --follow --exclude \"{$IGNORE}\")'\
   --bind 'ctrl-l:execute(cd {} 2>/dev/null && nvim --listen ~/.cache/nvim/server.pipe || nvim --server ~/.cache/nvim/server.pipe --remote ~/{})' \
   --bind 'ctrl-h:abort' \
   --bind 'ctrl-n:preview-down' \
   --bind 'ctrl-p:preview-up' \
   --pointer ▊ \
   --marker ⇒ \
+  --exact \
+  --preview-label 'Results Preview' \
+  --color=label:#ffff0f \
   --color=fg:#c0caf5,bg:#21222c,hl:#bd93f9,border:#44475a \
   --color=fg+:#c0caf5,bg+:#21222c,hl+:#bd93f9 \
   --color=info:#f1fa8c,prompt:#50fa7b,pointer:#ff79c6 \
   --color=marker:#ff79c6,spinner:#f1fa8c,header:#6272a4
 "
+
+frg() {
+  RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
+  INITIAL_QUERY="${*:-}"
+  : | fzf --ansi --disabled --query "$INITIAL_QUERY" \
+    --bind "start:reload:$RG_PREFIX {q}" \
+    --bind "change:reload:sleep 0.1; $RG_PREFIX {q} || true" \
+    --delimiter : \
+    --preview 'bat --color=always {1} --highlight-line {2}' \
+    --bind 'enter:execute(nvim {1} +{2})' \
+    --bind 'ctrl-l:execute(nvim {1} +{2})' \
+    --preview-label '[ripgrep] Results Preview' \
+    --bind "change:reload:sleep 0.1; $RG_PREFIX {q} || true" \
+    --color "hl:-1:underline,hl+:-1:underline:reverse" \
+
+  return 0
+}
+
+fdf() {
+  fdir | fzf \
+    --bind 'ctrl-l:execute(cd {} 2>/dev/null && nvim --listen ~/.cache/nvim/server.pipe || nvim --server ~/.cache/nvim/server.pipe --remote ~/{})'\
+    --preview-label '[edit] Results Preview'
+}
+
+cdf() {
+  fdir | fzf \
+    --bind 'ctrl-l:accept' \
+    --preview-label '[cd] Results Preview'
+}
 
 ff() {
   if [[ $1 == "-h" || $1 == "--help" || $1 == "" ]]; then
@@ -41,13 +79,13 @@ ff() {
 
   cd
   if [[ $1 == "-e" || $1 == "--edit" ]]; then
-    source $HOME/.config/zsh/zsh-plugins/zsh-fzf/fdf.zsh
+    fdf
   fi
   if [[ $1 == "-g" || $1 == "--grep" ]]; then
-    source $HOME/.config/zsh/zsh-plugins/zsh-fzf/frg.zsh
+    frg
   fi
   if [[ $1 == "-c" || $1 == "-cd" ]]; then
-    source $HOME/.config/zsh/zsh-plugins/zsh-fzf/cdf.zsh
+    cd $(cdf)
   fi
   rm -rf ~/.cache/nvim/server.pipe
   clear
