@@ -27,8 +27,8 @@ export FZF_DEFAULT_OPTS="\
   --bind 'ctrl-h:abort' \
   --bind 'ctrl-n:preview-down' \
   --bind 'ctrl-p:preview-up' \
-  --pointer  \
-  --marker ▊ \
+  --pointer ▊ \
+  --marker  \
   --exact \
   --preview-label 'Results Preview' \
   --color=label:#ffff0f \
