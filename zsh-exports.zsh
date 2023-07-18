@@ -1,10 +1,9 @@
 #!/bin/bash zsh
-# zmodload zsh/zprof
+# zmodload zsh/zprof # time-zsh
 
 # https://wiki.archlinux.org/title/Xorg/Keyboard_configuration
 # $ grep -E "(ctrl|caps):" /usr/share/X11/xkb/rules/base.lst
 setxkbmap -option "caps:escape"
-# setxkbmap -option "caps:ctrl_modifier"
 # setxkbmap -option "caps:ctrl_modifier"
 # setxkbmap -option "ctrl:swap_lalt_lctl"
 # xcape -e 'Control_L=Escape'
