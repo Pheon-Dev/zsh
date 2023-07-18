@@ -1,5 +1,6 @@
 #!/bin/bash zsh
 # https://github.com/junegunn/fzf/blob/master/ADVANCED.md
+# https://thevaluable.dev/practical-guide-fzf-example/
 # --bind 'alt-w:unbind(change,alt-w)+change-prompt(2. fzf> )+enable-search+clear-query' \
 
 export IGNORE=.git*,.yarn,.rustup,go/pkg/mod/*,.cargo/*,.cache,/home/linuxbrew,node_modules,targets,Downloads/pouch
@@ -11,13 +12,12 @@ fdir() {
 export FZF_DEFAULT_OPTS="\
   --preview '( \
     [[ -f {} ]] && \
-      (bat --style=numbers --color=always {} || cat {})) || \
+      (bat --style=numbers --color=always --theme=Dracula --pager=never {} || cat {})) || \
       ([[ -d {} ]] && \
         (exa --icons -T --color=always --group-directories-first {} || tree -C {}) \
       ) || \
       echo {} 2> /dev/null | head -200' \
   --preview-window 'up,60%,border,+{2}+3/3,~3' \
-  --ansi \
   --delimiter : \
   --prompt 'Search   : ' \
   --header ' file [c-f] |  directory [c-d] | ⏎ accept [c-l] |  quit [c-h] :' \
@@ -27,6 +27,7 @@ export FZF_DEFAULT_OPTS="\
   --bind 'ctrl-h:abort' \
   --bind 'ctrl-n:preview-down' \
   --bind 'ctrl-p:preview-up' \
+  --bind 'ctrl-v:change-preview-window(right,60%,border,+{2}+3/3,~3|up,60%,border,+{2}+3/3,~3)' \
   --pointer ▊ \
   --marker  \
   --exact \
@@ -45,7 +46,7 @@ frg() {
     --bind "start:reload:$RG_PREFIX {q}" \
     --bind "change:reload:sleep 0.1; $RG_PREFIX {q} || true" \
     --delimiter : \
-    --preview 'bat --color=always {1} --highlight-line {2}' \
+    --preview 'bat --theme=Dracula --pager=never --style=plain --color=always {1} --highlight-line {2}' \
     --bind 'enter:execute(nvim {1} +{2})' \
     --bind 'ctrl-l:execute(nvim {1} +{2})' \
     --preview-label '[ripgrep] Results Preview' \
