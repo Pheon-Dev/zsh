@@ -3,10 +3,10 @@
 # https://thevaluable.dev/practical-guide-fzf-example/
 # --bind 'alt-w:unbind(change,alt-w)+change-prompt(2. fzf> )+enable-search+clear-query' \
 
-export IGNORE=.git*,.yarn,.rustup,go/pkg/mod/*,.cargo/*,.cache,/home/linuxbrew,node_modules,targets,Downloads/pouch
+export IGNORE=.git*,.yarn,.rustup,go/pkg/mod/*,.cargo/*,.cache,/home/linuxbrew,node_modules/*,targets,Downloads/pouch,wallet-app/node_modules,kplc-app/node_modules
 
 fdir() {
-  fd --type directory -H --strip-cwd-prefix --follow --exclude "{$IGNORE}"
+  fd --type directory -HE="{$IGNORE}" --strip-cwd-prefix --follow
 }
 
 export FZF_DEFAULT_OPTS="\
@@ -31,6 +31,7 @@ export FZF_DEFAULT_OPTS="\
   --pointer ▊ \
   --marker  \
   --exact \
+  --cycle \
   --preview-label 'Results Preview' \
   --color=label:#ffff0f \
   --color=fg:#c0caf5,bg:#21222c,hl:#bd93f9,border:#44475a \
