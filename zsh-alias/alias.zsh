@@ -158,6 +158,7 @@ alias fsg="flameshot gui -p ~/Downloads/Picture"
 alias psc="pscale"
 
 alias vercel="$HOME/.yarn/bin/vercel"
+alias firebase="$HOME/.yarn/bin/firebase"
 
 # PRISMA
 alias prisma="$HOME/.yarn/bin/prisma"
@@ -190,3 +191,4 @@ alias lout="sudo systemctl restart ly.service"
 alias nitro="nitrogen --restore > /dev/null 2>&1"
 
 alias anime="$HOME/.local/bin/anime dl"
+alias eww="$HOME/rust/eww/target/release/eww"
