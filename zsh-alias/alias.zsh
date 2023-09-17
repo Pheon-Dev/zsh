@@ -1,12 +1,12 @@
 #!/bin/bash zsh
 
-# EXA
-alias ls="exa --icons --color=always --group-directories-first"
-alias la="exa --icons -abghHliS --color=always --group-directories-first"
-alias l="exa --icons -la --color=always --group-directories-first"
-alias ll="exa --icons -a --color=always --group-directories-first"
-alias lt="exa --icons -T --color=always --group-directories-first"
-alias l.='exa -a | egrep "^\."'
+# eza
+alias ls="eza --icons --color=always --group-directories-first"
+alias la="eza --icons -abghHliS --color=always --group-directories-first"
+alias l="eza --icons -la --color=always --group-directories-first"
+alias ll="eza --icons -a --color=always --group-directories-first"
+alias lt="eza --icons -T --color=always --group-directories-first"
+alias l.='eza -a | egrep "^\."'
 
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"

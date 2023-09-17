@@ -14,7 +14,7 @@ export FZF_DEFAULT_OPTS="\
     [[ -f {} ]] && \
       (bat --style=numbers --color=always --theme=TwoDark --pager=never {} || cat {})) || \
       ([[ -d {} ]] && \
-        (exa --icons -T --color=always --group-directories-first {} || tree -C {}) \
+        (eza --icons -T --color=always --group-directories-first {} || tree -C {}) \
       ) || \
       echo {} 2> /dev/null | head -200' \
   --preview-window 'up,60%,border,+{2}+3/3,~3' \
