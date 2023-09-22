@@ -1,6 +1,11 @@
 #!/bin/bash zsh
 # zmodload zsh/zprof # time-zsh
 
+export EDITOR='nvim'
+export VISUAL='nvim'
+
+VIM_MODE_VICMD_KEY='jj'
+
 if [[ ! "$OSTYPE" =~ ^freebsd ]]; then
   eval "$(zoxide init zsh)"
   . /usr/share/z/z.sh

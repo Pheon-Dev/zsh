@@ -104,6 +104,10 @@ alias zfg="cd $HOME/.config/zsh && $EDITOR"
 alias jfg="cd $HOME/.config/zellij && $EDITOR"
 alias bfg="cd $HOME/.config/dwmbar && $EDITOR"
 
+# zinit self-update
+# zinit update
+# zinit update --parallel
+# zinit update --parallel 40
 
 # YAY
 alias yaya="yay -Sua --noconfirm"
