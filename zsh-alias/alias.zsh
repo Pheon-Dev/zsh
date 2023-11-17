@@ -103,6 +103,7 @@ alias vfg="cd $HOME/.vim && vim"
 alias zfg="cd $HOME/.config/zsh && $EDITOR"
 alias jfg="cd $HOME/.config/zellij && $EDITOR"
 alias bfg="cd $HOME/.config/dwmbar && $EDITOR"
+alias wfg="cd $HOME/.config/wezterm && $EDITOR"
 
 # zinit self-update
 # zinit update
@@ -156,7 +157,7 @@ alias yi="yarn init"
 alias yx="yarn create next-app --typescript" # alt [ynx app-name]
 alias ye="yarn add --ignore-engines"
 
-alias f="fuck"
+# alias f="fuck"
 alias fsg="flameshot gui -p ~/Downloads/Picture"
 alias psc="pscale"
 
@@ -179,7 +180,7 @@ alias fsh="shfmt -l -w ."
 alias sls="slides"
 alias sl="slock"
 
-alias f="flamingo && clear"
+alias fl="flamingo && clear"
 alias pk="peek"
 
 alias h="helix"

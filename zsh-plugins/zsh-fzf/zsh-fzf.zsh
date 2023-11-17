@@ -1,9 +1,9 @@
-#!/bin/bash zsh
+#!/bin/dash sh
 # https://github.com/junegunn/fzf/blob/master/ADVANCED.md
 # https://thevaluable.dev/practical-guide-fzf-example/
 # --bind 'alt-w:unbind(change,alt-w)+change-prompt(2. fzf> )+enable-search+clear-query' \
 
-export IGNORE=.git*,.yarn,.rustup,go/pkg/mod/*,.cargo/*,.cache,/home/linuxbrew,node_modules/*,targets,Downloads/pouch,wallet-app/node_modules,kplc-app/node_modules,.cache/*,Music,Videos,Pictures,.cargo,Music/*,.nvm,.vercel,.next,.gitmoji,.hyprland,.tmux,.vim/plugged,.vim/autoload,.vim/.git
+export IGNORE=.git*,.yarn,.rustup,go/pkg/mod/*,.cargo/*,.cache,/home/linuxbrew,node_modules/*,targets,Downloads/pouch,wallet-app/node_modules,kplc-app/node_modules,.cache/*,Music,Videos,Pictures,.cargo,Music/*,.nvm,.vercel,.next,.gitmoji,.hyprland,.tmux,.vim/plugged,.vim/autoload,.vim/.git,.m2,.gradle
 
 fdir() {
   fd --type directory -HE="{$IGNORE}" --strip-cwd-prefix --follow
@@ -24,6 +24,7 @@ export FZF_DEFAULT_OPTS="\
   --bind 'ctrl-d:change-prompt(Directory  : )+reload(fd --type directory -H --strip-cwd-prefix --follow --exclude \"{$IGNORE}\")' \
   --bind 'ctrl-f:change-prompt(File  : )+reload(fd --type file --hidden --follow --exclude \"{$IGNORE}\")'\
   --bind 'ctrl-l:accept' \
+  --bind 'ctrl-m:accept' \
   --bind 'ctrl-h:abort' \
   --bind 'ctrl-n:preview-down' \
   --bind 'ctrl-p:preview-up' \
@@ -57,7 +58,7 @@ frg() {
   return 0
 }
 
-fdf() {
+ff() {
   fdir | fzf \
     --header ' file [c-f] |  directory [c-d] |  nvim [c-l] |  quit [c-h] :' \
     --bind 'ctrl-l:execute(cd {} 2>/dev/null && nvim --listen ~/.cache/nvim/server.pipe || nvim --server ~/.cache/nvim/server.pipe --remote ~/{})'\
@@ -68,7 +69,7 @@ cdf() {
   fdir | fzf --preview-label '[cd] Results Preview'
 }
 
-ff() {
+f() {
   if [[ $1 == "-h" || $1 == "--help" || $1 == "" ]]; then
     echo " "
     echo "$(tput setaf 3)   [ -g, --grep   ] search for a text"
@@ -81,7 +82,7 @@ ff() {
 
   cd
   if [[ $1 == "-e" || $1 == "--edit" ]]; then
-    fdf
+    ff
   fi
   if [[ $1 == "-g" || $1 == "--grep" ]]; then
     frg
