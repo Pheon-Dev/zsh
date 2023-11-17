@@ -3,6 +3,20 @@
 # ZELLIJ
 alias zf="zellij edit --floating --"
 alias zr='zellij run --floating --'
+alias zj='zellij'
+alias zl='zellij list-sessions'
+
+zn () {
+  zellij -l ~/.config/zellij/layouts/$1.kdl
+}
+
+zd () {
+  zellij delete-session $1
+}
+
+za () {
+  zellij attach $1
+}
 
 zz () {
   clear
@@ -106,9 +120,9 @@ zz () {
   if [[ $1 == "" || $option == "" ]]; then
     clear
     layout=$(ls "$HOME/.config/zellij/layouts" | awk 'BEGIN { FS = "\n" } { print $1 }' | cut -d "." -f 1)
-    new_session=$(echo $layout | awk 'BEGIN { FS = " " } { print $2 }' | gum filter)
+    new_session=$(echo $layout | awk 'BEGIN { FS = " " } { print $1 }' | gum filter)
     zellij -l $HOME/.config/zellij/layouts/$new_session.kdl --session $new_session
-    clear
+    # clear
   fi
 }
 
