@@ -12,6 +12,13 @@ kb () {
   # xcape -e 'Control_L=Escape'
 }
 
+alias psc="pscale"
+alias psa="pscale auth login"
+alias psi="brew install planetscale/tap/pscale"
+psn () {
+  pscale connect $1 $2
+}
+
 time-zsh () {
   for i in $(seq 1 10); do
     time $SHELL -i -c exit;
