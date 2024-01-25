@@ -9,7 +9,7 @@ VIM_MODE_VICMD_KEY='jj'
 export STARSHIP_CACHE=~/.starship/cache
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
-cp $HOME/.tmux.conf $HOME/.tmux/.tmux.conf
+# cp $HOME/.tmux.conf $HOME/.tmux/.tmux.conf
 cp $HOME/.zshrc $HOME/.config/zsh/.zshrc
 
 if [[ ! "$OSTYPE" =~ ^freebsd ]]; then
