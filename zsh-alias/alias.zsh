@@ -193,5 +193,7 @@ alias notes="cd $HOME/.nb/home && nvim"
 alias lout="sudo systemctl restart ly.service"
 alias nitro="nitrogen --restore > /dev/null 2>&1"
 
+alias cp="rsync -avh --inplace --no-whole-file --info=progress2"
+
 alias anime="$HOME/.local/bin/anime dl"
 alias eww="$HOME/rust/eww/target/release/eww"
