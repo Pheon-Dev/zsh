@@ -20,3 +20,5 @@ zinit ice as"command" from"gh-r" \
           atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
           atpull"%atclone" src"init.zsh"
 zinit light starship/starship
+
+source /home/pheon-dev/.config/broot/launcher/bash/br
