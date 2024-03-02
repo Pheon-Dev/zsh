@@ -22,3 +22,5 @@ zinit ice as"command" from"gh-r" \
 zinit light starship/starship
 
 source /home/pheon-dev/.config/broot/launcher/bash/br
+
+eval "$(atuin init zsh)"
