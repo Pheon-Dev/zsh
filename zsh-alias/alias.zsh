@@ -56,6 +56,9 @@ alias ts="tmux source $HOME/.tmux.conf"
 alias vl="$EDITOR --listen ~/.cache/nvim/server.pipe"
 alias vs="$EDITOR --server ~/.cache/nvim/server.pipe --remote"
 alias v="$EDITOR"
+alias n="neovide"
+
+alias j="just"
 
 alias cat="bat"
 alias man="batman"
