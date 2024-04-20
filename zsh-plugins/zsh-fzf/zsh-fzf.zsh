@@ -3,7 +3,7 @@
 # https://thevaluable.dev/practical-guide-fzf-example/
 # --bind 'alt-w:unbind(change,alt-w)+change-prompt(2. fzf> )+enable-search+clear-query' \
 
-export IGNORE=.git*,.yarn,.rustup,go/pkg/mod/*,.cargo/*,.cache,/home/linuxbrew,node_modules/*,targets,Downloads/pouch,node_modules,kplc-app/node_modules,.cache/*,Music,Videos,Pictures,.cargo,Music/*,.nvm,.vercel,.next,.gitmoji,.hyprland,.tmux,.vim/plugged,.vim/autoload,.vim/.git,.m2,.gradle,.npm,.password-store,.mozilla,exported-keys
+export IGNORE=.git*,.yarn,.rustup,go/pkg/mod/*,.cargo/*,.cache,/home/linuxbrew,node_modules/*,targets,Downloads/pouch,node_modules,kplc-app/node_modules,.cache/*,Music,Videos,Pictures,.cargo,Music/*,.nvm,.vercel,.next,.gitmoji,.hyprland,.vim/plugged,.vim/autoload,.vim/.git,.m2,.gradle,.npm,.password-store,.mozilla,exported-keys
 
 fdir() {
   fd --type directory -HE="{$IGNORE}" --strip-cwd-prefix --follow
@@ -49,8 +49,8 @@ frg() {
     --bind "change:reload:sleep 0.1; $RG_PREFIX {q} || true" \
     --delimiter : \
     --preview 'bat --theme=TwoDark --pager=never --style=plain --color=always {1} --highlight-line {2}' \
-    --bind 'enter:execute(nvim {1} +{2})' \
-    --bind 'ctrl-l:execute(nvim {1} +{2})' \
+    --bind 'enter:execute($EDITOR {1} +{2})' \
+    --bind 'ctrl-l:execute($EDITOR {1} +{2})' \
     --preview-label '[ripgrep] Results Preview' \
     --bind "change:reload:sleep 0.1; $RG_PREFIX {q} || true" \
     --color "hl:-1:underline,hl+:-1:underline:reverse" \
@@ -60,8 +60,8 @@ frg() {
 
 ff() {
   fdir | fzf \
-    --header ' file [c-f] |  directory [c-d] |  nvim [c-l] |  quit [c-h] :' \
-    --bind 'ctrl-l:execute(cd {} 2>/dev/null && nvim --listen ~/.cache/nvim/server.pipe || nvim --server ~/.cache/nvim/server.pipe --remote ~/{})'\
+    --header ' file [c-f] |  directory [c-d] |  $EDITOR [c-l] |  quit [c-h] :' \
+    --bind 'ctrl-l:execute(cd {} 2>/dev/null && $EDITOR --listen ~/.cache/$EDITOR/server.pipe || $EDITOR --server ~/.cache/$EDITOR/server.pipe --remote ~/{})'\
     --preview-label '[edit] Results Preview'
 }
 
@@ -90,7 +90,7 @@ f() {
   if [[ $1 == "-c" || $1 == "-cd" ]]; then
     cd $(cdf)
   fi
-  rm -rf ~/.cache/nvim/server.pipe
+  rm -rf ~/.cache/$EDITOR/server.pipe
   clear
   return 0
 }

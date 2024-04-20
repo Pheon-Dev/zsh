@@ -49,14 +49,18 @@ alias pcon="p10k configure"
 alias t="tmux"
 alias tn="tmux new-session -s"
 alias ta="tmux attach"
-alias tk="tmux kill-server"
+alias tl="tmux ls"
+alias tx="tmux kill-server"
+alias tk="tmux kill-session -t"
 alias ts="tmux source $HOME/.tmux.conf"
 
 # EDITOR
 alias vl="$EDITOR --listen ~/.cache/nvim/server.pipe"
 alias vs="$EDITOR --server ~/.cache/nvim/server.pipe --remote"
 alias v="$EDITOR"
-alias n="neovide"
+alias nvim="$EDITOR"
+alias nv="$EDITOR"
+alias vim="$EDITOR"
 
 alias j="just"
 
@@ -199,4 +203,4 @@ alias nitro="nitrogen --restore > /dev/null 2>&1"
 alias cp="rsync -avh --inplace --no-whole-file --info=progress2"
 
 alias anime="$HOME/.local/bin/anime dl"
-alias eww="$HOME/rust/eww/target/release/eww"
+alias radio="radion"

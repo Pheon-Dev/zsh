@@ -1,8 +1,12 @@
 #!/bin/bash zsh
 # zmodload zsh/zprof # time-zsh
 
-export EDITOR='nvim'
-export VISUAL='nvim'
+# yay -Syu bob
+export EDITOR='$HOME/.local/share/bob/nvim-bin/nvim'
+export VISUAL='$HOME/.local/share/bob/nvim-bin/nvim'
+
+# export EDITOR='nvim'
+# export VISUAL='nvim'
 
 VIM_MODE_VICMD_KEY='jj'
 
@@ -20,6 +24,7 @@ if [[ ! "$OSTYPE" =~ ^freebsd ]]; then
 fi
 # export PIP_BREAK_SYSTEM_PACKAGES=1
 export PATH="$HOME/.cargo/bin:$PATH"
+
 
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
