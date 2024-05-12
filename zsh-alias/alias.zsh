@@ -204,3 +204,4 @@ alias cp="rsync -avh --inplace --no-whole-file --info=progress2"
 
 alias anime="$HOME/.local/bin/anime dl"
 alias radio="radion"
+alias tgc='clear && ~/.yarn/bin/tgc'
