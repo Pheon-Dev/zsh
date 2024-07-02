@@ -24,3 +24,6 @@ zinit light starship/starship
 source /home/pheon-dev/.config/broot/launcher/bash/br
 
 eval "$(atuin init zsh)"
+
+# Shopify Hydrogen alias to local projects
+alias h2='$(npm prefix -s)/node_modules/.bin/shopify hydrogen'

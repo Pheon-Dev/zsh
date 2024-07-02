@@ -6,6 +6,7 @@ pass-export () {
   export OPENAI_API_KEY=$(pass show api-key/bb-token)
   export PASS_PUB_KEY=$(pass show pass/pub-key)
   export INFOBIP_API_KEY=$(pass show infobip/API)
+  export ANTHROPIC_API_KEY=$(pass show anthropic/api)
   # export HUGGING_FACE_HUB_TOKEN=$(pass show hugging-face/token)
 }
 

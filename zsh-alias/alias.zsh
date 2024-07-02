@@ -65,24 +65,28 @@ alias vim="$EDITOR"
 alias j="just"
 
 alias cat="bat"
-alias man="batman"
+alias man="tldr"
 
 # NPNPM
-alias npd="pnpm run dev"
-alias npw="pnpm run watch"
-alias nps="pnpm run start"
-alias npb="npm run build"
-alias npiy="npm init -y"
+alias pnu='sudo pnpm add -g pnpm'
+alias pnb='pnpm run build'
+alias pnt='pnpm create tauri-app'
+alias pnd="pnpm run dev"
+alias pnw="pnpm run watch"
+alias pns="pnpm run start"
 alias pni='pnpm install'
 alias pnid='pnpm add -D'
 alias pnig='pnpm add -g'
-alias npi="npm i"
-alias npid="npm i -D"
-alias npig="npm i --location=global"
-alias npau="npm audit fix"
 alias pnau="pnpm audit fix"
-alias npaf="npm audit fix --force"
 alias pnaf="pnpm audit fix --force"
+
+# alias pnb="npm run build"
+# alias pniy="npm init -y"
+# alias npi="npm i"
+# alias npid="npm i -D"
+# alias npig="npm i --location=global"
+# alias npau="npm audit fix"
+# alias npaf="npm audit fix --force"
 
 alias snapi="snap install"
 
@@ -139,13 +143,9 @@ alias rn='ranger'
 alias ari='aria2c --file-allocation=none -c -x 10 -d . -Z'
 alias tp='toipe -w top10000'
 
-alias pnu='sudo pnpm add -g pnpm'
 alias npu='sudo npm update --location=global'
 
 alias lg='lazygit'
-
-alias pnb='pnpm run build'
-alias pnt='pnpm create tauri-app'
 
 alias deni='deno run -A -r https://fresh.deno.dev'
 alias dens='deno task start'

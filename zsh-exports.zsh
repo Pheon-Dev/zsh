@@ -2,11 +2,11 @@
 # zmodload zsh/zprof # time-zsh
 
 # yay -Syu bob
-export EDITOR='$HOME/.local/share/bob/nvim-bin/nvim'
-export VISUAL='$HOME/.local/share/bob/nvim-bin/nvim'
+# export EDITOR='$HOME/.local/share/bob/nvim-bin/nvim'
+# export VISUAL='$HOME/.local/share/bob/nvim-bin/nvim'
 
-# export EDITOR='nvim'
-# export VISUAL='nvim'
+export EDITOR='nvim'
+export VISUAL='nvim'
 
 VIM_MODE_VICMD_KEY='jj'
 

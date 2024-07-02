@@ -9,6 +9,7 @@ fdir() {
   fd --type directory -HE="{$IGNORE}" --strip-cwd-prefix --follow
 }
 
+export EDITOR='$HOME/.local/share/bob/nvim-bin/nvim'
 export FZF_DEFAULT_OPTS="\
   --preview '( \
     [[ -f {} ]] && \
