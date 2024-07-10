@@ -14,20 +14,22 @@ alias fgrep='fgrep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox
 alias x="exit"
 alias js="joshuto"
 # alias ytl="youtube-dl"
-alias shuffle="mpv --shuffle"
+alias msh="mpv --shuffle"
+alias mnv="mpv --no-video"
+alias mdt="mpv ."
 
-# MOCP
-alias mus="mocp"
-alias msh="mocp -t shuffle"
-alias mnx="mocp -t autonext"
-alias mre="mocp -t repeat"
-alias mob="mocp -r && mocp -i | grep File"
-alias mon="mocp -f && mocp -i | grep File"
-alias mop="mocp -G"
-alias mov="mocp -v"
-alias moi="mocp -i"
-alias mos='mocp -i | grep -E "File" | cut -d "/" -f 6'
-alias vol="pulsemixer"
+# # MOCP
+# alias mus="mocp"
+# alias msh="mocp -t shuffle"
+# alias mnx="mocp -t autonext"
+# alias mre="mocp -t repeat"
+# alias mob="mocp -r && mocp -i | grep File"
+# alias mon="mocp -f && mocp -i | grep File"
+# alias mop="mocp -G"
+# alias mov="mocp -v"
+# alias moi="mocp -i"
+# alias mos='mocp -i | grep -E "File" | cut -d "/" -f 6'
+# alias vol="pulsemixer"
 
 alias dow="cd $HOME/Downloads/"
 alias doc="cd $HOME/Documents/"
